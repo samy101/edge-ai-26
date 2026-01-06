@@ -1,0 +1,4 @@
+.container-md {
+    max-width: 1400px !important; /* Adjust the width as needed */
+    width: 95%; /* Ensures responsiveness */
+}
