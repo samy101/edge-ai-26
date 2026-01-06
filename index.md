@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Edge AI
-subtitle: CP 330 | January 2026 | Indian Institute of Science
+subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
 # cover-img: https://www.imec-int.com/sites/default/files/2020-07/AI-roadmap--the-future-of-edge-AI.jpg
 ---
 
