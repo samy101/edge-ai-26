@@ -24,6 +24,7 @@ navbar-links:
   Schedule: "/schedule"
   Assignments: "/assignments"
   Course Project: "/projects"
+  Edge AI 2025: "https://www.samy101.com/edge-ai-25/"  
   
 #  Course Projects: 
 #    - Spring 2023: "/projects_s23"
