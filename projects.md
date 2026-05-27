@@ -14,7 +14,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/1.png" alt="Project 1" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/1_report">Plant Disease Detection On An Edge Device</a></h3>
-    <p>Project 1 description goes here.</p>
+    <p>MobileNetV3-Small model trained on PlantVillage is exported to ONNX and quantized to INT8 for real-time leaf disease classification</p>
     <a href="/edge-ai-26/projects/1_report">Read more →</a>
   </div>
 
