@@ -24,7 +24,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/2.png" alt="Project 2" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/2_report">Safety helmet detection system</a></h3>
-    <p>Project 2 description goes here.</p>
+    <p>Runs entirely on a Raspberry Pi 5 using a YOLOv8 model trained on Roboflow and deployed as a quantized TFLite model</p>
     <a href="/edge-ai-26/projects/2_report">Read more →</a>
   </div>
 
@@ -34,7 +34,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/3.png" alt="Project 3" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/3_report">Gesture Control Toy Car</a></h3>
-    <p>Project 3 description goes here.</p>
+    <p>Recognizes hand gestures through a camera feed and translates them into motor commands — running entirely on a Raspberry Pi 5</p>
     <a href="/edge-ai-26/projects/3_report">Read more →</a>
   </div>
 
@@ -44,7 +44,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/4.png" alt="Project 4" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/4_report">EdgeAttend: Distributed Real-Time Attentiveness Detection on the Edge</a></h3>
-    <p>Project 4 description goes here.</p>
+    <p>Local MobileNetV2 binary classifier detects participant attentiveness directly on each video call client</p>
     <a href="/edge-ai-26/projects/4_report">Read more →</a>
   </div>
 
@@ -54,7 +54,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/5.png" alt="Project 5" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/5_report">Edge LLM</a></h3>
-    <p>Project 5 description goes here.</p>
+    <p>This pipeline compresses and deploys Qwen2-0.5B onto edge devices like Raspberry Pi 5 using structured sparsity, knowledge distillation, and SG-GPTQ 4-bit quantization.</p>
     <a href="/edge-ai-26/projects/5_report">Read more →</a>
   </div>
 
@@ -64,7 +64,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/6.jpeg" alt="Project 6" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/6_report">Tablet Identification and Dosage Recommendations for Elderly People</a></h3>
-    <p>Project 6 description goes here.</p>
+    <p>Raspberry Pi 5 powered assistive device that identifies medication labels and verifies dosages for visually impaired users</p>
     <a href="/edge-ai-26/projects/6_report">Read more →</a>
   </div>
 
@@ -74,7 +74,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/7.png" alt="Project 7" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/7_report">Air-B-N-C: Writing Our ABCs in Thin Air</a></h3>
-    <p>Project 7 description goes here.</p>
+    <p>Raspberry Pi air-writing digit recognizer fusing IMU (Random Forest) and vision (GhostNet-ECA CNN) for lightweight edge inference.</p>
     <a href="/edge-ai-26/projects/7_report">Read more →</a>
   </div>
 
@@ -84,7 +84,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/8.png" alt="Project 8" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/8_report">WNAVI-Wearable Navigation Aid Utilising Lightweight CNN for Visually Impared</a></h3>
-    <p>Project 8 description goes here.</p>
+    <p>A 73x-compressed MobileNetV2 model (120KB INT8) deployed on Arduino Nicla Vision for local, real-time 5-class object classification to assist visually impaired navigation</p>
     <a href="/edge-ai-26/projects/8_report">Read more →</a>
   </div>
 
@@ -94,7 +94,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/9.png" alt="Project 9" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/9_report">A Real Time Sign Language Recognition System</a></h3>
-    <p>Project 9 description goes here.</p>
+    <p>A real-time ASL fingerspelling-to-speech system built with MediaPipe, OpenCV, and a Random Forest classifier using webcam hand landmarks.</p>
     <a href="/edge-ai-26/projects/9_report">Read more →</a>
   </div>
 
@@ -104,7 +104,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/10.png" alt="Project 10" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/10_report">Real-Time Semantic Segmentation for Real-World Driving Environments</a></h3>
-    <p>Project 10 description goes here.</p>
+    <p>An IDD-trained road perception pipeline combining semantic and YOLOv8n instance segmentation, distilled and deployed on a Raspberry Pi + Hailo accelerator.</p>
     <a href="/edge-ai-26/projects/10_report">Read more →</a>
   </div>
 
