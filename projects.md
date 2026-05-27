@@ -114,7 +114,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/11.jpeg" alt="Project 11" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/11_report">Head Gesture Recognition System</a></h3>
-    <p>Project 11 description goes here.</p>
+    <p>A real-time, cloud-free gesture recognition system that translates head movements into meaningful messages — running entirely on a wearable microcontroller.</p>
     <a href="/edge-ai-26/projects/11_report">Read more →</a>
   </div>
 
@@ -124,7 +124,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/12.png" alt="Project 12" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/12_report">Real Time Helmet Monitoring</a></h3>
-    <p>Project 12 description goes here.</p>
+    <p>A real-time, low-cost edge AI system deployed on Raspberry Pi that uses computer vision to detect helmet-less two-wheeler riders locally without cloud reliance.</p>
     <a href="/edge-ai-26/projects/12_report">Read more →</a>
   </div>
 
@@ -134,7 +134,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/13.png" alt="Project 13" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/13_report">Nighttime Street Light Functional Audit Using Computer Vision on Edge Device</a></h3>
-    <p>Project 13 description goes here.</p>
+    <p>Web-monitored nighttime detection system using image enhancement (CLAHE/Gamma) and hardware-optimized edge models (pruning/quantization).</p>
     <a href="/edge-ai-26/projects/13_report">Read more →</a>
   </div>
 
@@ -144,7 +144,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/14.png" alt="Project 14" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/14_report">Bottle damage detection</a></h3>
-    <p>Project 14 description goes here.</p>
+    <p>Bottle damage detection and classification system using YOLOv8 for bottle localization and a ResNet50V2 TFLite model for damage classification on the Raspberry Pi 6</p>
     <a href="/edge-ai-26/projects/14_report">Read more →</a>
   </div>
 
@@ -154,7 +154,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/15.png" alt="Project 15" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/15_report">Smart Occupancy Detection System</a></h3>
-    <p>Project 15 description goes here.</p>
+    <p>A real-time seat occupancy detection system for libraries and classrooms, built using YOLOv8n (yolov8n.pt) deployed on a Raspberry Pi 5 (16GB) via TensorFlow Lite</p>
     <a href="/edge-ai-26/projects/15_report">Read more →</a>
   </div>
 
@@ -164,7 +164,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/16.png" alt="Project 16" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/16_report">Electronic Health Records (EHR) Generation on Edge Devices</a></h3>
-    <p>Project 16 description goes here.</p>
+    <p>A medical SOAP note generator fine-tuned via QLoRA (Llama-3.2-3B) and deployed locally on Raspberry Pi 5 using llama.cpp and whisper.cpp</p>
     <a href="/edge-ai-26/projects/16_report">Read more →</a>
   </div>
 
@@ -174,7 +174,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/17.jpeg" alt="Project 17" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/17_report">Edge AI Intelligent Traffic System</a></h3>
-    <p>Project 17 description goes here.</p>
+    <p>Multi-modal traffic analytics system deployed on Nicla Vision + Raspberry Pi for real-time vehicle tracking, speed estimation, and siren detection.</p>
     <a href="/edge-ai-26/projects/17_report">Read more →</a>
   </div>
 
@@ -194,7 +194,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/19.jpg" alt="Project 19" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/19_report">Edge AI Based Hailo-Accelerated Real-Time 2D Semantic Mapping with RPi5 for Assistive Navigation</a></h3>
-    <p>Project 19 description goes here.</p>
+    <p>Real-time, offline navigation aid fusing Hailo-accelerated YOLOv8n (24.7 FPS) on Raspberry Pi 5 with Nicla Vision IMU data to build 2D polar semantic maps</p>
     <a href="/edge-ai-26/projects/19_report">Read more →</a>
   </div>
 
@@ -204,7 +204,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/20.png" alt="Project 20" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/20_report">Baby Cry Detection</a></h3>
-    <p>Project 20 description goes here.</p>
+    <p>Designed for classifying cry reason from the cleaned Donate-a-Cry WAV dataset and exporting a deployable TFLite model.</p>
     <a href="/edge-ai-26/projects/20_report">Read more →</a>
   </div>
 
@@ -214,7 +214,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/21.png" alt="Project 21" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/21_report">Real Time Traffic Symbol Recognition using Edge AI</a></h3>
-    <p>Project 21 description goes here.</p>
+    <p>Edge Impulse-powered "AI Helmet" prototype on Arduino Nicla Vision for real-time, on-device road sign detection and rider alerting.</p>
     <a href="/edge-ai-26/projects/21_report">Read more →</a>
   </div>
 
@@ -224,7 +224,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/22.png" alt="Project 22" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/22_report">PCB Manufacturing Defect Detection</a></h3>
-    <p>Project 22 description goes here.</p>
+    <p>Built a low-cost, real-time industrial inspection system using YOLOv8 TFLite on a Raspberry Pi to detect six types of PCB defects on an active conveyor setup</p>
     <a href="/edge-ai-26/projects/22_report">Read more →</a>
   </div>
 
@@ -234,7 +234,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/23.jpg" alt="Project 23" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/23_report">Edge AI Traffic Analytics and Safety Assessment</a></h3>
-    <p>Project 23 description goes here.</p>
+    <p>Real-time helmet violation, triple-riding, overspeeding, congestion, and pothole detection on a Raspberry Pi 5</p>
     <a href="/edge-ai-26/projects/23_report">Read more →</a>
   </div>
 
@@ -244,7 +244,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/24.png" alt="Project 24" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/24_report">Real-Time Two-Way ASL Translator</a></h3>
-    <p>Project 24 description goes here.</p>
+    <p>wearable Raspberry Pi 5 two-way ASL communication system featuring offline CNN-based sign-to-speech and microphone-driven speech-to-text</p>
     <a href="/edge-ai-26/projects/24_report">Read more →</a>
   </div>
 
@@ -254,7 +254,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/25.png" alt="Project 25" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/25_report">Offline Multimodal AI for Real-Time Banana Disease Diagnostics</a></h3>
-    <p>Project 25 description goes here.</p>
+    <p>fully offline Android application utilizing optimized, on-device edge VLMs to diagnose banana plant diseases without internet access</p>
     <a href="/edge-ai-26/projects/25_report">Read more →</a>
   </div>
 
@@ -264,7 +264,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/26.jpeg" alt="Project 26" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/26_report">Vision Assisted Beam Selection using Monocular Depth on Edge Devices</a></h3>
-    <p>Project 26 description goes here.</p>
+    <p>hardware-accelerated tracking pipeline on Raspberry Pi 5 using monocular depth and object detection to optimize IRS beamforming phase shifts for real-time SNR maximization</p>
     <a href="/edge-ai-26/projects/26_report">Read more →</a>
   </div>
 
@@ -274,7 +274,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/27.jpeg" alt="Project 27" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/27_report">Edge-Based Acoustic Event Detection for Water Activities</a></h3>
-    <p>Project 27 description goes here.</p>
+    <p>A privacy-preserving, low-latency edge AI system that classifies fine-grained water-use activities locally from audio as a non-invasive alternative to physical flow meters</p>
     <a href="/edge-ai-26/projects/27_report">Read more →</a>
   </div>
 
@@ -284,7 +284,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/28.jpeg" alt="Project 28" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/28_report">Adaptive Privacy Filtering Camera</a></h3>
-    <p>Project 28 description goes here.</p>
+    <p>Real-time, threaded TFLite face and screen anonymization pipeline on Raspberry Pi, live-streamed via Flask and optimized through blur algorithm benchmarking</p>
     <a href="/edge-ai-26/projects/28_report">Read more →</a>
   </div>
 
@@ -294,7 +294,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/29.png" alt="Project 29" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/29_report">EdgeProbe: Investigating Binary Neural Network Acceleration on a Constrained FPGA — From Knowledge Distillation to Streaming Hardware Inference</a></h3>
-    <p>Project 29 description goes here.</p>
+    <p>Designed and verified an end-to-end BCNN pipeline, training a binary classifier in Python and deploying it via hardware-accelerated Verilog (XNOR/popcount) over SPI</p>
     <a href="/edge-ai-26/projects/29_report">Read more →</a>
   </div>
 
@@ -304,7 +304,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/30.png" alt="Project 30" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/30_report">Edge AI based Forward Collision Warning System (Mini ADAS)</a></h3>
-    <p>Project 30 description goes here.</p>
+    <p>A cloud-free, vehicle-agnostic Forward Collision Warning system for Indian roads that fuses a 52× compressed YOLOv8n ensemble with ultrasonic telemetry on a Raspberry Pi 5 for real-time safety alerts</p>
     <a href="/edge-ai-26/projects/30_report">Read more →</a>
   </div>
 
@@ -314,7 +314,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/31.png" alt="Project 31" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/31_report">JanConnect Voice</a></h3>
-    <p>Project 31 description goes here.</p>
+    <p>JanConnect is an edge AI-powered real-time speech translation system that translates Hindi speech to Malayalam speech on a Raspberry Pi 4, achieving under 3-second latency without cloud dependency</p>
     <a href="/edge-ai-26/projects/31_report">Read more →</a>
   </div>
 
@@ -324,7 +324,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/32.png" alt="Project 32" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/32_report">Smart Pest Detection Trap using Edge AI precision farming</a></h3>
-    <p>Project 32 description goes here.</p>
+    <p>An Edge AI pest monitoring system deploying a FOMO model on Arduino Nicla Vision for real-time, offline fruit fly detection and automated smart trapping</p>
     <a href="/edge-ai-26/projects/32_report">Read more →</a>
   </div>
 
@@ -334,7 +334,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/33.png" alt="Project 33" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/33_report">Edge AI Pushup Form Detection on Nicla Vision</a></h3>
-    <p>Project 33 description goes here.</p>
+    <p>An offline, real-time exercise form detector on Arduino Nicla Vision featuring a local web dashboard and INT8-quantized models for squat and pushup evaluation</p>
     <a href="/edge-ai-26/projects/33_report">Read more →</a>
   </div>
 
@@ -344,7 +344,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
       <img src="../assets/img/projects26/34.png" alt="Project 34" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/34_report">Crack Detection</a></h3>
-    <p>Project 34 description goes here.</p>
+    <p>A real-time, offline robotic crack detection system running a highly compressed (3.23 MB INT8) YOLOv8n model on a Raspberry Pi 5 using a live Intel RealSense feed</p>
     <a href="/edge-ai-26/projects/34_report">Read more →</a>
   </div>
 
