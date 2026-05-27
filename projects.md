@@ -13,7 +13,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/1_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/1.png" alt="Project 1" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/1_report">Project 1</a></h3>
+    <h3><a href="/edge-ai-26/projects/1_report">Plant Disease Detection On An Edge Device</a></h3>
     <p>Project 1 description goes here.</p>
     <a href="/edge-ai-26/projects/1_report">Read more →</a>
   </div>
@@ -23,7 +23,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/2_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/2.png" alt="Project 2" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/2_report">Project 2</a></h3>
+    <h3><a href="/edge-ai-26/projects/2_report">Safety helmet detection system</a></h3>
     <p>Project 2 description goes here.</p>
     <a href="/edge-ai-26/projects/2_report">Read more →</a>
   </div>
@@ -33,7 +33,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/3_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/3.png" alt="Project 3" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/3_report">Project 3</a></h3>
+    <h3><a href="/edge-ai-26/projects/3_report">Gesture Control Toy Car</a></h3>
     <p>Project 3 description goes here.</p>
     <a href="/edge-ai-26/projects/3_report">Read more →</a>
   </div>
@@ -43,7 +43,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/4_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/4.png" alt="Project 4" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/4_report">Project 4</a></h3>
+    <h3><a href="/edge-ai-26/projects/4_report">EdgeAttend: Distributed Real-Time Attentiveness Detection on the Edge</a></h3>
     <p>Project 4 description goes here.</p>
     <a href="/edge-ai-26/projects/4_report">Read more →</a>
   </div>
@@ -53,7 +53,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/5_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/5.png" alt="Project 5" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/5_report">Project 5</a></h3>
+    <h3><a href="/edge-ai-26/projects/5_report">Edge LLM</a></h3>
     <p>Project 5 description goes here.</p>
     <a href="/edge-ai-26/projects/5_report">Read more →</a>
   </div>
@@ -63,7 +63,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/6_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/6.jpeg" alt="Project 6" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/6_report">Project 6</a></h3>
+    <h3><a href="/edge-ai-26/projects/6_report">Tablet Identification and Dosage Recommendations for Elderly People</a></h3>
     <p>Project 6 description goes here.</p>
     <a href="/edge-ai-26/projects/6_report">Read more →</a>
   </div>
@@ -73,7 +73,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/7_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/7.png" alt="Project 7" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/7_report">Project 7</a></h3>
+    <h3><a href="/edge-ai-26/projects/7_report">Air-B-N-C: Writing Our ABCs in Thin Air</a></h3>
     <p>Project 7 description goes here.</p>
     <a href="/edge-ai-26/projects/7_report">Read more →</a>
   </div>
@@ -83,7 +83,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/8_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/8.png" alt="Project 8" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/8_report">Project 8</a></h3>
+    <h3><a href="/edge-ai-26/projects/8_report">WNAVI-Wearable Navigation Aid Utilising Lightweight CNN for Visually Impared</a></h3>
     <p>Project 8 description goes here.</p>
     <a href="/edge-ai-26/projects/8_report">Read more →</a>
   </div>
@@ -93,7 +93,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/9_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/9.png" alt="Project 9" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/9_report">Project 9</a></h3>
+    <h3><a href="/edge-ai-26/projects/9_report">A Real Time Sign Language Recognition System</a></h3>
     <p>Project 9 description goes here.</p>
     <a href="/edge-ai-26/projects/9_report">Read more →</a>
   </div>
@@ -103,7 +103,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/10_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/10.png" alt="Project 10" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/10_report">Project 10</a></h3>
+    <h3><a href="/edge-ai-26/projects/10_report">Real-Time Semantic Segmentation for Real-World Driving Environments</a></h3>
     <p>Project 10 description goes here.</p>
     <a href="/edge-ai-26/projects/10_report">Read more →</a>
   </div>
