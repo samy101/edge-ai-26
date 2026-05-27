@@ -113,7 +113,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/11_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/11.jpeg" alt="Project 11" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/11_report">Project 11</a></h3>
+    <h3><a href="/edge-ai-26/projects/11_report">Head Gesture Recognition System</a></h3>
     <p>Project 11 description goes here.</p>
     <a href="/edge-ai-26/projects/11_report">Read more →</a>
   </div>
@@ -123,7 +123,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/12_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/12.png" alt="Project 12" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/12_report">Project 12</a></h3>
+    <h3><a href="/edge-ai-26/projects/12_report">Real Time Helmet Monitoring</a></h3>
     <p>Project 12 description goes here.</p>
     <a href="/edge-ai-26/projects/12_report">Read more →</a>
   </div>
@@ -133,7 +133,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/13_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/13.png" alt="Project 13" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/13_report">Project 13</a></h3>
+    <h3><a href="/edge-ai-26/projects/13_report">Nighttime Street Light Functional Audit Using Computer Vision on Edge Device</a></h3>
     <p>Project 13 description goes here.</p>
     <a href="/edge-ai-26/projects/13_report">Read more →</a>
   </div>
@@ -143,7 +143,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/14_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/14.png" alt="Project 14" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/14_report">Project 14</a></h3>
+    <h3><a href="/edge-ai-26/projects/14_report">Bottle damage detection</a></h3>
     <p>Project 14 description goes here.</p>
     <a href="/edge-ai-26/projects/14_report">Read more →</a>
   </div>
@@ -153,7 +153,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/15_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/15.png" alt="Project 15" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/15_report">Project 15</a></h3>
+    <h3><a href="/edge-ai-26/projects/15_report">Smart Occupancy Detection System</a></h3>
     <p>Project 15 description goes here.</p>
     <a href="/edge-ai-26/projects/15_report">Read more →</a>
   </div>
@@ -163,7 +163,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/16_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/16.png" alt="Project 16" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/16_report">Project 16</a></h3>
+    <h3><a href="/edge-ai-26/projects/16_report">Electronic Health Records (EHR) Generation on Edge Devices</a></h3>
     <p>Project 16 description goes here.</p>
     <a href="/edge-ai-26/projects/16_report">Read more →</a>
   </div>
@@ -173,7 +173,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/17_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/17.jpeg" alt="Project 17" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/17_report">Project 17</a></h3>
+    <h3><a href="/edge-ai-26/projects/17_report">Edge AI Intelligent Traffic System</a></h3>
     <p>Project 17 description goes here.</p>
     <a href="/edge-ai-26/projects/17_report">Read more →</a>
   </div>
@@ -183,7 +183,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/18_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/18.png" alt="Project 18" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/18_report">Project 18</a></h3>
+    <h3><a href="/edge-ai-26/projects/18_report">AI Goalkeeper</a></h3>
     <p>Project 18 description goes here.</p>
     <a href="/edge-ai-26/projects/18_report">Read more →</a>
   </div>
@@ -193,7 +193,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/19_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/19.jpg" alt="Project 19" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/19_report">Project 19</a></h3>
+    <h3><a href="/edge-ai-26/projects/19_report">Edge AI Based Hailo-Accelerated Real-Time 2D Semantic Mapping with RPi5 for Assistive Navigation</a></h3>
     <p>Project 19 description goes here.</p>
     <a href="/edge-ai-26/projects/19_report">Read more →</a>
   </div>
@@ -203,7 +203,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/20_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/20.png" alt="Project 20" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/20_report">Project 20</a></h3>
+    <h3><a href="/edge-ai-26/projects/20_report">Baby Cry Detection</a></h3>
     <p>Project 20 description goes here.</p>
     <a href="/edge-ai-26/projects/20_report">Read more →</a>
   </div>
@@ -213,7 +213,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/21_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/21.png" alt="Project 21" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/21_report">Project 21</a></h3>
+    <h3><a href="/edge-ai-26/projects/21_report">Real Time Traffic Symbol Recognition using Edge AI</a></h3>
     <p>Project 21 description goes here.</p>
     <a href="/edge-ai-26/projects/21_report">Read more →</a>
   </div>
@@ -223,7 +223,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/22_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/22.png" alt="Project 22" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/22_report">Project 22</a></h3>
+    <h3><a href="/edge-ai-26/projects/22_report">PCB Manufacturing Defect Detection</a></h3>
     <p>Project 22 description goes here.</p>
     <a href="/edge-ai-26/projects/22_report">Read more →</a>
   </div>
@@ -233,7 +233,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/23_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/23.jpg" alt="Project 23" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/23_report">Project 23</a></h3>
+    <h3><a href="/edge-ai-26/projects/23_report">Edge AI Traffic Analytics and Safety Assessment</a></h3>
     <p>Project 23 description goes here.</p>
     <a href="/edge-ai-26/projects/23_report">Read more →</a>
   </div>
@@ -243,7 +243,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/24_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/24.png" alt="Project 24" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/24_report">Project 24</a></h3>
+    <h3><a href="/edge-ai-26/projects/24_report">Real-Time Two-Way ASL Translator</a></h3>
     <p>Project 24 description goes here.</p>
     <a href="/edge-ai-26/projects/24_report">Read more →</a>
   </div>
@@ -253,7 +253,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/25_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/25.png" alt="Project 25" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/25_report">Project 25</a></h3>
+    <h3><a href="/edge-ai-26/projects/25_report">Offline Multimodal AI for Real-Time Banana Disease Diagnostics</a></h3>
     <p>Project 25 description goes here.</p>
     <a href="/edge-ai-26/projects/25_report">Read more →</a>
   </div>
@@ -263,7 +263,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/26_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/26.jpeg" alt="Project 26" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/26_report">Project 26</a></h3>
+    <h3><a href="/edge-ai-26/projects/26_report">Vision Assisted Beam Selection using Monocular Depth on Edge Devices</a></h3>
     <p>Project 26 description goes here.</p>
     <a href="/edge-ai-26/projects/26_report">Read more →</a>
   </div>
@@ -273,7 +273,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/27_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/27.jpeg" alt="Project 27" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/27_report">Project 27</a></h3>
+    <h3><a href="/edge-ai-26/projects/27_report">Edge-Based Acoustic Event Detection for Water Activities</a></h3>
     <p>Project 27 description goes here.</p>
     <a href="/edge-ai-26/projects/27_report">Read more →</a>
   </div>
@@ -283,7 +283,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/28_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/28.jpeg" alt="Project 28" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/28_report">Project 28</a></h3>
+    <h3><a href="/edge-ai-26/projects/28_report">Adaptive Privacy Filtering Camera</a></h3>
     <p>Project 28 description goes here.</p>
     <a href="/edge-ai-26/projects/28_report">Read more →</a>
   </div>
@@ -293,7 +293,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/29_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/29.png" alt="Project 29" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/29_report">Project 29</a></h3>
+    <h3><a href="/edge-ai-26/projects/29_report">EdgeProbe: Investigating Binary Neural Network Acceleration on a Constrained FPGA — From Knowledge Distillation to Streaming Hardware Inference</a></h3>
     <p>Project 29 description goes here.</p>
     <a href="/edge-ai-26/projects/29_report">Read more →</a>
   </div>
@@ -303,7 +303,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/30_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/30.png" alt="Project 30" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/30_report">Project 30</a></h3>
+    <h3><a href="/edge-ai-26/projects/30_report">Edge AI based Forward Collision Warning System (Mini ADAS)</a></h3>
     <p>Project 30 description goes here.</p>
     <a href="/edge-ai-26/projects/30_report">Read more →</a>
   </div>
@@ -313,7 +313,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/31_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/31.png" alt="Project 31" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/31_report">Project 31</a></h3>
+    <h3><a href="/edge-ai-26/projects/31_report">JanConnect Voice</a></h3>
     <p>Project 31 description goes here.</p>
     <a href="/edge-ai-26/projects/31_report">Read more →</a>
   </div>
@@ -323,7 +323,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/32_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/32.png" alt="Project 32" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/32_report">Project 32</a></h3>
+    <h3><a href="/edge-ai-26/projects/32_report">Smart Pest Detection Trap using Edge AI precision farming</a></h3>
     <p>Project 32 description goes here.</p>
     <a href="/edge-ai-26/projects/32_report">Read more →</a>
   </div>
@@ -333,7 +333,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/33_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/33.png" alt="Project 33" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/33_report">Project 33</a></h3>
+    <h3><a href="/edge-ai-26/projects/33_report">Edge AI Pushup Form Detection on Nicla Vision</a></h3>
     <p>Project 33 description goes here.</p>
     <a href="/edge-ai-26/projects/33_report">Read more →</a>
   </div>
@@ -343,7 +343,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
     <a href="/edge-ai-26/projects/34_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/34.png" alt="Project 34" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/34_report">Project 34</a></h3>
+    <h3><a href="/edge-ai-26/projects/34_report">Crack Detection</a></h3>
     <p>Project 34 description goes here.</p>
     <a href="/edge-ai-26/projects/34_report">Read more →</a>
   </div>
