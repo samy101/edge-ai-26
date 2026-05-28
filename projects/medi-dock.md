@@ -72,28 +72,28 @@ Camera (Picamera2, 1920×1080)
 </p>
 
 <p align="center">
-  <img src="../assets/img/projects26/medi_doc/Enclosure.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Enclosure.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 2: Custom 3D-printed dock enclosure.</em>
 </p>
 
 <p align="center">
-  <img src="../assets/img/projects26/medi_doc/Inside_View_Enclosure.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Inside_View_Enclosure.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 3: Inside view of the enclosure showing component layout.</em>
 </p>
 
 <p align="center">
-  <img src="../assets/img/projects26/medi_doc/Placement_of_Camera.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Placement_of_Camera.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 4: Camera module mounted inside the dock.</em>
 </p>
 
 <p align="center">
-  <img src="../assets/img/projects26/medi_doc/Slot_to_insert_strip.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Slot_to_insert_strip.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 5: Strip insertion slot on the Medi-Dock.</em>
@@ -140,7 +140,7 @@ Because real-world data for the specific target medicines (Nimesulide and Ofloxa
 | Other / Unknown (2) | ~variable | 800 | ~800+ |
 
 <p align="center">
-  <img src="../assets/img/projects26/medi_doc/Class_Distribution Graph.jpg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Class_Distribution Graph.jpg" width="400">
 </p>
 <p align="center">
   <em>Figure 6: Dataset class distribution across the three medication classes.</em>
@@ -250,7 +250,7 @@ The quantised ONNX model is converted to TensorFlow SavedModel via `onnx-tf`, th
 | Total pipeline (end-to-end) | ~5–8 s |
 
 <p align="center">
-  <img src="../assets/img/projects26/medi_doc/Sample_Strip.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Sample_Strip.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 6: Sample medicine blister strip used for testing.</em>
