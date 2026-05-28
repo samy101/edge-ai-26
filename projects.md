@@ -60,12 +60,12 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
 
   <!-- Project 6 -->
   <div class="project-card">
-    <a href="/edge-ai-26/projects/6_report" style="text-decoration: none; color: inherit;">
+    <a href="/edge-ai-26/projects/medi-doc" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/6.jpeg" alt="Project 6" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/6_report">Tablet Identification and Dosage Recommendations for Elderly People</a></h3>
+    <h3><a href="/edge-ai-26/projects/medi-doc">Tablet Identification and Dosage Recommendations for Elderly People</a></h3>
     <p>Raspberry Pi 5 powered assistive device that identifies medication labels and verifies dosages for visually impaired users</p>
-    <a href="/edge-ai-26/projects/6_report">Read more →</a>
+    <a href="/edge-ai-26/projects/medi-doc">Read more →</a>
   </div>
 
   <!-- Project 7 -->
