@@ -4,7 +4,6 @@ title: CP 330 - Edge AI
 subtitle: Indian Institute of Science | January 2025
 ---
 # Medi-Dock: Intelligent Medication Identification Station for the Visually Impaired
-### CP 330: Edge AI — Project Report | Indian Institute of Science, Bengaluru | 2025–2026
 
 **Team:** Athikesavan V · Madina Gowtham Kumar · Pranav Kumar Rowlo · Vedang Mangrulkar
 
