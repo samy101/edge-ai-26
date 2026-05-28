@@ -10,12 +10,12 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
 
   <!-- Project 1 -->
   <div class="project-card">
-    <a href="/edge-ai-26/projects/1_report" style="text-decoration: none; color: inherit;">
+    <a href="/edge-ai-26/projects/plant-disease-detection" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/1.png" alt="Project 1" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/1_report">Plant Disease Detection On An Edge Device</a></h3>
+    <h3><a href="/edge-ai-26/projects/plant-disease-detection">Plant Disease Detection On An Edge Device</a></h3>
     <p>MobileNetV3-Small model trained on PlantVillage is exported to ONNX and quantized to INT8 for real-time leaf disease classification</p>
-    <a href="/edge-ai-26/projects/1_report">Read more →</a>
+    <a href="/edge-ai-26/projects/plant-disease-detection">Read more →</a>
   </div>
 
   <!-- Project 2 -->
@@ -110,12 +110,12 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
 
   <!-- Project 11 -->
   <div class="project-card">
-    <a href="/edge-ai-26/projects/11_report" style="text-decoration: none; color: inherit;">
+    <a href="/edge-ai-26/projects/1plant-disease-detection" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/11.jpeg" alt="Project 11" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/11_report">Head Gesture Recognition System</a></h3>
+    <h3><a href="/edge-ai-26/projects/1plant-disease-detection">Head Gesture Recognition System</a></h3>
     <p>A real-time, cloud-free gesture recognition system that translates head movements into meaningful messages — running entirely on a wearable microcontroller.</p>
-    <a href="/edge-ai-26/projects/11_report">Read more →</a>
+    <a href="/edge-ai-26/projects/1plant-disease-detection">Read more →</a>
   </div>
 
   <!-- Project 12 -->
@@ -210,12 +210,12 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
 
   <!-- Project 21 -->
   <div class="project-card">
-    <a href="/edge-ai-26/projects/21_report" style="text-decoration: none; color: inherit;">
+    <a href="/edge-ai-26/projects/2plant-disease-detection" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/21.png" alt="Project 21" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/21_report">Real Time Traffic Symbol Recognition using Edge AI</a></h3>
+    <h3><a href="/edge-ai-26/projects/2plant-disease-detection">Real Time Traffic Symbol Recognition using Edge AI</a></h3>
     <p>Edge Impulse-powered "AI Helmet" prototype on Arduino Nicla Vision for real-time, on-device road sign detection and rider alerting.</p>
-    <a href="/edge-ai-26/projects/21_report">Read more →</a>
+    <a href="/edge-ai-26/projects/2plant-disease-detection">Read more →</a>
   </div>
 
   <!-- Project 22 -->
@@ -310,12 +310,12 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
 
   <!-- Project 31 -->
   <div class="project-card">
-    <a href="/edge-ai-26/projects/31_report" style="text-decoration: none; color: inherit;">
+    <a href="/edge-ai-26/projects/3plant-disease-detection" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/31.png" alt="Project 31" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/31_report">JanConnect Voice</a></h3>
+    <h3><a href="/edge-ai-26/projects/3plant-disease-detection">JanConnect Voice</a></h3>
     <p>JanConnect is an edge AI-powered real-time speech translation system that translates Hindi speech to Malayalam speech on a Raspberry Pi 4, achieving under 3-second latency without cloud dependency</p>
-    <a href="/edge-ai-26/projects/31_report">Read more →</a>
+    <a href="/edge-ai-26/projects/3plant-disease-detection">Read more →</a>
   </div>
 
   <!-- Project 32 -->

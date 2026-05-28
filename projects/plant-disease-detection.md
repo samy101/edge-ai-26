@@ -1,4 +1,9 @@
-# Edge AI Plant Disease Detection System — Project Report
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
+# Edge AI Plant Disease Detection System
 
 **Course:** Edge AI  
 **Team:** Aayush Jeevan Patil (22220) · Vansh Dhar (22156)  
