@@ -65,7 +65,7 @@ Camera (Picamera2, 1920×1080)
 > 📷 *See figures below — hardware setup, enclosure, and camera placement.*
 
 <p align="center">
-  <img src="../assets/img/projects26/medi_doc/Hardware_Setup.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Hardware_Setup.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 1: Medi-Dock hardware setup — Raspberry Pi 5 with Camera Module 3.</em>
