@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # Edge Deployed Crack Detection
 
 *YOLOv8noptimised through PTQ, QAT, pruning, and resolution sweep for real-time inference on a VOLTA Bot Sync platform*

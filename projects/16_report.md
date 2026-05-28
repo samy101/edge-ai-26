@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # Course Project Report — Edge Clinical NLP (ClinIQ)
 
 **Compact technical report.** Extended narrative: `MASTER.md`. Poster-style summary: `POSTER.md`. Reproduction: `README.md`.

@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # Nighttime Street Light Functional Audit Using Computer Vision on Edge Device
 
 ## 1. Problem Statement, Motivation & Objectives (1–2 paragraphs + 3–5 bullets)

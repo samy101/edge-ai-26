@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # SmartSeat: Real-Time Library & Classroom Seat Occupancy Detection using YOLOv8 on Raspberry Pi 5
 
 ---

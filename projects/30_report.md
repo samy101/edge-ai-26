@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # Edge AI-Based Forward Collision Warning System (Mini ADAS)
 
 **Course:** [CP 330 Edge AI, IISc Bangalore, 2025–26](https://www.samy101.com/edge-ai-26/)

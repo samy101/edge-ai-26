@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # 🍾 Bottle Detection Pipeline: Real-Time Damage Classification System
 
 This project implements a **real-time, on-device bottle damage detection and classification system** using **YOLOv8** for bottle localization and a **ResNet50V2 TFLite model** for damage classification on the **Raspberry Pi 6**.

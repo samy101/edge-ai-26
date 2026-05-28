@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # 🤖 Edge AI — Real-Time 2D Semantic Mapping (IISc CP330)
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue)](https://python.org)

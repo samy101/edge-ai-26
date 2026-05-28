@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # Smart-trap-for-pest-detection-using-edge-ai
 
   ![Smart trap with funnel entry](images/prototype.png)
