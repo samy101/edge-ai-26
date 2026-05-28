@@ -110,12 +110,12 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
 
   <!-- Project 11 -->
   <div class="project-card">
-    <a href="/edge-ai-26/projects/1plant-disease-detection" style="text-decoration: none; color: inherit;">
+    <a href="/edge-ai-26/projects/11_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/11.jpeg" alt="Project 11" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/1plant-disease-detection">Head Gesture Recognition System</a></h3>
+    <h3><a href="/edge-ai-26/projects/11_report">Head Gesture Recognition System</a></h3>
     <p>A real-time, cloud-free gesture recognition system that translates head movements into meaningful messages — running entirely on a wearable microcontroller.</p>
-    <a href="/edge-ai-26/projects/1plant-disease-detection">Read more →</a>
+    <a href="/edge-ai-26/projects/11_report">Read more →</a>
   </div>
 
   <!-- Project 12 -->
