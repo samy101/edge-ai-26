@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # EdgeLLM: Efficient Deployment of Large Language Models on Resource-Constrained Edge Devices
 
 **Aryan Kumar Singh (26769) · Bhavesh Sukhariya (26042) · Kavya Duvvuri (27494) · Lavish Singh (26318)**

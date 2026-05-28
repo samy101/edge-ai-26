@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # Air-Writing Digit Recognition using IMU and Vision-Based Ensemble Learning
 
 ## 1. Problem Statement, Motivation & Objectives

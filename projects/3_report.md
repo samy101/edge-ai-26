@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # Edge AI Project Report: Gesture-Controlled Toy Car
 
 **Course:** Edge AI  

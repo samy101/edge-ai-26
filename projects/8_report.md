@@ -1,3 +1,8 @@
+---
+layout: page
+title: CP 330 - Edge AI
+subtitle: Indian Institute of Science | January 2025
+---
 # WNAVI: Wearable Navigation Aid for Visually Impaired — Project Report
 
 **Course:** CP330 — Edge AI by Prof. Pandarasamy Arjunan, IISc Bangalore 
