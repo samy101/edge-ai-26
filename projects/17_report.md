@@ -26,7 +26,7 @@ Edge AI addresses this by moving inference onto the device itself — eliminatin
 
 ---
 
-## 2. Proposed Solution (Overview)
+## 2. Proposed Solution
 
 The system consists of three Arduino Nicla Vision and two are used for cameras (FRONT and REAR roles) connected over WiFi to a Raspberry Pi. Each Nicla Vision streams compressed MJPEG video over HTTP (port 8080) while simultaneously embedding real-time IMU-derived ego-vehicle speed in the HTTP response headers (`X-Speed`). One Nicla Vision additionally runs a dedicated siren detector using its onboard microphone and MicroPython audio library.
 
@@ -212,7 +212,7 @@ Primary metrics: mAP50 and mAP50-95 (COCO-style box detection). The QAT model ac
 ```
 **Work flow**
 
-![Flow chart](flowchart.jpeg)
+![Flow chart](/edge-ai-26/assets/img/projects26/intelligent-traffic/flowchart.jpeg)
 
 **Expected output windows:**
 
@@ -222,7 +222,7 @@ Primary metrics: mAP50 and mAP50-95 (COCO-style box detection). The QAT model ac
 
 
 **Model Protoype**
-![Model Prototype](model%20prototype.jpeg)
+![Model Prototype](/edge-ai-26/assets/img/projects26/intelligent-traffic/model_prototype.jpeg)
 
 **Demo on road**
 [Demo video](Demo.mp4)
