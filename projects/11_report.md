@@ -242,7 +242,7 @@ The Decision Tree was selected as the primary deployment target. It provides a n
 
 The feature pipeline operates on **1-second sliding windows** (50 samples @ 50 Hz) with **50% overlap**:
 <div align="center">
-<img src="doc/Dual-IMU_Feature_Engineering.png" alt="Feature Engineering Pipeline" width="780"/>
+<!-- <img src="doc/Dual-IMU_Feature_Engineering.png" alt="Feature Engineering Pipeline" width="780"/> -->
 <br><em>Dual-IMU feature engineering: 148-dimensional feature vector from a 1-second window</em>
 </div>
 #### Group 1 — Per-Channel Statistical Features (132 features)

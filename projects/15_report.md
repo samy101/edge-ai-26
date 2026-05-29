@@ -166,7 +166,7 @@ All screenshots below are from the live SmartSeat dashboard running on Raspberry
 
 **Figure 1:** Person detected sitting on a lounge-style chair. Seat 2 marked OCC (red), Seat 1 VAC (green). Dashboard shows 5.5 FPS.
 
-![Lounge Detection](images/demo_lounge_detection.png)
+![Lounge Detection](/edge-ai-26/assets/img/projects26/smartSeat/demo_lounge_detection.png)
 
 ---
 
@@ -174,19 +174,19 @@ All screenshots below are from the live SmartSeat dashboard running on Raspberry
 
 **Figure 2:** 4 seats tracked — 1 occupied (Seat 3, red), 3 vacant (green). Occupancy rate: 25%. Seat map visible on right panel.
 
-![Classroom 1 Seat Occupied](images/demo_Library_2seat_occ.png)
+![Classroom 1 Seat Occupied](/edge-ai-26/assets/img/projects26/smartSeat/demo_Library_2seat_occ.png)
 
 **Figure 3:** 4 seats — 2 occupied (Seat 1, Seat 3). Occupancy rate: 50%. Per-seat OCC/VAC labels and confidence scores visible.
 
-![Classroom 2 Seats Occupied](images/demo_1person.png)
+![Classroom 2 Seats Occupied](/edge-ai-26/assets/img/projects26/smartSeat/demo_1person.png)
 
 **Figure 4:** Top-down classroom view — 4 seats, 2 occupied (Seat 3, Seat 4). Chair confidence: 0.74–0.88. Demonstrates overhead angle robustness.
 
-![Classroom Top View](images/demo_Library_2seat_2_occ.png)
+![Classroom Top View](/edge-ai-26/assets/img/projects26/smartSeat/demo_Library_2seat_2_occ.png)
 
 **Figure 5:** Side-angle classroom view — 4 seats, 2 occupied (Seat 2, Seat 3). Chair confidence: 0.62–0.87. Person confidence: 0.57–0.77.
 
-![Classroom Side View](images/demo_2person.png)
+![Classroom Side View](/edge-ai-26/assets/img/projects26/smartSeat/demo_2person.png)
 
 ---
 
@@ -194,11 +194,11 @@ All screenshots below are from the live SmartSeat dashboard running on Raspberry
 
 **Figure 6:** Dense workstation environment — 4 seats, 2 occupied (Seat 1, Seat 3). Multiple overlapping persons and chairs successfully disambiguated. Occupancy rate: 50%.
 
-![Lab Environment 1](images/demo_lab_env1.png)
+![Lab Environment 1](/edge-ai-26/assets/img/projects26/smartSeat/demo_lab_env1.png)
 
 **Figure 7:** Same lab, different angle — 4 seats, 2 occupied (Seat 1, Seat 3). Black office chairs (confidence: 0.49–0.82) correctly identified despite partial occlusion.
 
-![Lab Environment 2](images/demo_lab_env.png)
+![Lab Environment 2](/edge-ai-26/assets/img/projects26/smartSeat/demo_lab_env.png)
 
 ---
 

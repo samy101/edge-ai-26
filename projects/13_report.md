@@ -6,7 +6,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 # Nighttime Street Light Functional Audit Using Computer Vision on Edge Device
 **Code:** [GitHub Repository](https://github.com/AnantRajput415/Nighttime-Street-Light-Functional-Audit-Using-Computer-Vision-on-Edge-Device)
 
-## 1. Problem Statement, Motivation & Objectives (1–2 paragraphs + 3–5 bullets)
+## 1. Problem Statement, Motivation & Objectives
 Urban street lighting is a critical component of public infrastructure it improves visibility, reduces crime, and supports safe vehicular and pedestrian movement after dark. Yet maintaining expansive street lighting networks at city scale remains a formidable challenge. Cities worldwide operate hundreds of thousands of streetlights (Los Angeles alone maintains over 220,000 units), and globally the number is projected to exceed 350 million. Despite their importance, most cities still rely on outdated maintenance practices: periodic manual inspections and citizen complaint-driven reporting. These approaches are labor-intensive, error-prone, and slow to detect outages, leaving malfunctioning lamps unnoticed for extended periods and compromising both public safety and energy efficiency.
 
 The motivation for an automated, vision-based approach is clear: IoT sensor networks that instrument every lamp post carry prohibitive deployment and maintenance costs, while manual drive-by surveys lack scientific reliability and scalability. Computer vision offers a compelling middle path using cameras mounted on ordinary vehicles to perform continuous nighttime drive-by surveys, turning everyday city fleets into infrastructure monitoring platforms. 
