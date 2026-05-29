@@ -61,13 +61,13 @@ This section describes the hardware components and software tools used in the Wa
 This was the most crucial step since we had no available datasets to work with. We created our own dataset and we had to go through multiple iterations to do it.
 
 <p align="center">
-  <img src="images/data_collection.jpeg" alt="metrics" width="600">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/data_collection.jpeg" alt="metrics" width="600">
 </p>
 
 <br>
 
 <p align="center">
-  <img src="images/data_collection3.jpeg" alt="metrics" width="600">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/data_collection3.jpeg" alt="metrics" width="600">
 </p>
 
 ## Methodology of data collection
@@ -127,15 +127,15 @@ Statistical measures such as **mean, standard deviation, and maximum values** we
 <!-- 3 photos mfcc1, spec, waveform -->
 
 <p align="center">
-  <img src="images/mfcc_1.png" alt="metrics" width="600">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/mfcc_1.png" alt="metrics" width="600">
 </p>
 
 <p align="center">
-  <img src="images/spectrogram.png" alt="metrics" width="600">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/spectrogram.png" alt="metrics" width="600">
 </p>
 
 <p align="center">
-  <img src="images/waveform.png" alt="metrics" width="600">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/waveform.png" alt="metrics" width="600">
 </p>
 
 
@@ -154,7 +154,7 @@ These techniques increase dataset diversity and help reduce overfitting, improvi
 Exploratory Data Analysis (EDA) was performed to evaluate the effectiveness of the extracted features.
 
 <p align="center">
-  <img src="images/waveform.png" alt="metrics" width="600">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/waveform.png" alt="metrics" width="600">
 </p>
 
 
@@ -163,7 +163,7 @@ Exploratory Data Analysis (EDA) was performed to evaluate the effectiveness of t
 The dataset shows **class imbalance**. For example the bottle filling activity has very less data and this is due to the fact that filling the entire bottle takes only 10 seconds and we had to do this activity multiple times even after this we felt short of data. This imbalance can bias model so we use techniques like augmentation and balancing to overcome this.
 
 <p align="center">
-  <img src="images/distribution.png" alt="metrics" width="600">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/distribution.png" alt="metrics" width="600">
 </p>
 
 
@@ -176,7 +176,7 @@ Since the feature space is high-dimensional, **Principal Component Analysis (PCA
 * Clearly the PCA also suggests class imbalance.
 
 <p align="center">
-  <img src="images/pca.png" alt="metrics" width="600">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/pca.png" alt="metrics" width="600">
 </p>
 
 ---
@@ -265,7 +265,7 @@ A **2D Convolutional Neural Network (CNN)** is used for classification.
 - Fully connected output layer with **softmax activation** (5 classes)
 
 <p align="center">
-  <img src="images/2d_cnn_architecture_1.png" alt="2D CNN Architecture" width="300">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/2d_cnn_architecture_1.png" alt="2D CNN Architecture" width="300">
 </p
 
 
@@ -288,12 +288,12 @@ This allows validation of model performance across all activity classes.
 
 #### Testing metrics:
 <p align="center">
-  <img src="images/testing_metrics.png" alt="metrics" width="600">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/testing_metrics.png" alt="metrics" width="600">
 </p
 
 #### Confusion Matrix:
 <p align="center">
-  <img src="images/testing_confusion_matrix.png" alt="metrics" width="600">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/testing_confusion_matrix.png" alt="metrics" width="600">
 </p
 
 ---
@@ -320,13 +320,13 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 - On phones we can directly deploy the model by scanning this QR code.
 
 <p align="center">
-  <img src="images/qr.png" alt="qr" width="300">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/qr.png" alt="qr" width="300">
 </p
 
 
 #### Comparison of Quantized and Unquantized Models Deployment
 <p align="center">
-  <img src="images/deployment.png" alt="deployment" width="600">
+  <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/deployment.png" alt="deployment" width="600">
 </p
 
 
@@ -359,7 +359,7 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 
 
 
-<!-- ![alt text](images/2d_cnn_architecture.png) -->
+<!-- ![alt text](/edge-ai-26/assets/img/projects26/acoustic-detection/2d_cnn_architecture.png) -->
 
 
 
