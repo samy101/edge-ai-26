@@ -53,7 +53,7 @@ The motivation behind this system is to provide a reliable "communication bridge
 
 ---
 
-## 2. Proposed Solution (Overview)
+## 2. Proposed Solution
 Our solution utilizes a head-mounted wearable that translates head motion into actionable alerts. The system processes data through a multi-stage pipeline:
 
 
@@ -67,7 +67,7 @@ Our solution utilizes a head-mounted wearable that translates head motion into a
 ### System Overview
 
 <div align="center">
-<img src="edge-ai-26/assets/img/project26/head-gesture/System_flow_diagram.png" alt="System Flow Diagram" width="480"/>
+<img src="edge-ai-26/assets/img/projects26/head-gesture/System_flow_diagram.png" alt="System Flow Diagram" width="480"/>
 <br><em>End-to-end system flow from head movement to feedback output</em>
 </div>
 
@@ -128,8 +128,8 @@ Recognised gestures are broadcast over Wi-Fi UDP to two destinations simultaneou
 
 <table>
 <tr>
-<td align="center"><img src="edge-ai-26/assets/img/project26/head-gesture/Setup_image_1.jpeg" alt="Setup Photo 1" width="360"/><br><em>Physical hardware setup — front view showing OLED and Nicla Vision on cap</em></td>
-<td align="center"><img src="edge-ai-26/assets/img/project26/head-gesture/Setup_image_2.jpeg" alt="Setup Photo 2" width="360"/><br><em>Wearable cap with both Nicla Vision boards mounted at temples</em></td>
+<td align="center"><img src="edge-ai-26/assets/img/projects26/head-gesture/Setup_image_1.jpeg" alt="Setup Photo 1" width="360"/><br><em>Physical hardware setup — front view showing OLED and Nicla Vision on cap</em></td>
+<td align="center"><img src="edge-ai-26/assets/img/projects26/head-gesture/Setup_image_2.jpeg" alt="Setup Photo 2" width="360"/><br><em>Wearable cap with both Nicla Vision boards mounted at temples</em></td>
 </tr>
 </table>
 
@@ -304,7 +304,7 @@ Classification Report:
 weighted avg       1.00      1.00      1.00      1133
 ```
 
-![Confusion Matrix — Decision Tree](edge-ai-26/assets/img/project26/head-gesture/Decision_tree_cm.png)
+![Confusion Matrix — Decision Tree](edge-ai-26/assets/img/projects26/head-gesture/Decision_tree_cm.png)
 
 ### 5.2 Research Model: 1D-Convolutional Neural Network (CNN)
 As an advanced research path, we developed a 1D-CNN to capture the temporal "shape" of gestures.
@@ -464,10 +464,10 @@ To overcome the problems caused by large model we trained a smaller model, as st
 ### Performance Visualizations
 The following figures provide a visual breakdown of the trade-offs in size, speed, and accuracy across our various experimental architectures.
 
-![Initial CNN Architecture — Model Size, Accuracy, and Latency Comparison](edge-ai-26/assets/img/project26/head-gesture/CNN_Base.png)
+![Initial CNN Architecture — Model Size, Accuracy, and Latency Comparison](edge-ai-26/assets/img/projects26/head-gesture/CNN_Base.png)
 *Figure 3: Comparison of model size, accuracy, and latency between the heavy baseline and quantized TFLite versions.*
 
-![Optimized CNN — PTQ vs QAT Performance](edge-ai-26/assets/img/project26/head-gesture/CNN_optimized.png)
+![Optimized CNN — PTQ vs QAT Performance](edge-ai-26/assets/img/projects26/head-gesture/CNN_optimized.png)
 *Figure 4: Performance impact of Post-Training Quantization (PTQ) and Quantization-Aware Training (QAT) on model size and inference speed.*
 
 ### Resource Utilization (On-Device Profiling)
@@ -704,7 +704,7 @@ req = urllib.request.Request(
 
 [![Demo Video](https://img.shields.io/badge/▶_Watch_Full_Demo_Video-SharePoint-0078D4?style=for-the-badge&logo=microsoft)](https://indianinstituteofscience-my.sharepoint.com/:v:/g/personal/abhas_iisc_ac_in/IQCmHS_j7puyQ6OWcKqMe5GkAeruAGz5R6FupJL88lnMZLk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=pOxfAL)
 
-<img src="edge-ai-26/assets/img/project26/head-gesture/demo_image.png" alt="Live Demo" width="680"/>
+<img src="edge-ai-26/assets/img/projects26/head-gesture/demo_image.png" alt="Live Demo" width="680"/>
 <br><em>Live gesture recognition — OLED displaying detected gesture in real-time</em>
 
 </div>
