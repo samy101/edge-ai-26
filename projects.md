@@ -81,7 +81,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
   <!-- Project 8 -->
   <div class="project-card">
     <a href="/edge-ai-26/projects/8_report" style="text-decoration: none; color: inherit;">
-      <img src="../assets/img/projects26/8.png" alt="Project 8" width="250" style="border-radius: 6px;">
+      <img src="../assets/img/projects26/visually_impairedsystem_architecture.png" alt="Project 8" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/8_report">WNAVI-Wearable Navigation Aid Utilising Lightweight CNN for Visually Impared</a></h3>
     <p>A 73x-compressed MobileNetV2 model (120KB INT8) deployed on Arduino Nicla Vision for local, real-time 5-class object classification to assist visually impaired navigation</p>
