@@ -152,7 +152,7 @@ Evaluated on held-out test set (15% of data) using `src/evaluate.py`:
 
 <!-- ![Confusion Matrix](/edge-ai-26/assets/img/projects26/plant_disease/confusion_matrix.png) -->
 <p align="center">
-  <img src="/edge-ai-26/assets/img/projects26/plant_disease/confusion_matrix.png" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/plant-disease/confusion_matrix.png" width="400">
 </p>
 ---
 
