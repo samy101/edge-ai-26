@@ -33,7 +33,7 @@ During inference, the generation of the output occurs as follows:
 * **Projection:** These visual embeddings are passed through the Lightweight Downsample Projector (LDPv2), which compresses the number of tokens and enhances them with positional information to produce modality-aligned visual tokens.
 * **Language Processing and Generation:** Concurrently, the input text query is tokenized. The visual tokens and the text tokens are then concatenated and fed into the foundational language model (MobileLLaMA). The final text response is generated in an autoregressive manner, predicting the next token based on both the visual and textual context.
 
-![Model MobileVLM2 Architecture](./assets/Model_arch.png)
+![Model MobileVLM2 Architecture](/edge-ai-26/assets/img/projects26/banana-disease/Model_arch.png)
 *Figure 1: Model MobileVLM2 Architecture*
 
 
@@ -75,7 +75,7 @@ python ./examples/convert_legacy_llama.py path/to/MobileVLM-1.7B --skip-unknown
 ./llama-quantize path/to/MobileVLM-1.7B/ggml-model-F32.gguf path/to/MobileVLM-1.7B/ggml-model-q4_k.gguf q4_k_s
 ```
 
-![Quantization Architecture Diagram](./assets/Quantization_Dia.png)
+![Quantization Architecture Diagram](/edge-ai-26/assets/img/projects26/banana-disease/Quantization_Dia.png)
 
 ## 3 Mobile Application Development and Edge Deployment
 
@@ -89,7 +89,7 @@ The development pipeline was executed in four primary stages, focusing on memory
 * **Asynchronous UI and State Management:** To prevent Application Not Responding (ANR) fatal crashes caused by thread-blocking during intensive inference operations, token generation was fully decoupled from the main UI thread. The C++ layer streams generated tokens back to Android via a custom LlamaCallback interface. The frontend, constructed using Jetpack Compose, captures these tokens using Kotlin Flows, rendering the diagnostic output dynamically in real-time. Additionally, a scoped storage bypass was implemented to copy user-selected images into the application's internal cache, granting the C++ backend direct POSIX file path access.
 * **Integrated Benchmarking Suite:** A dedicated benchmarking module was embedded into the application to facilitate rigorous hardware performance analysis. Governed by independent Kotlin coroutines, this module programmatically iterates through the available model quantization levels (4-bit, 8-bit, 16-bit, and 32-bit). During inference, a secondary tracking coroutine polls the Android ActivityManager to record peak Proportional Set Size (PSS) RAM usage. Alongside Prompt Evaluation Time and Token Generation Speed (Tokens/sec), these metrics are aggregated into a unified interface, providing empirical hardware constraints for edge-deployment viability.
 
-![Architectural Deployment Flow](./assets/App_dia.png)
+![Architectural Deployment Flow](/edge-ai-26/assets/img/projects26/banana-disease/App_dia.png)
 
 ## 4 Performance Benchmarking
 
@@ -126,11 +126,11 @@ The following table serves as the primary data collection framework for on-devic
 | 16 bit | 10.93 | 24431.81 | 29857.66 | 2726.55 |
 | 32 bit | 5.76 | 20847.32 | 70490.25 | 4135.00 |
 
-![Model Performance on Quantized Versions](./assets/Model_Performance.png)
+![Model Performance on Quantized Versions](/edge-ai-26/assets/img/projects26/banana-disease/Model_Performance.png)
 
 ### 4.3 Edge Device Demo:
 <p align="center">
-  <img src="./assets/demo.jpeg" width="45%" alt="Demo of Mobile App" />
+  <img src="/edge-ai-26/assets/img/projects26/banana-disease/demo.jpeg" width="45%" alt="Demo of Mobile App" />
 </p>
 
 Here we use the app to describe the image.

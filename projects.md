@@ -251,7 +251,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
   <!-- Project 25 -->
   <div class="project-card">
     <a href="/edge-ai-26/projects/25_report" style="text-decoration: none; color: inherit;">
-      <img src="../assets/img/projects26/25.png" alt="Project 25" width="250" style="border-radius: 6px;">
+      <img src="/edge-ai-26/assets/img/projects26/banana-disease/demo.jpeg" alt="Project 25" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/25_report">Offline Multimodal AI for Real-Time Banana Disease Diagnostics</a></h3>
     <p>fully offline Android application utilizing optimized, on-device edge VLMs to diagnose banana plant diseases without internet access</p>
