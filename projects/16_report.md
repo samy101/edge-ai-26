@@ -132,13 +132,12 @@ Clinicians spend substantial time on documentation; cloud NLP introduces latency
 
 ---
 
-## Appendix: Figure placeholders
+## Appendix: 
 
-Add images under `report/figures/` and reference them here, for example:
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/health-record-gen/field_f1_comparison.png" width="400">
+</p>
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/health-record-gen/med_metrics_comparison.png" width="400">
+</p>
 
-```markdown
-![Synthetic pipeline](/edge-ai-26/assets/img/projects26/health-record-gen/field_f1_comparison.png)
-![Epoch ablation](/edge-ai-26/assets/img/projects26/health-record-gen/med_metrics_comparison.png)
-```
-
-*(Replace with your actual plots/screenshots before submission.)*
