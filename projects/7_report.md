@@ -4,6 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Air-Writing Digit Recognition using IMU and Vision-Based Ensemble Learning
+**Code:** [GitHub Repository](https://github.com/Tathagata-Ghosh-Developer/Air-B-N-C-Writing-ABCs-in-Thin-Air)
 
 ## 1. Problem Statement, Motivation & Objectives
 

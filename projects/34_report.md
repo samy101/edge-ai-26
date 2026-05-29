@@ -4,6 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge Deployed Crack Detection
+**Code:** [GitHub Repository](https://github.com/priyanshiD18/crack-detection-edge)
 
 *YOLOv8noptimised through PTQ, QAT, pruning, and resolution sweep for real-time inference on a VOLTA Bot Sync platform*
 

@@ -4,8 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Real-Time PCB Defect Detection System using YOLOv8 and Raspberry Pi
-## IISc, Edge AI Project
-link: https://www.samy101.com/edge-ai-26/
+**Code:** [GitHub Repository](https://github.com/lokesh23p/PCB-Manufacturing-defect-detection)
 
 ---
 

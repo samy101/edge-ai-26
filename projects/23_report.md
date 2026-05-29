@@ -4,7 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge AI Traffic Analytics and violation Detection
-**Course:** CP 330 - Edge AI | **Term:** January-April 2026 | **Institution:** Indian Institute of Science (IISc), Bangalore | **GitHub:** https://github.com/Prince-IISc-CalUniv/Edge-AI-Traffic-Analytics-and-violation-Detection
+**GitHub:** https://github.com/Prince-IISc-CalUniv/Edge-AI-Traffic-Analytics-and-violation-Detection
 
 ---
 

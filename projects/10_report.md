@@ -3,7 +3,8 @@ layout: page
 title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
-# IDD Edge AI Segmentation Project Report
+# IDD Edge AI Segmentation 
+**Code:** [GitHub Repository](https://github.com/Deus747/Edge_AI_Project)
 
 This is a more detail report documents the complete project flow for semantic segmentation and instance segmentation on edge hardware: dataset post-processing, model training, logit knowledge distillation, quantization/compilation for Hailo, and Raspberry Pi deployment. GPU-cluster setup details are intentionally omitted, but training logs were inspected to recover the reported losses and validation metrics.
 and contains all the detailed metrics

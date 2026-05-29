@@ -5,9 +5,10 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # JanConnect: Edge AI Real-Time Speech Translation System
-## Project Report
+
 
 **Authors:** Jai Parwani (27249), Venkatesh Moningi (25980), Naveen A B (26187)
+**Code:** [GitHub Repository](https://github.com/jaiparwani-cyber/edge)
 
 ---
 

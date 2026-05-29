@@ -5,7 +5,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 ## 1. Problem Statement, Motivation & Objectives
 
-### Problem Statement
+### Problem Statement **Code:** [GitHub Repository](https://github.com/appsbotta/EdgeAttend)
 
 Remote work environments have expanded rapidly, yet existing meeting room monitoring systems struggle to meet real-world requirements. Traditional cloud-based solutions introduce significant latency (200–500 ms) and rely heavily on stable internet connectivity, limiting their reliability in dynamic or bandwidth-constrained settings. Meanwhile, on-device approaches either depend on costly specialized hardware such as GPUs to run computationally intensive models or compromise accuracy to achieve real-time performance. This highlights a critical gap in developing a solution that can deliver low-latency, reliable and accurate monitoring without reliance on high-end hardware.
 

@@ -9,6 +9,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 **Project Title:**Safety Helmet Detection System
 **Platform:** Raspberry Pi 4 Model B (4 GB RAM)  
 **Model:** YOLOv8m fine-tuned, INT8 TFLite
+**Code:** [GitHub Repository](https://github.com/chhavi-singhal/Edge_Ai_Project/)
 
 ---
 

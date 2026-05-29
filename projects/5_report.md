@@ -6,6 +6,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 # EdgeLLM: Efficient Deployment of Large Language Models on Resource-Constrained Edge Devices
 
 **Aryan Kumar Singh (26769) · Bhavesh Sukhariya (26042) · Kavya Duvvuri (27494) · Lavish Singh (26318)**
+**Code:** [GitHub Repository](https://github.com/KavyaD02/EdgeLLM)
 
 *Edge AI — Course Project Report*
 

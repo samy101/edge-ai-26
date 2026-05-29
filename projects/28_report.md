@@ -4,8 +4,8 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Real-Time Privacy Preservation on Edge Devices
+**Code:** [GitHub Repository](https://github.com/Tharun-b777/EdgeAI_Project)
 
-**Edge AI Course – Project Report**
 
 ---
 

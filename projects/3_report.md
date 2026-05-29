@@ -7,6 +7,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 
 **Course:** Edge AI  
 **Student:** D Rushikesh (26501) Rudrani Barik (26161) Aman Kumar Rai (26750) Prajwal GM (26654) 
+**Code:** [GitHub Repository](https://github.com/RBarik25/gesture_control_toy_car)
 **Supervisor:** Prof. Pandarasamy  
 
 ---

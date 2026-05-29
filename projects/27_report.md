@@ -4,6 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge-Based-Acoustic-Event-Detection-for-Water-Activities
+**Code:** [GitHub Repository](https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/main/Report.md)
 
 
 # Problem statement

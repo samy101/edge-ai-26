@@ -3,12 +3,11 @@ layout: page
 title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
-# Edge AI Course – Project Report
 
-# Real Time Helmet Detection Project
+
+# Real Time Helmet Detection Project **Code:** [GitHub Repository](https://github.com/rohitha-kavali/Real-time-helmet-detection-project)
 This project was completed as part of the *Edge AI Course*, which focuses on real-time AI deployment on edge devices.
 
-🔗 Course Website: https://www.samy101.com/edge-ai-26/
 
 google drive link for video presentation : https://drive.google.com/file/d/1yNl1FJYWZVjtlT5UGi9V5FdqgKGQ1F8Q/view?usp=sharing
 

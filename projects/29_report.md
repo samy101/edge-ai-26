@@ -3,9 +3,9 @@ layout: page
 title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
-# Edge AI Course Project Report
 
-## 1. Problem Statement, Motivation & Objectives
+
+## 1. Problem Statement, Motivation & Objectives **Code:** [GitHub Repository](https://github.com/tanushrinaik-wq/binary-cnn-fpga)
 
 This project investigates how a compact image-classification pipeline can be reworked for edge deployment when compute, memory, and latency budgets are tight. Instead of keeping the full inference path in floating-point software, the project trains a binary-friendly convolutional model and maps its inference stages to an RTL accelerator built around XNOR and popcount operations. The immediate classification task is a binary hand-gesture decision: `rock` versus `not-rock` using resized grayscale images.
 

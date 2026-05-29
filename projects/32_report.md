@@ -4,8 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Smart-trap-for-pest-detection-using-edge-ai
-
-  ![Smart trap with funnel entry](images/prototype.png)
+**Code:** [GitHub Repository](https://github.com/vidushic-lgtm/Smart-trap-for-pest-detection-using-edge-ai/blob/main/README.md)
  
 ## 📁 Repository Structure
 

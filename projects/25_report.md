@@ -7,6 +7,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 
 
 **[1] Ritik Kumar Badiya [2] Devendra Umbrajkar [3] Vikash Singh**
+**Code:** [GitHub Repository](https://github.com/ritikbadiyap/EdgeAI-Project/tree/main)
 
 ## Abstract
 This report documents the end-to-end methodology required to port a domain-specific Large Multimodal Model (LMM) for local inference on mobile edge devices. The base architecture, MobileVLM V2 (1.4B parameters), was previously fine-tuned via Low-Rank Adaptation (LoRA) by peer researchers to specifically predict, describe, and provide remedial solutions for pathological diseases in banana plants. The primary scope of this project focuses strictly on the post-training pipeline: extracting the multimodal projector, executing variable-precision quantization (4-bit, 8-bit, 16-bit), and natively compiling the llama.cpp inference engine for edge execution. This document details the architectural dissection, hardware-specific compilation strategies (Android) and establishes a benchmarking framework to evaluate on-device throughput and latency without cloud reliance.

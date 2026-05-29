@@ -4,8 +4,8 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Course Project Report — Edge Clinical NLP (ClinIQ)
+**Code:** [GitHub Repository](https://github.com/venukreddy2/edgeAiProject)
 
-**Compact technical report.** Extended narrative: `MASTER.md`. Poster-style summary: `POSTER.md`. Reproduction: `README.md`.
 
 ---
 
