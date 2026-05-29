@@ -332,7 +332,7 @@ The system processes live PiCamera frames in a continuous loop:
 
 The main traffic model detects and classifies 14 vehicle categories in real time using ByteTrack for persistent multi-object tracking:
 
-![Pipeline 1 Sample Results](docs/figures/pipeline1_sample_result.png)
+![Pipeline 1 Sample Results](/edge-ai-26/assets/img/projects26/traffic-analytics/pipeline1_sample_result.png)
 
 *Figure 1: Vehicle detection results from Pipeline 1 showing classification of Two-wheelers, Sedans, Trucks, SUVs, Three-wheelers, and other vehicle categories on Indian urban traffic scenes.*
 
@@ -340,11 +340,11 @@ The main traffic model detects and classifies 14 vehicle categories in real time
 
 The helmet detection pipeline identifies motorcycles, associates riders using IoU-based spatial logic, and flags violations:
 
-![Helmet Detection at Intersection](docs/figures/detection_intersection_helmet.jpg)
+![Helmet Detection at Intersection](/edge-ai-26/assets/img/projects26/traffic-analytics/detection_intersection_helmet.jpg)
 
 *Figure 2: Helmet and rider detection at a traffic intersection showing motorcycle-rider association.*
 
-![Violation Report](docs/figures/violation_report_helmet.jpg)
+![Violation Report](/edge-ai-26/assets/img/projects26/traffic-analytics/violation_report_helmet.jpg)
 
 *Figure 3: Detailed violation report showing helmet compliance status and triple-riding detection with color-coded bounding boxes (green = safe, red = violation).*
 
@@ -352,7 +352,7 @@ The helmet detection pipeline identifies motorcycles, associates riders using Io
 
 The system generates a speed distribution histogram after each run, showing the number of vehicles at each speed bin with overspeeding highlighted in red:
 
-![Speed Distribution Plot](docs/figures/speed_distribution.png)
+![Speed Distribution Plot](/edge-ai-26/assets/img/projects26/traffic-analytics/speed_distribution.png)
 
 *Figure 4: Vehicle speed distribution from a sample run. Green bars indicate vehicles within the 60 km/h limit; red bars would appear for overspeeding vehicles. The dashed orange line marks the configurable speed limit.*
 
@@ -360,11 +360,11 @@ The system generates a speed distribution histogram after each run, showing the 
 
 Pipeline 3 detects road surface potholes for infrastructure quality assessment:
 
-![Pothole Demo 1](docs/figures/pipeline3_pothole_detection_1.png)
+![Pothole Demo 1](/edge-ai-26/assets/img/projects26/traffic-analytics/pipeline3_pothole_detection_1.png)
 
 *Figure 4: Pothole detection on road surface showing multiple detected potholes.*
 
-![Pothole Demo Video Frame](docs/figures/pipeline3_pothole_detection_3.png)
+![Pothole Demo Video Frame](/edge-ai-26/assets/img/projects26/traffic-analytics/pipeline3_pothole_detection_3.png)
 
 *Figure 5: Pothole detection from video feed with bounding box annotations and confidence scores.*
 
