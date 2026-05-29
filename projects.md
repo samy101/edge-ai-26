@@ -199,23 +199,23 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
   </div>
 
   <!-- Project 20 -->
-  <div class="project-card">
+  <!-- <div class="project-card">
     <a href="/edge-ai-26/projects/20_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/20.png" alt="Project 20" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/20_report">Baby Cry Detection</a></h3>
     <p>Designed for classifying cry reason from the cleaned Donate-a-Cry WAV dataset and exporting a deployable TFLite model.</p>
     <a href="/edge-ai-26/projects/20_report">Read more →</a>
-  </div>
+  </div> -->
 
   <!-- Project 21 -->
   <div class="project-card">
-    <a href="/edge-ai-26/projects/2plant-disease-detection" style="text-decoration: none; color: inherit;">
+    <a href="/edge-ai-26/projects/21_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/21.png" alt="Project 21" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/2plant-disease-detection">Real Time Traffic Symbol Recognition using Edge AI</a></h3>
+    <h3><a href="/edge-ai-26/projects/21_report">Real Time Traffic Symbol Recognition using Edge AI</a></h3>
     <p>Edge Impulse-powered "AI Helmet" prototype on Arduino Nicla Vision for real-time, on-device road sign detection and rider alerting.</p>
-    <a href="/edge-ai-26/projects/2plant-disease-detection">Read more →</a>
+    <a href="/edge-ai-26/projects/21_report">Read more →</a>
   </div>
 
   <!-- Project 22 -->
