@@ -211,7 +211,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
   <!-- Project 21 -->
   <div class="project-card">
     <a href="/edge-ai-26/projects/21_report" style="text-decoration: none; color: inherit;">
-      <img src="../assets/img/projects26/21.png" alt="Project 21" width="250" style="border-radius: 6px;">
+      <img src="../assets/img/projects26/21.jpg" alt="Project 21" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/21_report">Real Time Traffic Symbol Recognition using Edge AI</a></h3>
     <p>Edge Impulse-powered "AI Helmet" prototype on Arduino Nicla Vision for real-time, on-device road sign detection and rider alerting.</p>

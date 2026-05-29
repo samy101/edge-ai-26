@@ -62,7 +62,7 @@ However, two-wheeler riders often fail to notice or correctly interpret these si
 
 This project addresses that gap by exploring how existing helmets can be transformed into an **AI Helmet** using a compact, low-power Edge AI device. The system perceives its surroundings through computer vision, enhanced by a **three-camera setup providing a wide 120° field of view**, enabling reliable detection of important signboards in real time. It actively alerts riders through **real-time audio feedback via Bluetooth using text-to-speech**, ensuring critical information is conveyed instantly without requiring visual attention.
 
-![AI Helmet Prototype](images/block_diagram.png)
+![AI Helmet Prototype](/edge-ai-26/assets/img/projects26/smart-helmet/block_diagram.png)
 ---
 
 ## 🎯 Project Objectives
@@ -260,7 +260,7 @@ which is sufficient for real-time detection and alerting on the helmet.
  The performance of the model is evaluated using test dataset and various metrics were calculated. The model
  has performed satisfactorily and the metrics are summarized below:
 
- ![Results](images/model_performance.png)
+ ![Results](/edge-ai-26/assets/img/projects26/smart-helmet/model_performance.png)
  
 ## 🧩 Impulse Design (Edge Impulse)
 
@@ -319,7 +319,7 @@ At runtime, the MicroPython/OpenMV script running on Nicla Vision:
 This combination of real-time detection, visual overlays, and simple acoustic/visual alerts allows the Nicla Vision module to act as an **AI Helmet assistant** without any cloud processing.
 
 ### System Prototype
- ![Prototype](images/system_proto.jpg)
+ ![Prototype](/edge-ai-26/assets/img/projects26/smart-helmet/system_proto.jpg)
 ---
 
 
