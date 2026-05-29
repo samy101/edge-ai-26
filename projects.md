@@ -179,14 +179,14 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
   </div>
 
   <!-- Project 18 -->
-  <div class="project-card">
+  <!-- <div class="project-card">
     <a href="/edge-ai-26/projects/18_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/18.png" alt="Project 18" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/18_report">AI Goalkeeper</a></h3>
     <p>Project 18 description goes here.</p>
     <a href="/edge-ai-26/projects/18_report">Read more →</a>
-  </div>
+  </div> -->
 
   <!-- Project 19 -->
   <div class="project-card">

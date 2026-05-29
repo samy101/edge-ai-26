@@ -3,15 +3,14 @@ layout: page
 title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
-# 🤖 Edge AI — Real-Time 2D Semantic Mapping (IISc CP330)
+# 🤖 Real-Time 2D Semantic Mapping 
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue)](https://python.org)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-orange)](https://ultralytics.com)
 [![Hailo](https://img.shields.io/badge/Hailo--8-13%20TOPS-purple)](https://hailo.ai)
 [![License](https://img.shields.io/badge/License-MIT-brightgreen)](LICENSE)
 [![Project Page](https://img.shields.io/badge/Project%20Page-GitHub%20Pages-222?logo=github)](https://rajneeshbabu.github.io/Edge-AI-Based-Hailo-Accelerated-Real-Time-2D-Semantic-Mapping-with-RPi5-for-Assistive-Navigation/)
-
-**Course:** CP330 — Edge AI, Department of Computational and Data Sciences, IISc Bengaluru  
+  
 **Instructor:** Dr. Pandarasamy Arjunan
 
 🌐 **[View Project Page →](https://rajneeshbabu.github.io/Edge-AI-Based-Hailo-Accelerated-Real-Time-2D-Semantic-Mapping-with-RPi5-for-Assistive-Navigation/)**
@@ -226,7 +225,7 @@ YOLOv8s teacher generates pseudo-labels; pruned YOLOv8n student trains on them. 
 | KD INT8 (ablation) | 0.5904 | 120.5 | 8.30 | 6.23 |
 | **Hailo HEF on RPi5** | — | **24.7** | 40.5 | **4.50** |
 
-![Optimization pipeline benchmark chart](report/report_images/comparison_chart.png)
+![Optimization pipeline benchmark chart](/edge-ai-26/assets/img/projects26/semantic-mapping/comparison_chart.png)
 
 *Figure 1: Four-panel benchmark chart (FPS, mAP50, model size, latency) across all optimization stages — from the Colab notebook output.*
 
@@ -286,10 +285,10 @@ Two OpenCV windows run simultaneously on the RPi5:
 
 | Detection Feed | 2D Semantic Map |
 |---|---|
-| ![Detection feed — FPS overlay](report/report_images/demo_detection_fps.jpg) | ![2D Polar Semantic Map](report/report_images/demo_semantic_map.jpg) |
+| ![Detection feed — FPS overlay](/edge-ai-26/assets/img/projects26/semantic-mapping/demo_detection_fps.jpg) | ![2D Polar Semantic Map](/edge-ai-26/assets/img/projects26/semantic-mapping/demo_semantic_map.jpg) |
 | *Fig. 2: Laptop detected at 24.7 FPS, IMU heading 157°* | *Fig. 3: Chair 1.0 m (86%), person 1.2 m (89%), laptop 1.3 m (96%)* |
 
-![Live detection — person and chairs](report/report_images/demo_detection_live.jpg)
+![Live detection — person and chairs](/edge-ai-26/assets/img/projects26/semantic-mapping/demo_detection_live.jpg)
 
 *Fig. 4: Person (63%) and three chair instances (56%, 56%, 43%) detected simultaneously at 24.5 FPS, IMU heading 315°.*
 
