@@ -150,7 +150,7 @@ Evaluated on held-out test set (15% of data) using `src/evaluate.py`:
 - Macro-averaged accuracy
 - Confusion matrix saved to `docs/confusion_matrix.png`
 
-![Confusion Matrix](assets/img/projects26/plant_disease/confusion_matrix.png.html)
+![Confusion Matrix](/edge-ai-26/assets/img/projects26/plant_disease/confusion_matrix.png)
 
 ---
 
