@@ -3,7 +3,7 @@ layout: page
 title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
-# Course Project Report — Edge Clinical NLP (ClinIQ)
+# Edge Clinical NLP (ClinIQ)
 **Code:** [GitHub Repository](https://github.com/venukreddy2/edgeAiProject)
 
 
@@ -137,8 +137,8 @@ Clinicians spend substantial time on documentation; cloud NLP introduces latency
 Add images under `report/figures/` and reference them here, for example:
 
 ```markdown
-![Synthetic pipeline](report/figures/pipeline.png)
-![Epoch ablation](report/figures/ablation.png)
+![Synthetic pipeline](/edge-ai-26/assets/img/projects26/health-record-gen/field_f1_comparison.png)
+![Epoch ablation](/edge-ai-26/assets/img/projects26/health-record-gen/med_metrics_comparison.png)
 ```
 
 *(Replace with your actual plots/screenshots before submission.)*
