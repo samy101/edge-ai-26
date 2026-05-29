@@ -61,11 +61,11 @@ This project proposes a **vision-assisted beam selection system** using Edge AI 
 
 ### Datasets Used
 *   **Mobile Phone Detection Dataset [2]:** Sourced from **Roboflow**, this dataset contains annotated images of phones in various orientations and hand-held scenarios. It consists of approximately **238 annotated images**.
-![mobile_phone_detection](images/phone_detection_sample.jpeg)
+![mobile_phone_detection](/edge-ai-26/assets/img/projects26/monocular-depth/phone_detection_sample.jpeg)
 
 *   **NYU Depth V2 Dataset [3]:** Used for depth estimation training, containing **1449 RGB-depth image pairs** for ground truth indoor depth estimation.
 
-![nyu2_sample](images/nyu2_sample.png)
+![nyu2_sample](/edge-ai-26/assets/img/projects26/monocular-depth/nyu2_sample.png)
 
 ### Preprocessing
 *   **Image Resizing:** All inputs scaled to **416×416** to ensure Hailo NPU compatibility.
@@ -89,8 +89,8 @@ The **LightDepthNet** is a lightweight **Encoder-Decoder** architecture designed
 *   **Key Blocks:** Includes **Adaptive Convolution blocks (PConvk)** with RepPad and PReLU, and **Upsampling Convolution blocks (NearConv51)**[cite: 1].
 *   **Metrics:** Achieved an **RMSE of 0.704** and **$\delta_1$ of 0.693**[cite: 1].
 
-![model1](images/model1.jpg)
-![model2](images/model2.jpg)
+![model1](/edge-ai-26/assets/img/projects26/monocular-depth/model1.jpg)
+![model2](/edge-ai-26/assets/img/projects26/monocular-depth/model2.jpg)
 ---
 
 ## 6. Model Compression & Efficiency Metrics
