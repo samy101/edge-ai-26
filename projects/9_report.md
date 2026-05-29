@@ -4,7 +4,6 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # SignBridge — Real-Time ASL Finger-Spelling Recognition on the Edge
-### Edge AI Course – Project Report
 
 **Team:** Vedant Saxena · Shruti Jain · Somava Roy  
 **Affiliation:** Indian Institute of Science (IISc), Bengaluru  
