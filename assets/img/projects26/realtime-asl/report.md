@@ -1,14 +1,8 @@
----
-layout: page
-title: Edge AI
-subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
----
 # Real-Time Two-Way ASL Translator on Raspberry Pi 5
 
 > **Course:** CP 330 – Edge AI (2026) | Indian Institute of Science  
 > **Team:** Liz Maria George, Naznin Amirul Haque, Ayush Kumar, Prayanshu Sharma  
 > *(M.Tech. MVLSI, ECE, IISc)*
-**Code:** [GitHub Repository](https://github.com/prayanshus/Realtime_ASL_RasPi)
 
 ---
 
@@ -47,7 +41,7 @@ The Sign-to-Speech pipeline recognises **19 ASL signs** using MediaPipe landmark
 │  SHARED: Tkinter GUI │ Threaded workers │ Mode toggle    │
 └──────────────────────────────────────────────────────────┘
 ```
-<img src="/edge-ai-26/assets/img/projects26/realtime-asl/ASL_TopLevel.png" alt="System_Architecture" width="50%"/>
+<img src="ASL_TopLevel.png" alt="System_Architecture" width="50%"/>
 > *Figure 1: Top level system architecture*
 
 ### Sign-to-Speech: Step-by-Step
@@ -161,7 +155,7 @@ Best NAS architecture trained for 100 epochs × 5 folds → mean val accuracy + 
 
 Best scheduler → final exported model.
 
-<img src="/edge-ai-26/assets/img/projects26/realtime-asl/ASL_ConfMat.png" alt="Confusion Matrix" width="50%"/>
+<img src="ASL_ConfMat.png" alt="Confusion Matrix" width="50%"/>
 > *Figure 2: Confusion matrix on held-out test set (19 classes)*
 
 ---
@@ -205,10 +199,10 @@ Tkinter GUI designed for touchscreen:
 - **Real-time metrics** — FPS + end-to-end inference latency (ms)
 - **Status bar** — confidence score, hand tracking state, current mode
 
-<img src="/edge-ai-26/assets/img/projects26/realtime-asl/ASL_GUI_1.png" alt="GUI Screenshot - Speaker Mode" width="50%"/>
+<img src="ASL_GUI_1.png" alt="GUI Screenshot - Speaker Mode" width="50%"/>
 > *Figure 3: GUI in Speaker mode — live skeleton overlay + detected sign*
 
-<img src="/edge-ai-26/assets/img/projects26/realtime-asl/ASL_GUI_1.png" alt="GUI Screenshot - Listener Mode" width="50%"/>
+<img src="ASL_GUI_1.png" alt="GUI Screenshot - Listener Mode" width="50%"/>
 > *Figure 4: GUI in Listener mode — transcribed speech displayed*
 
 ---
