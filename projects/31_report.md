@@ -1,7 +1,8 @@
 ---
 layout: page
-title: CP 330 - Edge AI
-subtitle: Indian Institute of Science | January 2025
+layout: page
+title: Edge AI
+subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # JanConnect: Edge AI Real-Time Speech Translation System
 ## Project Report

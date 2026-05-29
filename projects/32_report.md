@@ -1,7 +1,7 @@
 ---
 layout: page
-title: CP 330 - Edge AI
-subtitle: Indian Institute of Science | January 2025
+title: Edge AI
+subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Smart-trap-for-pest-detection-using-edge-ai
 

@@ -1,15 +1,18 @@
 ---
 layout: page
-title: CP 330 - Edge AI
-subtitle: Indian Institute of Science | January 2025
+title: Edge AI
+subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Medi-Dock: Intelligent Medication Identification Station for the Visually Impaired
+---
 
 **Team:** Athikesavan V · Madina Gowtham Kumar · Pranav Kumar Rowlo · Vedang Mangrulkar
+**Code:** [GitHub Repository](https://github.com/vmcodes/medidock-edge-ai/tree/main)
 
 ---
 
 ## 1. Problem Statement, Motivation & Objectives
+---
 
 Over 285 million people worldwide live with visual impairments, making routine tasks like reading medication labels extremely hazardous. Medication errors — wrong drug, wrong dose, wrong timing — account for thousands of preventable hospitalisations annually, and the risk is dramatically higher for visually impaired patients who rely on caregivers or guesswork. Existing solutions such as smartphone OCR apps require good lighting, steady hands, stable internet, and significant technical literacy, creating an accessibility gap that a dedicated edge device can close.
 
@@ -22,9 +25,9 @@ Medi-Dock addresses this gap with a stationary "intelligent dock" — a device t
 - Apply post-training magnitude pruning and INT8 dynamic quantisation to reduce model size and inference latency.
 - Deliver an audio feedback system via DFPlayer Mini to communicate results to visually impaired users without any screen dependency.
 
----
 
-## 2. Proposed Solution (Overview)
+## 2. Proposed Solution
+---
 
 Medi-Dock is a two-stage edge-AI pipeline running entirely on a Raspberry Pi 5:
 
@@ -46,9 +49,10 @@ Camera (Picamera2, 1920×1080)
   → TinyStudent ONNX Model (visual classification fallback/confirmation)
 ```
 
----
+
 
 ## 3. Hardware & Software Setup
+---
 
 ### Hardware
 
@@ -64,35 +68,35 @@ Camera (Picamera2, 1920×1080)
 > 📷 *See figures below — hardware setup, enclosure, and camera placement.*
 
 <p align="center">
-  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Hardware_Setup.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi-doc/Hardware_Setup.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 1: Medi-Dock hardware setup — Raspberry Pi 5 with Camera Module 3.</em>
 </p>
 
 <p align="center">
-  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Enclosure.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi-doc/Enclosure.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 2: Custom 3D-printed dock enclosure.</em>
 </p>
 
 <p align="center">
-  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Inside_View_Enclosure.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi-doc/Inside_View_Enclosure.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 3: Inside view of the enclosure showing component layout.</em>
 </p>
 
 <p align="center">
-  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Placement_of_Camera.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi-doc/Placement_of_Camera.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 4: Camera module mounted inside the dock.</em>
 </p>
 
 <p align="center">
-  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Slot_to_insert_strip.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi-doc/Slot_to_insert_strip.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 5: Strip insertion slot on the Medi-Dock.</em>
@@ -114,9 +118,10 @@ Camera (Picamera2, 1920×1080)
 | Picamera2 | Camera capture on Raspberry Pi |
 | Kaggle (cloud) | Training environment (GPU) |
 
----
+
 
 ## 4. Data Collection & Dataset Preparation
+---
 
 ### Data Sources
 
@@ -139,7 +144,7 @@ Because real-world data for the specific target medicines (Nimesulide and Ofloxa
 | Other / Unknown (2) | ~variable | 800 | ~800+ |
 
 <p align="center">
-  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Class_Distribution Graph.jpg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi-doc/Class_Distribution Graph.jpg" width="400">
 </p>
 <p align="center">
   <em>Figure 6: Dataset class distribution across the three medication classes.</em>
@@ -151,9 +156,10 @@ Because real-world data for the specific target medicines (Nimesulide and Ofloxa
 - **Augmentation Pipeline (Albumentations):** Random crop (256→224), horizontal flip, rotation (±15°), brightness/contrast jitter (±35%), Gaussian noise, motion blur, ImageNet normalisation.
 - **Train / Val Split:** 85% / 15%.
 
----
+
 
 ## 5. Model Design, Training & Evaluation
+---
 
 ### Architecture
 
@@ -193,9 +199,10 @@ The teacher is frozen during training. The student learns from both hard labels 
 
 Validation accuracy and loss were tracked per epoch; the best checkpoint was saved and used for export.
 
----
+
 
 ## 6. Model Compression & Efficiency Metrics
+---
 
 ### Techniques Applied
 
@@ -224,9 +231,10 @@ The quantised ONNX model is converted to TensorFlow SavedModel via `onnx-tf`, th
 - Post-pruning latency increases marginally (4.10 ms → 4.89 ms) due to sparse memory access patterns, while model storage drops by ~4× via INT8 quantisation.
 - FLOPs reduce from 1.814 GFLOPs (teacher) to 0.049 GFLOPs (student) — a **37× reduction** in compute.
 
----
+
 
 ## 7. Model Deployment & On-Device Performance
+---
 
 ### Deployment Steps
 
@@ -249,7 +257,7 @@ The quantised ONNX model is converted to TensorFlow SavedModel via `onnx-tf`, th
 | Total pipeline (end-to-end) | ~5–8 s |
 
 <p align="center">
-  <img src="/edge-ai-26/assets/img/projects26/medi_doc/Sample_Strip.jpeg" width="400">
+  <img src="/edge-ai-26/assets/img/projects26/medi-doc/Sample_Strip.jpeg" width="400">
 </p>
 <p align="center">
   <em>Figure 6: Sample medicine blister strip used for testing.</em>
@@ -259,7 +267,7 @@ The quantised ONNX model is converted to TensorFlow SavedModel via `onnx-tf`, th
 
 EasyOCR dominates latency. This is acceptable for a stationary dock use case where the user places the strip and waits for the audio announcement. Future work (Section 10) addresses this with a lighter OCR backend.
 
----
+
 
 <!-- ## 8. System Prototype (Pictures / Figures)
 
@@ -285,13 +293,14 @@ EasyOCR dominates latency. This is acceptable for a stationary dock use case whe
 *Figure 7: Dataset class distribution — Nimesulide, Ofloxacin + Ornidazole, and Other/Unknown.*
 
 **Demo Video:**
-> 📽️ See `assets/Medi_Dock_Video.mp4` for a live demonstration of the working prototype.
+> 📽️ See `assets/medi-dock_Video.mp4` for a live demonstration of the working prototype.
 
 > 📷 *[Add `assets/terminal_output.png` — a screenshot of the RPi terminal showing detection result and dosage report.]*
 
 --- -->
 
 ## 8. Conclusions & Limitations
+---
 
 Medi-Dock demonstrates that a fully offline, sub-10-second medication identification pipeline is achievable on a Raspberry Pi 5 costing under ₹5,000. The TinyStudent CNN trained via Knowledge Distillation achieves competitive classification accuracy at only ~0.18M parameters. Combined with EasyOCR and semantic embedding-based medicine matching, the system handles noisy, partially visible, and rotated labels with reasonable robustness.
 
@@ -302,9 +311,10 @@ Medi-Dock demonstrates that a fully offline, sub-10-second medication identifica
 - The synthetic data generator produces idealistic blister strips; real-world label diversity (fonts, colours, foil reflections) is only partially covered.
 - No hardware dose scheduling (e.g., reminder alarms) is currently implemented.
 
----
+
 
 ## 9. Future Work
+---
 
 - **Faster OCR backend:** Replace EasyOCR with a purpose-trained CRNN (Connectionist Recurrent Neural Network) quantised to TFLite to reduce OCR latency from ~5 s to under 500 ms.
 - **Active camera alignment:** Add a servo-controlled camera arm so the system automatically centres and focuses on the label.
@@ -313,9 +323,10 @@ Medi-Dock demonstrates that a fully offline, sub-10-second medication identifica
 - **Multi-language support:** Add Hindi and regional Indian language OCR for rural deployments.
 - **Structured pruning:** Replace unstructured magnitude pruning with channel pruning for actual FLOP reduction (not just zero weights) on ARM hardware.
 
----
+
 
 ## 10. Challenges & Mitigation
+---
 
 | Challenge | How it was addressed |
 |---|---|
@@ -327,9 +338,10 @@ Medi-Dock demonstrates that a fully offline, sub-10-second medication identifica
 | Audio output without BLE/TWS complexity | Used DFPlayer Mini + direct speaker connection, eliminating pairing latency and connection drop issues |
 | ONNX opset compatibility | Fixed by using opset 13 with `do_constant_folding=True` and dynamic batch axis |
 
----
+
 
 ## 11. References
+---
 
 1. Hinton, G., Vinyals, O., & Dean, J. (2015). *Distilling the Knowledge in a Neural Network*. arXiv:1503.02531.
 2. He, K., Zhang, X., Ren, S., & Sun, J. (2016). *Deep Residual Learning for Image Recognition*. CVPR 2016.
