@@ -4,8 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Real-Time Two-Way ASL Translator on Raspberry Pi 5
-
-> **Course:** CP 330 – Edge AI (2026) | Indian Institute of Science  
+ 
 > **Team:** Liz Maria George, Naznin Amirul Haque, Ayush Kumar, Prayanshu Sharma  
 > *(M.Tech. MVLSI, ECE, IISc)*
 **Code:** [GitHub Repository](https://github.com/prayanshus/Realtime_ASL_RasPi)
