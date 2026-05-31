@@ -291,7 +291,7 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
   <!-- Project 29 -->
   <div class="project-card">
     <a href="/edge-ai-26/projects/29_report" style="text-decoration: none; color: inherit;">
-      <img src="/edge-ai-26/assets/img/projects26/fpga/29.png" alt="Project 29" width="250" style="border-radius: 6px;">
+      <img src="/edge-ai-26/assets/img/projects26/fpga/dataset_samples.png" alt="Project 29" width="250" style="border-radius: 6px;">
     </a>
     <h3><a href="/edge-ai-26/projects/29_report">EdgeProbe: Investigating Binary Neural Network Acceleration on a Constrained FPGA — From Knowledge Distillation to Streaming Hardware Inference</a></h3>
     <p>Designed and verified an end-to-end BCNN pipeline, training a binary classifier in Python and deploying it via hardware-accelerated Verilog (XNOR/popcount) over SPI</p>
@@ -310,12 +310,12 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
 
   <!-- Project 31 -->
   <div class="project-card">
-    <a href="/edge-ai-26/projects/3plant-disease-detection" style="text-decoration: none; color: inherit;">
+    <a href="/edge-ai-26/projects/31_report" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/31.png" alt="Project 31" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/3plant-disease-detection">JanConnect Voice</a></h3>
+    <h3><a href="/edge-ai-26/projects/31_report">JanConnect Voice</a></h3>
     <p>JanConnect is an edge AI-powered real-time speech translation system that translates Hindi speech to Malayalam speech on a Raspberry Pi 4, achieving under 3-second latency without cloud dependency</p>
-    <a href="/edge-ai-26/projects/3plant-disease-detection">Read more →</a>
+    <a href="/edge-ai-26/projects/31_report">Read more →</a>
   </div>
 
   <!-- Project 32 -->
