@@ -27,7 +27,7 @@ An autonomous mobile robot equipped with a camera and an on-device AI model can 
 
 This project addresses all three. We trained a YOLOv8n crack detector on the BD3 building-defect dataset, then put it through a five-stage optimisation pipeline — post-training quantisation, quantisation-aware training, pruning, and a resolution sweep — to fit it onto a Raspberry Pi 5 at real-time framerates. The optimised model is deployed on a VOLTA Bot Sync autonomous platform with an Intel RealSense D455 depth camera, where it processes the live camera feed and flags cracks in real time during navigation.
 
-![](report_md_assets/image_001.png)
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_001.png)
 
 *Figure 1. VOLTA Bot Sync — the autonomous mobile platform that hosts the inference stack and camera.*
 
@@ -58,11 +58,11 @@ The project is structured as a reproducible end-to-end pipeline. We start with m
 | Intel RealSense D455 | RGB-D image acquisition | Depth-aware capture for 3D surface reconstruction |
 | Joystick controller | Manual motion control | Used during data capture and supervised navigation |
 
-![](report_md_assets/image_002.jpg)
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_002.jpg)
 
 *Figure 2. Raspberry Pi5 — the on-board compute platform for inference.*
 
-![](report_md_assets/image_003.jpg)
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_003.jpg)
 
 *Figure 3.Intel RealSense camera*
 
@@ -95,11 +95,11 @@ Inference on the Pi uses the TensorFlow Lite Python interpreter with the XNNPACK
 
 Annotations are stored as polygons (segmentation labels) which preserve the irregular, branching shape of cracks better than bounding boxes do. For training the YOLOv8 detector, polygons are converted to tight axis-aligned bounding boxes via min/max of the polygon vertices in normalised coordinates.
 
-![](report_md_assets/image_004.png)
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_004.png)
 
 *Figure 4. Detailed annotationexample .*
 
-![](report_md_assets/image_005.png)
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_005.png)
 
 *Figure 5. A second annotation example — a wider, branching crack on textured concrete*
 
@@ -128,11 +128,11 @@ We staged the dataset through Roboflow for cleanup, splitting, and augmentation.
 | Test | 174 |
 | Total | 4189 |
 
-![](report_md_assets/image_006.png)
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_006.png)
 
 *Figure 6.Roboflow dataset overview — version, splits, preprocessing, and augmentations as configured for v2.*
 
-![](report_md_assets/image_007.png)
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_007.png)
 
 *Figure 7. Sample thumbnails from the train split (3,666 images) with crack polygon annotations overlaid.*
 
@@ -152,15 +152,15 @@ Before optimisation we trained three lightweight detector candidates on the same
 
 The plots below were generated from the comparison notebook (train_compare 1.ipynb, cells 7–12) and visualise the trade-off across multiple axes simultaneously.
 
-![](report_md_assets/image_008.png)
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_008.png)
 
 *Figure 8. Detection quality (mAP@0.5, mAP@0.5:0.95, precision, recall) per model* 
 
-![](report_md_assets/image_009.png)![](report_md_assets/image_010.png)
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_009.png)![](/edge-ai-26/assets/img/projects26/crack-detection/image_010.png)
 
 *Figure9. Accuracy vs file size and Accuracy vs inference latency* 
 
-![](report_md_assets/image_011.png)*Figure 10. Training curves (box loss and validation mAP)* 
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_011.png)*Figure 10. Training curves (box loss and validation mAP)* 
 
 ## 6.3 Observations
 
@@ -283,9 +283,9 @@ Each metric is min-max normalised across the candidate pool, then weighted and s
 
 The Pareto front contains S1_INT8, S2_QAT_INT8, and S3_PrunedINT8 — each is non-dominated on at least one axis. We carry the top 2 (S3_PrunedINT8 and S2_QAT_INT8) into Stage 4.
 
-![](report_md_assets/image_012.png)*Figure 11. Pareto plot — mAP vs CPU latency for Stages 0–3. Top-left is best.*
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_012.png)*Figure 11. Pareto plot — mAP vs CPU latency for Stages 0–3. Top-left is best.*
 
-![](report_md_assets/image_013.png)*Figure 12. Round-1 PiScore (Stage 1–3 candidates only). The top-2 are carried into the resolution sweep.*
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_013.png)*Figure 12. Round-1 PiScore (Stage 1–3 candidates only). The top-2 are carried into the resolution sweep.*
 
 ## 10.2 Stage 4 — Resolution sweep
 
@@ -300,7 +300,7 @@ The Pareto front contains S1_INT8, S2_QAT_INT8, and S3_PrunedINT8 — each is no
 | S2_QAT_INT8 | 416 | 0.7114 | 4.93 | 3.23 | 202.8 | 0.7668 ← winner |
 | S2_QAT_INT8 | 320 | 0.6675 | 4.93 | 3.20 | 202.8 | 0.5677 |
 
-![](report_md_assets/image_014.png)*Figure 13. Stage 4 sweep — mAP and CPU latency vs input resolution for the top-2 pipelines. The 320 px point shows the resolution cliff.*
+![](/edge-ai-26/assets/img/projects26/crack-detection/image_014.png)*Figure 13. Stage 4 sweep — mAP and CPU latency vs input resolution for the top-2 pipelines. The 320 px point shows the resolution cliff.*
 
 S2_QAT_INT8 @ 416 px wins on the final PiScore by combining near-baseline accuracy (only 0.0032 mAP below FP32) with the largest observed speed-up (7.83×). At 320 px both pipelines lose 4–7 mAP points, indicating the resolution cliff for small cracks.
 
