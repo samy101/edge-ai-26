@@ -315,13 +315,13 @@ True   Attentive   TP   |      FN
 
 #### Training Curves
 
-![Training Loss](plots/loss.png)\
+![Training Loss](/edge-ai-26/assets/img/projects26/attentiveness-detection/loss.png)\
 *Figure 1: Training and Validation Loss over 20 epochs*
 
-![Training Accuracy](plots/accuracy.png)\
+![Training Accuracy](/edge-ai-26/assets/img/projects26/attentiveness-detection/accuracy.png)\
 *Figure 2: Training and Validation Accuracy over 20 epochs*
 
-![Training AUC](plots/auc.png)\
+![Training AUC](/edge-ai-26/assets/img/projects26/attentiveness-detection/auc.png)\
 *Figure 3: Training and Validation AUC over 20 epochs*
 
 <!-- #### Expected Performance Range
@@ -437,14 +437,14 @@ Structural pruning gives the smallest model footprint in the project, but it los
 
 #### Unstructured pruning trade-off
 
-![Unstructured pruning trade-off](plots/unstructured_pruning_tradeoff_graph.png)
+![Unstructured pruning trade-off](/edge-ai-26/assets/img/projects26/attentiveness-detection/unstructured_pruning_tradeoff_graph.png)
 *Figure 3: unstructured pruning tradeoff graph*
 
 The graph shows that pruning without fine-tuning quickly collapses validation accuracy, especially after the 30% pruning range. Fine-tuning keeps the curve close to the baseline, which confirms that recovery training is necessary for this technique.
 
 #### Structural pruning trade-off
 
-![Structural pruning trade-off](plots/struct_pruning_tradeoff_graph.png)
+![Structural pruning trade-off](/edge-ai-26/assets/img/projects26/attentiveness-detection/struct_pruning_tradeoff_graph.png)
 *Figure 4: struct pruning tradeoff graph*
 
 The graph shows a sharper dependency on fine-tuning for structural pruning as well. Without recovery training, the model can fall close to chance performance at heavier pruning ratios. With fine-tuning, accuracy remains high across the tested ratios, but the best deployment benefit still depends on whether the application prioritizes size or speed.
@@ -531,17 +531,17 @@ To reduce prediction noise from single-frame inference:
 
 ### Screenshots of outputs
 
-![all_attentive](plots/all_attentive.png)
+![all_attentive](/edge-ai-26/assets/img/projects26/attentiveness-detection/all_attentive.png)
 *Figure 6: All Attentive*
 
 
 
-![all_non_attentive](plots/all_non_attentive.png)
+![all_non_attentive](/edge-ai-26/assets/img/projects26/attentiveness-detection/all_non_attentive.png)
 *Figure 7: All Non-Attentive*
 
 
 
-![one_non_attentive](plots/one_non_attentive.png)
+![one_non_attentive](/edge-ai-26/assets/img/projects26/attentiveness-detection/one_non_attentive.png)
 *Figure 8: One Non Attentive*
 
 
