@@ -33,7 +33,7 @@ The motivation behind choosing Edge AI for this project stems from the fundament
 
 The system follows a three-stage edge AI pipeline: **Sense → Think → Act**, with an additional **Stream** stage for remote monitoring.
 
-![Assembled Car](images/assembled_car_front.jpeg)  
+![Assembled Car](/edge-ai-26/assets/img/projects26/gesture-control/assembled_car_front.jpeg)  
 *Figure 1: Fully assembled gesture-controlled car with Raspberry Pi 5, L298N motor driver, Pi Camera V2, and status LEDs*
 
 **Sense:** A Raspberry Pi Camera Module V2, connected via CSI ribbon cable, captures a continuous 640×480 RGB video stream using the `libcamera`/`Picamera2` stack. Each frame is horizontally flipped (mirror mode) so the user sees an intuitive reflection of their hand.
@@ -81,11 +81,11 @@ Camera Frame (640×480 RGB)
 | Li-ion Battery Pack | 7.4V (2S) or equivalent | Power supply for motors via L298N |
 | Jumper Wires | Male-to-female, Female-to-female, Male-to-male various colors | GPIO-to-L298N connections |
 
-| ![Raspberry Pi 5](images/rpi.jpeg) | ![L298N Motor Driver](images/motor_driver_front.jpeg) |
+| ![Raspberry Pi 5](/edge-ai-26/assets/img/projects26/gesture-control/rpi.jpeg) | ![L298N Motor Driver](/edge-ai-26/assets/img/projects26/gesture-control/motor_driver_front.jpeg) |
 |:---:|:---:|
 | *Figure 2a: Raspberry Pi 5 (16 GB RAM)* | *Figure 2b: L298N dual H-bridge motor driver* |
 
-| ![Pi Camera V2](images/camera_front.jpeg) | ![Battery Pack](images/battery_front.jpeg) |
+| ![Pi Camera V2](/edge-ai-26/assets/img/projects26/gesture-control/camera_front.jpeg) | ![Battery Pack](/edge-ai-26/assets/img/projects26/gesture-control/battery_front.jpeg) |
 |:---:|:---:|
 | *Figure 2c: Pi Camera Module V2 (8 MP)* | *Figure 2d: 7.4V Li-ion battery pack* |
 
@@ -103,16 +103,16 @@ Camera Frame (640×480 RGB)
 
 The L298N's 5V-Enable jumper was kept **ON**, allowing the on-board 7805 regulator to supply 5V logic. The 12V terminal was connected to the battery pack positive, and the GND terminal was tied to both the battery negative and the Pi's ground, establishing the mandatory common ground.
 
-![RPi GPIO Pinout](images/rpi_pin.jpg)  
+![RPi GPIO Pinout](/edge-ai-26/assets/img/projects26/gesture-control/rpi_pin.jpg)  
 *Figure 3: Raspberry Pi 5 GPIO pinout reference (BCM numbering)*
 
-![L298N Pinout](images/l298n_pin.png)  
+![L298N Pinout](/edge-ai-26/assets/img/projects26/gesture-control/l298n_pin.png)  
 *Figure 4: L298N motor driver pinout — IN1–IN4, ENA, ENB, OUT1–OUT4*
 
-![RPi to L298N Connection](images/rpi_motor_driver.jpeg)  
+![RPi to L298N Connection](/edge-ai-26/assets/img/projects26/gesture-control/rpi_motor_driver.jpeg)  
 *Figure 5: Raspberry Pi 5 connected to L298N via GPIO jumper wires*
 
-![PWM Signal](images/pwm.png)  
+![PWM Signal](/edge-ai-26/assets/img/projects26/gesture-control/pwm.png)  
 *Figure 6: PWM signal — duty cycle controls motor speed (70% forward, 60% turn)*
 
 ### 3.3 Software Stack
@@ -158,7 +158,7 @@ The core hand detection and landmark estimation model is Google's **MediaPipe Ha
 
 Instead of training a separate classifier on collected images, the gesture classification stage uses a **hand-crafted geometric rule-based approach** operating on the 21 landmarks output by MediaPipe. The rationale was speed of development and deterministic behavior — important for a safety-critical motor control application.
 
-![MediaPipe 21 Hand Landmarks](images/hand_landmarks.png)  
+![MediaPipe 21 Hand Landmarks](/edge-ai-26/assets/img/projects26/gesture-control/hand_landmarks.png)  
 *Figure 7: MediaPipe Hand Landmarker — 21 numbered landmarks. Palm size is the Euclidean distance between landmark 0 (wrist) and landmark 9 (middle finger MCP). Each finger's extension ratio is the tip-to-base distance normalized by palm size.*
 
 The rules compute:
@@ -178,15 +178,15 @@ The rules compute:
 | UNKNOWN | Any other combination | STOP (safe default) |
 | NO HAND | No hand landmarks detected | STOP (safe default) |
 
-| ![FIST](images/drive.png) | ![OPEN PALM](images/open.png) |
+| ![FIST](/edge-ai-26/assets/img/projects26/gesture-control/drive.png) | ![OPEN PALM](/edge-ai-26/assets/img/projects26/gesture-control/open.png) |
 |:---:|:---:|
 | *Figure 8a: FIST → DRIVE (forward)* | *Figure 8b: OPEN PALM → STOP* |
 
-| ![LEFT](images/left.png) | ![RIGHT](images/right.png) |
+| ![LEFT](/edge-ai-26/assets/img/projects26/gesture-control/left.png) | ![RIGHT](/edge-ai-26/assets/img/projects26/gesture-control/right.png) |
 |:---:|:---:|
 | *Figure 8c: THUMB LEFT → SPIN LEFT* | *Figure 8d: THUMB RIGHT → SPIN RIGHT* |
 
-| ![NO HAND](images/no_hand.png) | ![UNKNOWN](images/unknown.png) |
+| ![NO HAND](/edge-ai-26/assets/img/projects26/gesture-control/no_hand.png) | ![UNKNOWN](/edge-ai-26/assets/img/projects26/gesture-control/unknown.png) |
 |:---:|:---:|
 | *Figure 8e: NO HAND → STOP (safe default)* | *Figure 8f: UNKNOWN → STOP (safe default)* |
 
@@ -268,7 +268,7 @@ ValueError: You called `set_weights(weights)` on layer "gesture_classifier"
 with a weight list of length 264, but the layer was expecting 270 weights.
 ```
 
-![Pruning Error](images/pruning.png)  
+![Pruning Error](/edge-ai-26/assets/img/projects26/gesture-control/pruning.png)  
 *Figure 9: Terminal output showing MobileNetV2 model summary and pruning ValueError crash at step [4/6]*
 
 **Root Cause Analysis:**
@@ -347,7 +347,7 @@ Since pruning was not successfully applied to the deployed model, the efficiency
 | No Hand / STOP | 25% | 21% | 1,552 |
 | OPEN PALM / STOP | 29% | 24% | 1,561 |
 
-| ![CPU No Hand](images/cpu_no_hand.png) | ![CPU Open Palm](images/cpu_open_palm.png) |
+| ![CPU No Hand](/edge-ai-26/assets/img/projects26/gesture-control/cpu_no_hand.png) | ![CPU Open Palm](/edge-ai-26/assets/img/projects26/gesture-control/cpu_open_palm.png) |
 |:---:|:---:|
 | *Figure 10a: CPU/GPU/RAM usage : No Hand state* | *Figure 10b: CPU/GPU/RAM usage : Open Palm state* |
 
@@ -437,86 +437,86 @@ The web interface is a minimal HTML page served by Flask, accessible at `http://
 
 #### Chassis
 
-| ![Chassis Front](images/chasis_front.jpeg) | ![Chassis Back](images/chasis_back.jpeg) |
+| ![Chassis Front](/edge-ai-26/assets/img/projects26/gesture-control/chasis_front.jpeg) | ![Chassis Back](/edge-ai-26/assets/img/projects26/gesture-control/chasis_back.jpeg) |
 |:---:|:---:|
 | *Figure 11a: 2WD acrylic chassis (front view)* | *Figure 11b: 2WD acrylic chassis (rear view with caster wheel)* |
 
 #### Camera Module
 
-| ![Camera Front](images/camera_front.jpeg) | ![Camera Back](images/camera_back.jpeg) |
+| ![Camera Front](/edge-ai-26/assets/img/projects26/gesture-control/camera_front.jpeg) | ![Camera Back](/edge-ai-26/assets/img/projects26/gesture-control/camera_back.jpeg) |
 |:---:|:---:|
 | *Figure 12a: Pi Camera V2 (front, 8 MP sensor)* | *Figure 12b: Pi Camera V2 (back, CSI connector)* |
 
 #### Motor Driver
 
-| ![Motor Driver Front](images/motor_driver_front.jpeg) | ![Motor Driver Back](images/motor_driver_back.jpeg) |
+| ![Motor Driver Front](/edge-ai-26/assets/img/projects26/gesture-control/motor_driver_front.jpeg) | ![Motor Driver Back](/edge-ai-26/assets/img/projects26/gesture-control/motor_driver_back.jpeg) |
 |:---:|:---:|
 | *Figure 13a: L298N motor driver (front)* | *Figure 13b: L298N motor driver (back)* |
 
 #### Battery Pack
 
-| ![Battery Front](images/battery_front.jpeg) | ![Battery Side](images/battery_side.jpeg) |
+| ![Battery Front](/edge-ai-26/assets/img/projects26/gesture-control/battery_front.jpeg) | ![Battery Side](/edge-ai-26/assets/img/projects26/gesture-control/battery_side.jpeg) |
 |:---:|:---:|
 | *Figure 14a: 7.4V Li-ion battery (front)* | *Figure 14b: 7.4V Li-ion battery (side)* |
 
 #### Raspberry Pi 5
 
-![RPi 5](images/rpi.jpeg)  
+![RPi 5](/edge-ai-26/assets/img/projects26/gesture-control/rpi.jpeg)  
 *Figure 15: Raspberry Pi 5 (16 GB) with 40-pin GPIO header*
 
 #### Wiring Connection
 
-![RPi to L298N](images/rpi_motor_driver.jpeg)  
+![RPi to L298N](/edge-ai-26/assets/img/projects26/gesture-control/rpi_motor_driver.jpeg)  
 *Figure 16: RPi 5 connected to L298N motor driver with GPIO jumper wires*
 
 #### Fully Assembled Car
 
-| ![Car Side](images/assembled_car_side.jpeg) | ![Car Back](images/assembled_car_back.jpeg) |
+| ![Car Side](/edge-ai-26/assets/img/projects26/gesture-control/assembled_car_side.jpeg) | ![Car Back](/edge-ai-26/assets/img/projects26/gesture-control/assembled_car_back.jpeg) |
 |:---:|:---:|
 | *Figure 17a: Assembled car (side view)* | *Figure 17b: Assembled car (rear view)* |
 
-![Car Front](images/assembled_car_front.jpeg)  
+![Car Front](/edge-ai-26/assets/img/projects26/gesture-control/assembled_car_front.jpeg)  
 *Figure 17c: Assembled car (front view)*
 
 ### 9.2 Pin Reference Diagrams
 
-![RPi GPIO Pinout](images/rpi_pin.jpg)  
+![RPi GPIO Pinout](/edge-ai-26/assets/img/projects26/gesture-control/rpi_pin.jpg)  
 *Figure 18: Raspberry Pi 5 GPIO pinout (BCM numbering)*
 
-![L298N Pinout](images/l298n_pin.png)  
+![L298N Pinout](/edge-ai-26/assets/img/projects26/gesture-control/l298n_pin.png)  
 *Figure 19: L298N motor driver pinout*
 
-![PWM Signal](images/pwm.png)  
+![PWM Signal](/edge-ai-26/assets/img/projects26/gesture-control/pwm.png)  
 *Figure 20: PWM signal — duty cycle controls motor speed*
 
 ### 9.3 Gesture Detection Screenshots
 
-| ![FIST](images/drive.png) | ![OPEN PALM](images/open.png) |
+| ![FIST](/edge-ai-26/assets/img/projects26/gesture-control/drive.png) | ![OPEN PALM](/edge-ai-26/assets/img/projects26/gesture-control/open.png) |
 |:---:|:---:|
 | *Figure 21a: FIST detected — motors DRIVE* | *Figure 21b: OPEN PALM detected — motors STOP* |
 
-| ![LEFT](images/left.png) | ![RIGHT](images/right.png) |
+| ![LEFT](/edge-ai-26/assets/img/projects26/gesture-control/left.png) | ![RIGHT](/edge-ai-26/assets/img/projects26/gesture-control/right.png) |
 |:---:|:---:|
 | *Figure 21c: THUMB LEFT — motors SPIN LEFT* | *Figure 21d: THUMB RIGHT — motors SPIN RIGHT* |
 
-| ![NO HAND](images/no_hand.png) | ![UNKNOWN](images/unknown.png) |
+| ![NO HAND](/edge-ai-26/assets/img/projects26/gesture-control/no_hand.png) | ![UNKNOWN](/edge-ai-26/assets/img/projects26/gesture-control/unknown.png) |
 |:---:|:---:|
 | *Figure 21e: NO HAND — safe STOP default* | *Figure 21f: UNKNOWN — safe STOP default* |
 
 ### 9.4 Performance Monitoring
 
-| ![CPU No Hand](images/cpu_no_hand.png) | ![CPU Open Palm](images/cpu_open_palm.png) |
+| ![CPU No Hand](/edge-ai-26/assets/img/projects26/gesture-control/cpu_no_hand.png) | ![CPU Open Palm](/edge-ai-26/assets/img/projects26/gesture-control/cpu_open_palm.png) |
 |:---:|:---:|
 | *Figure 22a: Task Manager — No Hand state* | *Figure 22b: Task Manager — Open Palm state* |
 
 ### 9.5 Hand Landmark Reference
 
-![MediaPipe 21 Landmarks](images/hand_landmarks.png)  
+![MediaPipe 21 Landmarks](/edge-ai-26/assets/img/projects26/gesture-control/hand_landmarks.png)  
 *Figure 23: MediaPipe 21 hand landmarks with numbered joints. Red dashed line shows palm size measurement (lm0 → lm9) used for scale-invariant gesture classification.*
 
 ### 9.6 Pruning Output
 
-![Pruning Error](images/pruning.png)  
+![Pruning Error](/edge-ai-26/assets/img/projects26/gesture-control/pruning.png)  
 *Figure 24: Terminal showing pruning script crash — ValueError due to weight count mismatch*
 
 ---
