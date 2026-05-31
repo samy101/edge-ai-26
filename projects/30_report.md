@@ -245,39 +245,39 @@ Standard Ultralytics YOLOv8n pretrained on COCO 2017, used as global-class detec
 
 ### System Pipeline Flow
 
-![Mini ADAS system pipeline](images/mini_adas_pipeline.png)
+![Mini ADAS system pipeline](/edge-ai-26/assets/img/projects26/adas/mini_adas_pipeline.png)
 
 ### Live Detection Stream + ThingsBoard Dashboard
 
 *Left: Live Pi stream showing DANGER at 227 ms / 1.8 FPS with car detections. Right: ThingsBoard FP32 (red, avg 131 ms) vs INT8 (green, avg 55 ms) — 2.4× speedup proved live.*
 
-![Live stream and ThingsBoard dashboard](images/thingsboard_dashboard.png)
+![Live stream and ThingsBoard dashboard](/edge-ai-26/assets/img/projects26/adas/thingsboard_dashboard.png)
 
 ### Car Detection — Live Stream
 
-![Car detection on live Pi stream](images/car_detection.png)
+![Car detection on live Pi stream](/edge-ai-26/assets/img/projects26/adas/car_detection.png)
 
 ### Car + Person Detection
 
-![Car and person detected simultaneously](images/car_person_detection.png)
+![Car and person detected simultaneously](/edge-ai-26/assets/img/projects26/adas/car_person_detection.png)
 
 ### Pothole Detection
 
-![Pothole detected on road surface](images/pothhole_detection.png)
+![Pothole detected on road surface](/edge-ai-26/assets/img/projects26/adas/pothhole_detection.png)
 
 ### Latency Comparison — Edge vs Cloud
 
 *Edge INT8 ~50 ms vs Cloud FP32 ~280 ms — edge is 5.6× faster, well within the 100 ms AEB deadline.*
 
-![Latency comparison: Edge INT8 vs Cloud](images/latency_comparison.png)
+![Latency comparison: Edge INT8 vs Cloud](/edge-ai-26/assets/img/projects26/adas/latency_comparison.png)
 
 ### Model Size Comparison
 
-![FP32 vs INT8 model size comparison](images/model_size_comparison.png)
+![FP32 vs INT8 model size comparison](/edge-ai-26/assets/img/projects26/adas/model_size_comparison.png)
 
 ### Hardware Setup
 
-![Raspberry Pi 5 with Pi Camera, HC-SR04 sensors, LEDs and buzzer](images/hardware_setup.jpeg)
+![Raspberry Pi 5 with Pi Camera, HC-SR04 sensors, LEDs and buzzer](/edge-ai-26/assets/img/projects26/adas/hardware_setup.jpeg)
 
 ---
 
