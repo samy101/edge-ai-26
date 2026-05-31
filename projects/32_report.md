@@ -33,7 +33,7 @@ Motivated by the need for sustainable and automated pest monitoring, this projec
 
 ---
 
-## 2. Proposed Solution (Overview)
+## 2. Proposed Solution
 
 This project implements an AI-powered smart pest detection system using a FOMO (Faster Objects, More Objects) model deployed on Arduino Nicla Vision.
 
@@ -130,9 +130,9 @@ After training, an explicit **softmax** layer is added to ensure per-cell probab
 - **RAM Usage:** ~409 KB  
 - **Flash Usage:** ~70.9 KB
   
-![Model Performance](images/model_training_quantised.png)
+![Model Performance](/edge-ai-26/assets/img/projects26/pest-detection/model_training_quantised.png)
 
-![Model Performance](images/training_quantised.png)
+![Model Performance](/edge-ai-26/assets/img/projects26/pest-detection/training_quantised.png)
 
 ### 🔹 Class-wise Performance
 - **Bactrocera dorsalis:** 84.1% accuracy (F1: 0.83)  
@@ -148,9 +148,9 @@ This version is optimized for microcontrollers and enables real-time inference w
 ### ⚠️ Unoptimized Model (float32)
 - **RAM Usage:** ~1.5 MB  
 - **Accuracy:** 61.86%  
-![Model Performance](images/model_training_unoptimised.png)
+![Model Performance](/edge-ai-26/assets/img/projects26/pest-detection/model_training_unoptimised.png)
 
-![Model Performance](images/training_unoptimised.png)
+![Model Performance](/edge-ai-26/assets/img/projects26/pest-detection/training_unoptimised.png)
 The float32 model requires significantly higher memory and is not suitable for deployment on resource-constrained devices.
 
 ### 📌 Insight
@@ -164,9 +164,9 @@ Quantization reduces model size and memory usage drastically, enabling efficient
 - Flash onto Nicla Vision  
 
 ### 📟 On-device Output:
-![Testing Output](images/model_testing.png)
+![Testing Output](/edge-ai-26/assets/img/projects26/pest-detection/model_testing.png)
 
-![Model_Dashboard](images/model_dashboard.png)
+![Model_Dashboard](/edge-ai-26/assets/img/projects26/pest-detection/model_dashboard.png)
 
 ### 🔹 Test Accuracy
 - **Accuracy:** 61.86%  
@@ -184,7 +184,7 @@ Quantization reduces model size and memory usage drastically, enabling efficient
 ### 🧱 Hardware Prototype
 
 - Smart trap prototype
-  ![Smart trap with funnel entry](images/prototype.png) 
+  ![Smart trap with funnel entry](/edge-ai-26/assets/img/projects26/pest-detection/prototype.png) 
 
 - Arduino Nicla vision mounted for detection
 
@@ -270,7 +270,7 @@ You can explore the full impulse design and training configuration here:
 
 ## 👥 Team
 
-![Team](images/group_members.jpeg)
+![Team](/edge-ai-26/assets/img/projects26/pest-detection/group_members.jpeg)
 
 (L to R in above image)
 
