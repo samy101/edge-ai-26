@@ -5,7 +5,8 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 
 
-## 1. Problem Statement, Motivation & Objectives **Code:** [GitHub Repository](https://github.com/tanushrinaik-wq/binary-cnn-fpga)
+## 1. Problem Statement, Motivation & Objectives 
+**Code:** [GitHub Repository](https://github.com/tanushrinaik-wq/binary-cnn-fpga)
 
 This project investigates how a compact image-classification pipeline can be reworked for edge deployment when compute, memory, and latency budgets are tight. Instead of keeping the full inference path in floating-point software, the project trains a binary-friendly convolutional model and maps its inference stages to an RTL accelerator built around XNOR and popcount operations. The immediate classification task is a binary hand-gesture decision: `rock` versus `not-rock` using resized grayscale images.
 
@@ -103,7 +104,7 @@ Evaluation notes:
 
 - The notebook computes teacher accuracy, student float accuracy, and final binarized-model accuracy.
 - Those final accuracy values are printed by the notebook, but they are not captured in a checked-in JSON artifact in this repository snapshot.
-- The repository does include a confusion-matrix figure at [confusion_three_way.png](/C:/Users/Rayaan_Ghosh/Desktop/binary-cnn-fpga/output/plots/confusion_three_way.png), which supports the evaluation workflow, but the corresponding numeric summary is not stored separately.
+- The repository does include a confusion-matrix figure at [confusion_three_way.png](/edge-ai-26/assets/img/projects26/fpga/confusion_three_way.png), which supports the evaluation workflow, but the corresponding numeric summary is not stored separately.
 
 ## 6. Model Compression & Efficiency Metrics
 
@@ -160,11 +161,11 @@ Because the current repository evidence is simulation-oriented, this section dem
 
 Available figures in the repository:
 
-- Dataset overview: [dataset_samples.png](/C:/Users/Rayaan_Ghosh/Desktop/binary-cnn-fpga/output/plots/dataset_samples.png)
-- Student training curves: [student_training_curves.png](/C:/Users/Rayaan_Ghosh/Desktop/binary-cnn-fpga/output/plots/student_training_curves.png)
-- Weight distribution: [weight_histogram.png](/C:/Users/Rayaan_Ghosh/Desktop/binary-cnn-fpga/output/plots/weight_histogram.png)
-- Inference timing comparison: [inference_timing.png](/C:/Users/Rayaan_Ghosh/Desktop/binary-cnn-fpga/output/plots/inference_timing.png)
-- Evaluation figure: [confusion_three_way.png](/C:/Users/Rayaan_Ghosh/Desktop/binary-cnn-fpga/output/plots/confusion_three_way.png)
+- Dataset overview: [dataset_samples.png](/edge-ai-26/assets/img/projects26/fpga/dataset_samples.png)
+- Student training curves: [student_training_curves.png](/edge-ai-26/assets/img/projects26/fpga/student_training_curves.png)
+- Weight distribution: [weight_histogram.png](/edge-ai-26/assets/img/projects26/fpga/weight_histogram.png)
+- Inference timing comparison: [inference_timing.png](/edge-ai-26/assets/img/projects26/fpga/inference_timing.png)
+- Evaluation figure: [confusion_three_way.png](/edge-ai-26/assets/img/projects26/fpga/confusion_three_way.png)
 
 Repository status of hardware photos:
 
