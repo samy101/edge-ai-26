@@ -266,9 +266,9 @@ and used significantly less CPU.
 
 ---
 ## 8. System Prototype
-![Gaussian blurring on laptops and faces](images/Gaussian.jpeg)
+![Gaussian blurring on laptops and faces](/edge-ai-26/assets/img/projects26/privacy-filtering/Gaussian.jpeg)
 *Gaussian blurring on laptops and faces*
-![Pixel blurring on phones and faces](images/pixelBlur.jpeg)
+![Pixel blurring on phones and faces](/edge-ai-26/assets/img/projects26/privacy-filtering/pixelBlur.jpeg)
 *Pixel blurring on phones and faces*
 ---
 
