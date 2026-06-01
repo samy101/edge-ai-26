@@ -300,12 +300,12 @@ subtitle: CP 330 | January 2026 | RBCCPS, Indian Institute of Science
 
   <!-- Project 30 -->
   <div class="project-card">
-    <a href="/edge-ai-26/projects/30_report" style="text-decoration: none; color: inherit;">
+    <a href="/edge-ai-26/projects/adas" style="text-decoration: none; color: inherit;">
       <img src="../assets/img/projects26/30.png" alt="Project 30" width="250" style="border-radius: 6px;">
     </a>
-    <h3><a href="/edge-ai-26/projects/30_report">Edge AI based Forward Collision Warning System (Mini ADAS)</a></h3>
+    <h3><a href="/edge-ai-26/projects/adas">Edge AI based Forward Collision Warning System (Mini ADAS)</a></h3>
     <p>A cloud-free, vehicle-agnostic Forward Collision Warning system for Indian roads that fuses a 52× compressed YOLOv8n ensemble with ultrasonic telemetry on a Raspberry Pi 5 for real-time safety alerts</p>
-    <a href="/edge-ai-26/projects/30_report">Read more →</a>
+    <a href="/edge-ai-26/projects/adas">Read more →</a>
   </div>
 
   <!-- Project 31 -->
