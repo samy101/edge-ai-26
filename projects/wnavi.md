@@ -5,7 +5,6 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # WNAVI: Wearable Navigation Aid for Visually Impaired — Project Report
 
-**Course:** CP330 — Edge AI by Prof. Pandarasamy Arjunan, IISc Bangalore 
 
 **Team Members:** Harshit Garhewal (25937), Anshul Verma (25881), Sourin Das (26033), Tushar Dewangan (26361)  
 **Code:** [GitHub Repository](https://github.com/Harshit892/blind-assist-edge-ai.git)

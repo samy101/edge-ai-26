@@ -5,8 +5,6 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge AI-Based Forward Collision Warning System (Mini ADAS)
 
-**Course:** [CP 330 Edge AI, IISc Bangalore, 2025–26](https://www.samy101.com/edge-ai-26/)
-
 **Course Instructor**: Professor. Arjunan Pandarasamy
 
 **Team:** G. Praveen Kumar (27480) · Harshith L (25823) · Ramavath Ramadas (26671) — IISc Bangalore
