@@ -11,7 +11,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 This project was completed as part of the *Edge AI Course*, which focuses on real-time AI deployment on edge devices.
 
 
-google drive link for video presentation [Video Presentation] : (https://drive.google.com/file/d/1yNl1FJYWZVjtlT5UGi9V5FdqgKGQ1F8Q/view?usp=sharing)
+google drive link for video presentation : <https://drive.google.com/file/d/1yNl1FJYWZVjtlT5UGi9V5FdqgKGQ1F8Q/view?usp=sharing>
 
 ---
 
