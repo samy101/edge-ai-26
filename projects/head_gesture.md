@@ -7,6 +7,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 
 # 🧠 Head Gesture Recognition System
 ### TinyML-Based Assistive Communication for Elderly & Disabled Individuals
+**team:** Tishha Agrawal, Maitreyi Tiwari, Parthib Kumar Dey, Abha Singh Sardar
 **Code:** [GitHub Repository](https://github.com/abhaanisha/Head-Gesture-Recognition-System)
 
 **Course:** CP 330 — Edge AI &nbsp;|&nbsp; **Instructor:** Prof. Pandarasamy Arjunan &nbsp;|&nbsp; Indian Institute of Science, Bangalore

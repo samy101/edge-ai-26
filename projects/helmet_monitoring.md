@@ -6,6 +6,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 
 
 # Real Time Helmet Detection Project 
+**team:** M Divya, Kavali Rohitha, Katragadda Navya
 **Code:** [GitHub Repository](https://github.com/rohitha-kavali/Real-time-helmet-detection-project)
 This project was completed as part of the *Edge AI Course*, which focuses on real-time AI deployment on edge devices.
 

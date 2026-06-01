@@ -4,6 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # 🍾 Bottle Detection Pipeline: Real-Time Damage Classification System
+**team:** Garvit, Shreemay, Naina
 **Code:** [GitHub Repository](https://github.com/sihag-21/waste-segregation)
 
 This project implements a **real-time, on-device bottle damage detection and classification system** using **YOLOv8** for bottle localization and a **ResNet50V2 TFLite model** for damage classification on the **Raspberry Pi 6**.

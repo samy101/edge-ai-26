@@ -4,6 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Vision-Aided Beam Selection using Edge AI
+**team:** Kemmasaram Varma, Guna Vardhan Vyas N, Erfan Naseri Taheri
 **Code:** [GitHub Repository](https://github.com/erfannsr/EdgeAI-Vision-Assisted-Beam-Selection-using-Monocular-Depth-Estimation)
 
 ---

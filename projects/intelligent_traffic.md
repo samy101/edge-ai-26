@@ -4,6 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge AI Intelligent Traffic System
+**team:** Boddu Amarnath, Utkarsh Vats, Rohan Kumar Biswal
 **Code:** [GitHub Repository](https://github.com/bodduamarnath2004/Edge-ai-traffic-intelligent-system)
 
 > A dual-camera (triple nicla vision) edge AI system for real-time vehicle detection, speed estimation, siren detection, and traffic safety analytics — deployed on Arduino Nicla Vision + Raspberry Pi.

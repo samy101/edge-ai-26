@@ -3,10 +3,13 @@ layout: page
 title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
+# EdgeProbe: Investigating Binary Neural Network Acceleration on a Constrained FPGA — From Knowledge Distillation to Streaming Hardware Inference
+
+**team:** Rayan Gosh, Mehuli Chatterjee, Ayush Sagar, Tanushri Naik
+**Code:** [GitHub Repository](https://github.com/tanushrinaik-wq/binary-cnn-fpga)
 
 
 ## 1. Problem Statement, Motivation & Objectives 
-**Code:** [GitHub Repository](https://github.com/tanushrinaik-wq/binary-cnn-fpga)
 
 This project investigates how a compact image-classification pipeline can be reworked for edge deployment when compute, memory, and latency budgets are tight. Instead of keeping the full inference path in floating-point software, the project trains a binary-friendly convolutional model and maps its inference stages to an RTL accelerator built around XNOR and popcount operations. The immediate classification task is a binary hand-gesture decision: `rock` versus `not-rock` using resized grayscale images.
 
@@ -18,7 +21,7 @@ The motivation is to study an end-to-end edge AI flow rather than stopping at mo
 - Validate an end-to-end SPI-to-classification hardware pipeline in simulation.
 - Compare software float inference against software binary inference to estimate efficiency gains before full FPGA deployment.
 
-## 2. Proposed Solution (Overview)
+## 2. Proposed Solution
 
 The system is built as a combined software-and-hardware pipeline. Public image data is preprocessed and remapped into a binary classification problem, a teacher model is trained in TensorFlow, and a compact BCNN student is trained with STE-based binary weights and binary activations. After training, the student parameters are converted into hardware-friendly artifacts for the RTL design.
 

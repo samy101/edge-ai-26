@@ -4,6 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge Deployed Crack Detection
+**team:** Niyati Jawariya, Priyanshi Dubey
 **Code:** [GitHub Repository](https://github.com/priyanshiD18/crack-detection-edge)
 
 *YOLOv8noptimised through PTQ, QAT, pruning, and resolution sweep for real-time inference on a VOLTA Bot Sync platform*
@@ -11,7 +12,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 Project: Real-time crack detection for autonomous building-defect inspection
 Platform: VOLTA Bot Sync · Intel RealSense D455 · Raspberry Pi 5
 Base model: YOLOv8n — optimised end-to-end for on-device deployment
-Authors: Niyati Jawariya
+
 
 # 1. Introduction
 

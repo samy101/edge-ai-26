@@ -4,6 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # AI Powered Smart Helmet for Traffic Sign Detection with 120 degree FoV
+**team:** Sana Sreyas, Abel Thomas Titus, Joffin Jacob, Simhadri Vishnukumar
 **Code:** [GitHub Repository](https://github.com/abelttitus/AI-Powered-Smart-Helmet-for-Traffic-Sign-Detection-with-120-degree-FoV)
 
 This Edge Impulse project implements a real-time, high PoV, on-device road sign detection and alerting system using the Arduino Nicla Vision. The goal is to prototype an “AI Helmet” that can detect critical road signs and provide immediate alerts to two-wheeler riders.
