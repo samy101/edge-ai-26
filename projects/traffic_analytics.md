@@ -4,7 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge AI Traffic Analytics and violation Detection
-**team:** Ashish Kumar Verma, Uppugunduru Sriram Anush, Prince Kumar
+**Team:** Ashish Kumar Verma, Uppugunduru Sriram Anush, Prince Kumar  
 **GitHub:** https://github.com/Prince-IISc-CalUniv/Edge-AI-Traffic-Analytics-and-violation-Detection
 
 ---

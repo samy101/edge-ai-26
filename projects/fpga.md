@@ -5,7 +5,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # EdgeProbe: Investigating Binary Neural Network Acceleration on a Constrained FPGA — From Knowledge Distillation to Streaming Hardware Inference
 
-**team:** Rayan Gosh, Mehuli Chatterjee, Ayush Sagar, Tanushri Naik
+**Team:** Rayan Gosh, Mehuli Chatterjee, Ayush Sagar, Tanushri Naik.  
 **Code:** [GitHub Repository](https://github.com/tanushrinaik-wq/binary-cnn-fpga)
 
 

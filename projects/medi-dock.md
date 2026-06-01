@@ -6,7 +6,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 # Medi-Dock: Intelligent Medication Identification Station for the Visually Impaired
 ---
 
-**Team:** Athikesavan V · Madina Gowtham Kumar · Pranav Kumar Rowlo · Vedang Mangrulkar
+**Team:** Athikesavan V · Madina Gowtham Kumar · Pranav Kumar Rowlo · Vedang Mangrulkar  
 **Code:** [GitHub Repository](https://github.com/vmcodes/medidock-edge-ai/tree/main)
 
 ---

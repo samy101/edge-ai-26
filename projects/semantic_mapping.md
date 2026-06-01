@@ -4,7 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # 🤖 Real-Time 2D Semantic Mapping 
-**team:** Karney Jayanath, Shreevathsa K S, Rajneesh Babu
+**Team:** Karney Jayanath, Shreevathsa K S, Rajneesh Babu  
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue)](https://python.org)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-orange)](https://ultralytics.com)

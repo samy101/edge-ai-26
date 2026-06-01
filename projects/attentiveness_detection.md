@@ -4,7 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge-Based-Acoustic-Event-Detection-for-Water-Activities
-**team:** Veera Subrahmanya Vignesh Vemula, Tata Umesh, Botta Lokesh Appa Rao, Anumala Sadhan
+**Team:** Veera Subrahmanya Vignesh Vemula, Tata Umesh, Botta Lokesh Appa Rao, Anumala Sadhan.  
 **Code:** [GitHub Repository](https://github.com/appsbotta/EdgeAttend)
 
 ## 1. Problem Statement, Motivation & Objectives

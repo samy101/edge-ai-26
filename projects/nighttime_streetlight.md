@@ -4,7 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Nighttime Street Light Functional Audit Using Computer Vision on Edge Device
-**team:** Anant Rajput, Kartikeya Gaur, Revathy Ramesh, Vuyyuru Gopi Chand
+**Team:** Anant Rajput, Kartikeya Gaur, Revathy Ramesh, Vuyyuru Gopi Chand  
 **Code:** [GitHub Repository](https://github.com/AnantRajput415/Nighttime-Street-Light-Functional-Audit-Using-Computer-Vision-on-Edge-Device)
 
 ## 1. Problem Statement, Motivation & Objectives

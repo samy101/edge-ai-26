@@ -4,7 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # SmartSeat: Real-Time Library & Classroom Seat Occupancy Detection using YOLOv8 on Raspberry Pi 5
-**team:** Kongari Kunal Ganesh, Samriddhi Bhattacharjee, Aryan Dahiya, Hake Shivam Panjab
+**Team:** Kongari Kunal Ganesh, Samriddhi Bhattacharjee, Aryan Dahiya, Hake Shivam Panjab  
 **Code:** [GitHub Repository](https://github.com/kunalkongari/SmartSeat-EdgeAI.git)
 
 ---

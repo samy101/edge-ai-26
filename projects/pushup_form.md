@@ -5,7 +5,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge AI-Based Real-Time Exercise Form Detection System (Push-ups + Squats)
 
-**Team:** Anjesh (MTech CSA, IISc Bangalore) · Ashish Nambiar (MTech CSA, IISc Bangalore) · Garima Papnai (MTech AI, IISc Bangalore) · Shubham Bijalwan (MTech Smart Manufacturing, IISc Bangalore)
+**Team:** Anjesh (MTech CSA, IISc Bangalore) · Ashish Nambiar (MTech CSA, IISc Bangalore) · Garima Papnai (MTech AI, IISc Bangalore) · Shubham Bijalwan (MTech Smart Manufacturing, IISc Bangalore)  
 
 **Code:** [GitHub Repository](https://github.com/AshishARN/Realtime-Exercise-Form-Detection-System)
 

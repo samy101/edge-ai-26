@@ -6,7 +6,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 # Offline Multimodal AI for Real-Time Banana Disease Diagnostics
 
 
-**[1] Ritik Kumar Badiya [2] Devendra Umbrajkar [3] Vikash Singh**
+**[1] Ritik Kumar Badiya [2] Devendra Umbrajkar [3] Vikash Singh**.  
 **Code:** [GitHub Repository](https://github.com/ritikbadiyap/EdgeAI-Project/tree/main)
 
 ## Abstract

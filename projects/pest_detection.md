@@ -4,7 +4,7 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Smart-trap-for-pest-detection-using-edge-ai
-**team:** Ragavi S, Vishal Kumar Verma, Vidushi Chauhan, Suruchi Singh
+**Team:** Ragavi S, Vishal Kumar Verma, Vidushi Chauhan, Suruchi Singh  
 **Code:** [GitHub Repository](https://github.com/vidushic-lgtm/Smart-trap-for-pest-detection-using-edge-ai/blob/main/README.md)
  
 ## 📁 Repository Structure
