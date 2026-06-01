@@ -4,8 +4,8 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Safety Helmet Detection System
-**team:** Chhavi Singhal, Thivya Tharshini T
-**Code:** [GitHub Repository](https://github.com/chhavi-singhal/Edge_Ai_Project/)
+**Team:** Chhavi Singhal, Thivya Tharshini T  
+**Code:** [GitHub Repository](https://github.com/chhavi-singhal/Edge_Ai_Project/)  
 **Platform:** Raspberry Pi 4 Model B (4 GB RAM)  
 **Model:** YOLOv8m fine-tuned, INT8 TFLite
 
