@@ -14,8 +14,6 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 
 ## 1. Problem Statement, Motivation & Objectives
 
-## 1. Problem Statement, Motivation & Objectives
-
 Communication barriers in multilingual regions pose significant challenges for effective public engagement, particularly in scenarios where real-time translation is critical. Politicians addressing public rallies in linguistically diverse regions like India often struggle to connect with audiences who speak different regional languages. Traditional solutions relying on cloud-based translation services suffer from latency issues, dependency on stable internet connectivity, and privacy concerns when handling sensitive political discourse.
 
 This project addresses the need for a portable, privacy-preserving, and low-latency speech translation system that can operate independently in field conditions. By leveraging Edge AI, we eliminate the need for cloud connectivity, ensure data privacy, and achieve real-time performance suitable for live public addresses.
