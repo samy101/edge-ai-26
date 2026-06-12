@@ -285,7 +285,7 @@ A **2D Convolutional Neural Network (CNN)** is used for classification.
 
 <p align="center">
   <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/2d_cnn_architecture_1.png" alt="2D CNN Architecture" width="300">
-</p
+</p>
 
 
 #### Training Details
@@ -308,12 +308,12 @@ This allows validation of model performance across all activity classes.
 #### Testing metrics:
 <p align="center">
   <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/testing_metrics.png" alt="metrics" width="600">
-</p
+</p>
 
 #### Confusion Matrix:
 <p align="center">
   <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/testing_confusion_matrix.png" alt="metrics" width="600">
-</p
+</p>
 
 ---
 
@@ -340,13 +340,13 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 
 <p align="center">
   <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/qr.png" alt="qr" width="300">
-</p
+</p>
 
 
 #### Comparison of Quantized and Unquantized Models Deployment
 <p align="center">
   <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/deployment.png" alt="deployment" width="600">
-</p
+</p>
 
 
 ---
