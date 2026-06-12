@@ -4,13 +4,19 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Real-Time Privacy Preservation on Edge Devices
-**Team:** Prasanna Mathavan, Sashish Jha, Tharun Kumar  
-**Code:** [GitHub Repository](https://github.com/Tharun-b777/EdgeAI_Project)
-
 
 ---
 
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/28.jpeg" width="400">
+</p>
+
+**Team:** Prasanna Mathavan, Sashish Jha, Tharun Kumar  
+**Code:** [GitHub Repository](https://github.com/Tharun-b777/EdgeAI_Project)
+
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 Modern workplaces, homes, and public spaces increasingly rely on cameras for monitoring and video conferencing. These environments frequently capture sensitive personal information — human faces, laptops with visible screens, and mobile phones — without consent or awareness. Transmitting raw video feeds to cloud servers for processing raises significant privacy concerns, introduces latency, and creates exposure to data breaches.
 
@@ -23,9 +29,9 @@ Edge AI offers a compelling solution: inference runs entirely on-device, ensurin
 - Apply model compression techniques (ONNX export, Knowledge Distillation, Quantization) to meet edge constraints
 - Stream the processed video via a Flask MJPEG dashboard with live performance metrics
 
----
+## 2. Proposed Solution
 
-## 2. Proposed Solution (Overview)
+---
 
 The system is a two-model, sequential inference pipeline running entirely on a Raspberry Pi 5. Frames are captured from a Pi Camera Module, passed through two YOLOv8 models (one for faces, one for laptops/mobiles), blurred in detected regions, and streamed live to any browser via Flask MJPEG.
 
@@ -51,9 +57,10 @@ Pi Camera (Picamera2)
 ```
 
 **Blur modes available:** Gaussian, Pixelate, Median, Box Blur,Stack Blur
----
 
 ## 3. Hardware & Software Setup
+
+---
 
 ### Hardware
 | Component | Details |
@@ -75,9 +82,9 @@ Pi Camera (Picamera2)
 | PyTorch | Model training and export |
 | Hugging Face Hub | Pre-trained YOLOv8-Face model |
 
----
-
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 ### Dataset Sources
 | Split | Source | Images |
@@ -94,9 +101,9 @@ These datasets were used to infer the latency, IOU and MAP metrics.
 - WiderFace annotations converted to YOLO format (normalised xywh)
 - Custom 150 images labelled manually using edge impulse and added to validation split
 
----
-
 ## 5. Model Compression & Efficiency Metrics
+
+---
 
 ### Techniques Applied
 
@@ -118,9 +125,9 @@ Based on the comparative analysis across deployment formats, the TFLite implemen
 
 
 
----
-
 ## 6. Blurring Techniques Comparison & Selection
+
+---
 
 ### Techniques Evaluated
 
@@ -184,6 +191,7 @@ This adaptive approach ensures an effective balance between **privacy preservati
 
 ## 7. Model Deployment & On-Device Performance
 
+---
 
 ### Deployment Steps
 
@@ -265,16 +273,16 @@ it means more overhead.
 sequential single-loop inference was faster, more stable,
 and used significantly less CPU.
 
----
 ## 8. System Prototype
+
+---
 ![Gaussian blurring on laptops and faces](/edge-ai-26/assets/img/projects26/privacy-filtering/Gaussian.jpeg)
 *Gaussian blurring on laptops and faces*
 ![Pixel blurring on phones and faces](/edge-ai-26/assets/img/projects26/privacy-filtering/pixelBlur.jpeg)
 *Pixel blurring on phones and faces*
----
-
-
 ## 9. Conclusions & Key Insights
+
+---
 
 ### Key Outcomes
 - Successfully deployed a privacy-preserving vision system on Raspberry Pi 5 using TFLite models.
@@ -289,9 +297,9 @@ and used significantly less CPU.
 - Sequential execution outperforms parallel threading on Raspberry Pi due to CPU limitations.
 - INT8 quantization significantly improves FPS (~2x–3x) with acceptable accuracy trade-off.
 
----
-
 ## 10. Limitations & Future Scope
+
+---
 
 ### Limitations
 - Even at ~7 FPS, performance is below standard real-time video requirements (24 FPS).
@@ -306,11 +314,9 @@ and used significantly less CPU.
 - Improve dataset diversity for better robustness and accuracy.
 - Expand blurring to includer other sensitive objects like documents,number plates etc.
 
----
-
-
-
 ## 11. Challenges & Mitigation
+
+---
 
 | Challenge | Details | Mitigation |
 |---|---|---|
@@ -318,23 +324,21 @@ and used significantly less CPU.
 | Train/deploy environment mismatch | Models developed on Colab CPU produced different confidence scores, latency, and FPS when deployed on Pi 5 | Benchmarked and validated all metrics directly on-device; Colab used only for training, all performance numbers quoted from Pi 5 runs |
 | Dataset incompatibility between models | The object model (COCO) and face model (WiderFace) use different annotation formats, class indices, and label schemas — a unified dataset combining both did not exist |Optimised each model independently on its native dataset; both models run in the same inference pipeline at runtime but are benchmarked, tuned, and evaluated separately — object detection metrics reported against COCO, face detection metrics reported against WiderFace |
 
----
-
 ## 12. Future Work
+
+---
 
 - **Unified single-model** — train one YOLOv8 model for all 3 classes (face, laptop, phone) to eliminate duplicate inference overhead; estimated 40–50% latency reduction
 - **Quantization Aware Training (QAT)** — INT8 from the start of training for better accuracy/speed trade-off
 - **Streaming resolution** — higher resolution output (1080p) with region-of-interest inference to maintain FPS
 - **Additional sensitive classes** — ID cards, whiteboards, passports
 
----
-
-
-
 ## 13. References
 
-1. Jocher, G. et al. (2023). *YOLOv8 by Ultralytics*. https://github.com/ultralytics/ultralytics
-2. Arnabdhar. *YOLOv8-Face-Detection* (HuggingFace). https://huggingface.co/arnabdhar/YOLOv8-Face-Detection
+---
+
+1. Jocher, G. et al. (2023). *YOLOv8 by Ultralytics*. <https://github.com/ultralytics/ultralytics>
+2. Arnabdhar. *YOLOv8-Face-Detection* (HuggingFace). <https://huggingface.co/arnabdhar/YOLOv8-Face-Detection>
 4. Hinton, G., Vinyals, O., Dean, J. (2015). *Distilling the Knowledge in a Neural Network*. NeurIPS Workshop.
 5. Jacob, B. et al. (2018). *Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference*. CVPR.
 6. Han, S. et al. (2015). *Learning both Weights and Connections for Efficient Neural Networks*. NeurIPS.
@@ -343,10 +347,8 @@ and used significantly less CPU.
 9. Yang, S. et al. (2016). *WIDER FACE: A Face Detection Benchmark*. CVPR.
 10. *Novel Compression Framework for YOLOv8: Structured Pruning and Channel-Wise Distillation*. arXiv:2509.12918.
 11. *Systematic Literature Review of Lightweight YOLO Models*. PeerJ, 2025.
-12. ONNX Runtime Documentation. https://onnxruntime.ai/docs/
-13. Picamera2 Documentation. https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf
-14. Raspberry Pi 5 Documentation. https://www.raspberrypi.com/products/raspberry-pi-5/
+12. ONNX Runtime Documentation. <https://onnxruntime.ai/docs/>
+13. Picamera2 Documentation. <https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf>
+14. Raspberry Pi 5 Documentation. <https://www.raspberrypi.com/products/raspberry-pi-5/>
 
----
-
-### Video Presentation :- https://indianinstituteofscience-my.sharepoint.com/:f:/g/personal/mprasanna_iisc_ac_in/IgB0AUifHJHpQpazl4oW8iO9AbqCGy9n4O094sr7lrIEORo?e=OvjB5e
+### Video Presentation :- <https://indianinstituteofscience-my.sharepoint.com/:f:/g/personal/mprasanna_iisc_ac_in/IgB0AUifHJHpQpazl4oW8iO9AbqCGy9n4O094sr7lrIEORo?e=OvjB5e>

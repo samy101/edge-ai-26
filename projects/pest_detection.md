@@ -4,10 +4,19 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Smart-trap-for-pest-detection-using-edge-ai
+
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/32.png" width="400">
+</p>
+
 **Team:** Ragavi S, Vishal Kumar Verma, Vidushi Chauhan, Suruchi Singh  
 **Code:** [GitHub Repository](https://github.com/vidushic-lgtm/Smart-trap-for-pest-detection-using-edge-ai/blob/main/README.md)
- 
+
 ## 📁 Repository Structure
+
+---
 
 ```text
 .
@@ -17,9 +26,9 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 └── README.md              # Project overview and documentation (this file)
 ````
 
----
-
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 Fruit flies such as *Bactrocera dorsalis* and *Bactrocera zonata* are major agricultural pests causing significant crop losses in fruits like mango and guava. These pests lay eggs inside fruits, making early detection difficult and leading to economic losses ranging from 40–80%. Traditional monitoring methods such as pheromone traps and manual counting are labor-intensive, time-consuming, and inefficient.
 
@@ -32,9 +41,9 @@ Motivated by the need for sustainable and automated pest monitoring, this projec
 - Deploy lightweight AI models on edge devices  
 - Provide real-time detection outputs for further automation  
 
----
-
 ## 2. Proposed Solution
+
+---
 
 This project implements an AI-powered smart pest detection system using a FOMO (Faster Objects, More Objects) model deployed on Arduino Nicla Vision.
 
@@ -45,9 +54,9 @@ This project implements an AI-powered smart pest detection system using a FOMO (
 - Outputs pest class + position + confidence  
 - Data displayed via serial monitor  
 
----
-
 ## 3. Hardware & Software Setup
+
+---
 
 ### 🧱 Hardware:
 - Arduino Nicla Vision (Edge AI device with camera)  
@@ -59,11 +68,11 @@ This project implements an AI-powered smart pest detection system using a FOMO (
 - Arduino IDE (deployment & serial monitoring)  
 - FOMO model (lightweight object detection)  
 
----
-
 ## 4. Data Collection & Dataset Preparation
 
-- Dataset sourced from research paper dataset: https://data.mendeley.com/datasets/hgz2n5jxhp/1  (publicly available)
+---
+
+- Dataset sourced from research paper dataset: <https://data.mendeley.com/datasets/hgz2n5jxhp/1>  (publicly available)
 - Focused on 3 classes:
   - Bactrocera dorsalis  
   - Bactrocera zonata
@@ -74,10 +83,12 @@ This project implements an AI-powered smart pest detection system using a FOMO (
 - Images include lab + field conditions
 
 
----
 ## 5. Model Design, Training & Evaluation
 
-## 🧠 Model Design: FOMO for TinyML
+---
+
+### 🧠 Model Design: FOMO for TinyML
+
 
 We use **Edge Impulse FOMO (Faster Objects, More Objects)** for TinyML-based object detection.
 
@@ -99,9 +110,9 @@ The model predicts **2 object classes** (non-background):
   - Bactrocera zonata  
 
 
----
-
 ## 🧪 Training Details (Edge Impulse)
+
+---
 
 The Keras-based object detection block in Edge Impulse uses a **FOMO-specific training script** with:
 
@@ -121,6 +132,8 @@ After training, an explicit **softmax** layer is added to ensure per-cell probab
 
 
 ## 📊 Model Compression & Performance
+
+---
 
 
 - The trained model was evaluated in both **quantized (int8)** and **unoptimized (float32)** formats to assess its suitability for deployment on edge devices like Arduino Nicla Vision.
@@ -159,6 +172,8 @@ Quantization reduces model size and memory usage drastically, enabling efficient
 
 ## 7. Model Deployment & On-Device Performance
 
+---
+
 ### 🚀 Deployment Steps:
 - Train model on Edge Impulse  
 - Export as Arduino library  
@@ -178,9 +193,9 @@ Quantization reduces model size and memory usage drastically, enabling efficient
 - No internet required  
 - Continuous frame-by-frame detection  
 
----
+## 8. System Prototype
 
-## 8. System Prototype 
+---
 
 ### 🧱 Hardware Prototype
 
@@ -209,9 +224,9 @@ A key enhancement of this system is the integration of a **solar panel-based pow
 
 > This integration makes the system a **self-sustaining smart pest monitoring solution**, combining Edge AI with renewable energy.
 
----
-
 ## 9. Conclusions & Limitations
+
+---
 
 ### ✅ Conclusions:
 - Successfully implemented Edge AI pest detection system  
@@ -223,9 +238,9 @@ A key enhancement of this system is the integration of a **solar panel-based pow
 - Lighting sensitivity   
 - No automatic pest removal system  
 
----
-
 ## 10. Future Work
+
+---
 
 - Add automatic trap mechanism (fan/suction)  
 - Develop cloud dashboard for monitoring  
@@ -233,9 +248,9 @@ A key enhancement of this system is the integration of a **solar panel-based pow
 - Implement pest counting logic  
 - Integrate IoT for remote alerts  
 
----
-
 ## 11. Challenges & Mitigation
+
+---
 
 ### ⚠️ Challenges:
 - Limited dataset  
@@ -249,15 +264,15 @@ A key enhancement of this system is the integration of a **solar panel-based pow
 - Optimized model for edge deployment  
 - Improved labeling and preprocessing  
 
----
-
 ## 📚 References
 
-- Hakim, A., Srivastava, A.K., Hamza, A. et al. Yolo-pest: an optimized YoloV8x for detection of small insect pests using smart traps. Sci Rep 15, 14029 (2025). https://doi.org/10.1038/s41598-025-97825-3
-- Dataset: https://data.mendeley.com/datasets/hgz2n5jxhp/1  (obtained from same paper)
 ---
 
+- Hakim, A., Srivastava, A.K., Hamza, A. et al. Yolo-pest: an optimized YoloV8x for detection of small insect pests using smart traps. Sci Rep 15, 14029 (2025). <https://doi.org/10.1038/s41598-025-97825-3>
+- Dataset: <https://data.mendeley.com/datasets/hgz2n5jxhp/1>  (obtained from same paper)
 ## 🧠 Key Innovation
+
+---
 
 > This project replaces heavy cloud-based AI models with a lightweight Edge AI system, enabling real-time, low-power, and scalable pest monitoring directly in agricultural fields.
 
@@ -267,9 +282,9 @@ You can explore the full impulse design and training configuration here:
 👉 **Public Edge Impulse Project:**
 [Link](https://studio.edgeimpulse.com/public/978052/latest)
 
----
-
 ## 👥 Team
+
+---
 
 ![Team](/edge-ai-26/assets/img/projects26/pest-detection/group_members.jpeg)
 
@@ -283,8 +298,10 @@ You can explore the full impulse design and training configuration here:
 
 ## 🎬 Demo (Real-Time Detection)
 
+---
+
 [Watch Video](https://drive.google.com/file/d/1K4FhcsBA7uPIIPDK51qnXIg_3JbTPAKb/view)
 
 For questions, feedback, or collaboration opportunities, please contact: **[samy@iisc.ac.in](mailto:samy@iisc.ac.in)**
-Course link: https://www.samy101.com/edge-ai-26/
+Course link: <https://www.samy101.com/edge-ai-26/>
 

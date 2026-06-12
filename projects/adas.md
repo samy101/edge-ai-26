@@ -5,19 +5,25 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge AI-Based Forward Collision Warning System (Mini ADAS)
 
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/30.png" width="400">
+</p>
+
 **Course Instructor**: Professor. Arjunan Pandarasamy
 
 **Team:** G. Praveen Kumar (27480) · Harshith L (25823) · Ramavath Ramadas (26671) — IISc Bangalore
 
-**GitHub:** https://github.com/pkgollapalli/Edge-AI-Based-Forward-Collision-Warning-System-Mini-ADAS-
+**GitHub:** <https://github.com/pkgollapalli/Edge-AI-Based-Forward-Collision-Warning-System-Mini-ADAS->
 
-**Demo Video:** https://drive.google.com/file/d/17ozvJKcGhI04Ee1GiV4t7_XwOYlB_EYV/view?usp=drive_link
+**Demo Video:** <https://drive.google.com/file/d/17ozvJKcGhI04Ee1GiV4t7_XwOYlB_EYV/view?usp=drive_link>
 
-**PPT Video:** https://drive.google.com/file/d/17GXxgrqTHWVSV52N6DIeY0MZCtL3C4Rx/view?usp=sharing
-
----
+**PPT Video:** <https://drive.google.com/file/d/17GXxgrqTHWVSV52N6DIeY0MZCtL3C4Rx/view?usp=sharing>
 
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 India records over 4.6 lakh road crashes per year, killing 1.7 lakh people annually.
 Rear-end collisions are among the top contributors — at 40 km/h a distracted driver covers 20 metres before reacting.
@@ -38,9 +44,9 @@ This system is **vehicle-agnostic**: the same ₹12,000 hardware deploys on a bi
 - Deploy a 3-model INT8 ensemble (COCO + DriveIndia + Pothole) at real-time speed on CPU-only hardware
 - Empirically prove edge-AI latency advantage over cloud using live ThingsBoard MQTT round-trip measurement
 
----
+## 2. Proposed Solution
 
-## 2. Proposed Solution (Overview)
+---
 
 Three INT8-quantised YOLOv8n models run in series on every camera frame.
 Detections are merged via class-wise NMS, combined with HC-SR04 ultrasonic distance and closing-speed to compute Time-To-Collision (TTC), and fused into a SAFE / WARN / BRAKE decision that drives GPIO LEDs and a buzzer.
@@ -70,9 +76,9 @@ Pi Camera Module 3  (640×640 frame)
 
 **Total pipeline: 227 ms · 1.8 FPS** (live measured, 3-model ensemble, Pi 5 CPU, no NPU)
 
----
-
 ## 3. Hardware & Software Setup
+
+---
 
 ### Hardware
 
@@ -101,9 +107,9 @@ Pi Camera Module 3  (640×640 frame)
 | Kaggle T4 GPU | Model training and fine-tuning (free tier) |
 | TensorFlow / Keras | MobileNetV2 compression study |
 
----
-
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 | Dataset | Source | Samples | Classes | Role |
 |---|---|---|---|---|
@@ -129,9 +135,9 @@ Split: 4,000 train / 1,000 val, packaged with 28-class `data.yaml` via `prep_kag
 ~2,000 images with bounding-box annotations labelled.
 Fine-tuning conducted starting from the peterhdd HuggingFace checkpoint.
 
----
-
 ## 5. Model Design, Training & Evaluation
+
+---
 
 ### MobileNetV2 Binary Classifier (Compression Study Baseline)
 
@@ -174,9 +180,9 @@ Standard Ultralytics YOLOv8n pretrained on COCO 2017, used as global-class detec
 - Base: peterhdd YOLOv8n pothole checkpoint, fine-tuned on team-labelled dataset
 - Recall: **4/6** test images — identical FP32 and INT8 (zero compression degradation)
 
----
-
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 ### MobileNetV2 — 8-Variant Compression Study
 
@@ -209,9 +215,9 @@ Standard Ultralytics YOLOv8n pretrained on COCO 2017, used as global-class detec
 > FP32 avg = **131 ms**, INT8 avg = **55 ms** — **2.4× speedup** confirmed live on ThingsBoard.
 > Full 3-model ensemble: **227 ms, ~1.8 FPS** (live stream measurement).
 
----
-
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 ### Deployment Steps
 
@@ -237,9 +243,9 @@ Standard Ultralytics YOLOv8n pretrained on COCO 2017, used as global-class detec
 - **ThingsBoard telemetry:** pushes `latency_fp32_ms`, `latency_int8_ms`, `decision`, `distance_cm`, `classes` per frame
 - **Edge vs cloud proof:** Cloud MQTT RTT ~280 ms vs edge pipeline ~175 ms — edge finishes before cloud even receives the frame
 
----
-
 ## 8. System Prototype
+
+---
 
 ### System Pipeline Flow
 
@@ -277,9 +283,9 @@ Standard Ultralytics YOLOv8n pretrained on COCO 2017, used as global-class detec
 
 ![Raspberry Pi 5 with Pi Camera, HC-SR04 sensors, LEDs and buzzer](/edge-ai-26/assets/img/projects26/adas/hardware_setup.jpeg)
 
----
-
 ## 9. Conclusions & Limitations
+
+---
 
 ### Key Outcomes
 
@@ -298,9 +304,9 @@ Standard Ultralytics YOLOv8n pretrained on COCO 2017, used as global-class detec
 - No adverse-condition testing (rain, night, fog)
 - PTQ causes 14% accuracy drop on small MobileNetV2 — QAT or KD required for small-model production deployment
 
----
-
 ## 10. Future Work
+
+---
 
 - **Full DriveIndia training:** 66,986 images, 100+ epochs → expected mAP50 > 0.75
 - **Cascade architecture:** 55 KB binary classifier as always-on power-gate — triggers YOLO ensemble only when a vehicle is ahead, tripling battery life for two-wheeler deployment
@@ -310,9 +316,9 @@ Standard Ultralytics YOLOv8n pretrained on COCO 2017, used as global-class detec
 - **Night mode:** IR illuminator + low-light model fine-tune
 - **Hailo-8L NPU (₹6,000):** same INT8 TFLite models — ~20 FPS vs current 1.8 FPS
 
----
-
 ## 11. Challenges & Mitigation
+
+---
 
 | Challenge | How We Addressed It |
 |---|---|
@@ -326,23 +332,23 @@ Standard Ultralytics YOLOv8n pretrained on COCO 2017, used as global-class detec
 | **ThingsBoard 401 auth error** | Token was not substituted at runtime — fixed by passing `--token` argument explicitly |
 | **No road access for outdoor validation** | ThingsBoard MQTT + live MJPEG stream used for indoor functional verification |
 
----
-
 ## 12. References
+
+---
 
 ### Datasets
 
-- CIFAR-10: A. Krizhevsky, "Learning Multiple Layers of Features from Tiny Images," 2009. https://www.cs.toronto.edu/~kriz/cifar.html
-- COCO 2017: T.-Y. Lin et al., "Microsoft COCO: Common Objects in Context," ECCV 2014. https://cocodataset.org
-- DriveIndia / TiAND: IIT Hyderabad TiHAN, 66,986 images, 24 classes. https://tihan.iith.ac.in
-- Pothole model base: peterhdd, HuggingFace. https://huggingface.co/peterhdd/pothole-detection-yolov8
+- CIFAR-10: A. Krizhevsky, "Learning Multiple Layers of Features from Tiny Images," 2009. <https://www.cs.toronto.edu/~kriz/cifar.html>
+- COCO 2017: T.-Y. Lin et al., "Microsoft COCO: Common Objects in Context," ECCV 2014. <https://cocodataset.org>
+- DriveIndia / TiAND: IIT Hyderabad TiHAN, 66,986 images, 24 classes. <https://tihan.iith.ac.in>
+- Pothole model base: peterhdd, HuggingFace. <https://huggingface.co/peterhdd/pothole-detection-yolov8>
 
 ### Frameworks & Tools
 
-- Ultralytics YOLOv8: https://github.com/ultralytics/ultralytics
-- TensorFlow Lite: https://tensorflow.org/lite
-- ThingsBoard IoT Platform: https://thingsboard.io
-- picamera2: https://github.com/raspberrypi/picamera2
+- Ultralytics YOLOv8: <https://github.com/ultralytics/ultralytics>
+- TensorFlow Lite: <https://tensorflow.org/lite>
+- ThingsBoard IoT Platform: <https://thingsboard.io>
+- picamera2: <https://github.com/raspberrypi/picamera2>
 
 ### Papers
 
@@ -358,9 +364,5 @@ Standard Ultralytics YOLOv8n pretrained on COCO 2017, used as global-class detec
 
 ### Course & Demo
 
-- CP 330 Edge AI, IISc Bangalore 2025–26: https://www.samy101.com/edge-ai-26/
-- Project demo video: https://drive.google.com/file/d/17ozvJKcGhI04Ee1GiV4t7_XwOYlB_EYV/view?usp=drive_link
-
----
-
-
+- CP 330 Edge AI, IISc Bangalore 2025–26: <https://www.samy101.com/edge-ai-26/>
+- Project demo video: <https://drive.google.com/file/d/17ozvJKcGhI04Ee1GiV4t7_XwOYlB_EYV/view?usp=drive_link>

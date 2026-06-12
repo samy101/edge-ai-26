@@ -6,13 +6,18 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # JanConnect: Edge AI Real-Time Speech Translation System
 
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/31.png" width="400">
+</p>
 
 **Authors:** Jai Parwani (27249), Venkatesh Moningi (25980), Naveen A B (26187)  
 **Code:** [GitHub Repository](https://github.com/jaiparwani-cyber/edge)
 
----
-
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 Communication barriers in multilingual regions pose significant challenges for effective public engagement, particularly in scenarios where real-time translation is critical. Politicians addressing public rallies in linguistically diverse regions like India often struggle to connect with audiences who speak different regional languages. Traditional solutions relying on cloud-based translation services suffer from latency issues, dependency on stable internet connectivity, and privacy concerns when handling sensitive political discourse.
 
@@ -39,9 +44,9 @@ This project addresses the need for a portable, privacy-preserving, and low-late
 - **Legal Proceedings**: Court proceedings and legal aid where translation must be private and cannot rely on cloud services
 - **Military/Border Operations**: Security personnel communicating with local civilians in sensitive zones where internet connectivity is restricted for security reasons
 
----
+## 2. Proposed Solution
 
-## 2. Proposed Solution (Overview)
+---
 
 Our system implements a three-stage neural pipeline for real-time speech translation, entirely deployed on Raspberry Pi 4 hardware. The solution processes live audio input, translates it to the target language, and synthesizes natural speech output—all within 3 seconds.
 
@@ -49,9 +54,9 @@ Our system pipeline captures live Hindi speech from a microphone, routes it thro
 
 The pipeline is designed for 16kHz mono PCM audio input and produces Malayalam speech output with an average end-to-end latency of about 3 seconds. All processing is maintained locally on the Raspberry Pi, with text outputs encoded in UTF-8 and audio forwarded directly to the speaker output without cloud dependency.
 
----
-
 ## 2.5 End-to-End Development Process
+
+---
 
 The development of JanConnect followed a structured pipeline to ensure reproducibility, model selection, and evaluation. Key steps included:
 
@@ -61,9 +66,10 @@ The development of JanConnect followed a structured pipeline to ensure reproduci
 - Packaging the system as a local service on Raspberry Pi with startup automation, model caching, and audio routing configured for low-latency performance.
 
 This approach ensured that the final deployment was reproducible, documented, and optimized for the hardware constraints of Raspberry Pi 4.
----
 
 ## 3. Hardware & Software Setup
+
+---
 
 ### Hardware Components
 
@@ -117,9 +123,9 @@ This approach ensured that the final deployment was reproducible, documented, an
 - Audio buffer size: 256 samples (reduces latency to ~16ms)
 - Model loading: Lazy loading with caching to minimize startup time
 
----
-
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 ### Data Sources
 
@@ -196,9 +202,9 @@ This approach ensured that the final deployment was reproducible, documented, an
 - **NMT**: Fine-tuned NLLB-600M on the IndiaAI Hindi-Malayalam benchmark dataset
 - **Integration Testing**: 100 end-to-end test cases covering diverse scenarios
 
----
-
 ## 5. Model Design, Training & Evaluation
+
+---
 
 ### Model Architectures
 
@@ -333,9 +339,9 @@ We fine-tuned the NLLB model within this repository using `train_nllb.py`, and w
 | TTS (gTTS) | 0.6s | 3.8/5 MOS | I/O + cache |
 | **Total** | **3.0s** | **82% E2E** | - |
 
----
-
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 ### Compression Techniques Applied
 
@@ -453,9 +459,9 @@ We applied a pruning pipeline to the Vosk Hindi model after adaptation, removing
 **Overall Assessment**:
 The compression techniques enabled deployment on edge hardware while maintaining >95% of original model quality. The 3-second latency target was achieved with acceptable accuracy for the use case.
 
----
-
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 The deployment strategy was designed around fully local operation on Raspberry Pi 4 hardware, with models stored on-device and inference executed in a single managed service. Model preparation included downloading the small Hindi Vosk speech recognition model and applying post-training quantization to the distilled NLLB-600M translation model to fit the 8GB memory envelope.
 
@@ -579,9 +585,9 @@ Performance optimization focused on CPU and audio settings rather than external 
 
 **Conclusion**: Edge deployment achieves lower latency, complete privacy, and cost-effectiveness for single-device use cases, while cloud solutions offer better scalability and higher accuracy with larger models.
 
----
-
 ## 8. System Prototype (Pictures / Figures)
+
+---
 
 ### Hardware Setup
 
@@ -704,9 +710,9 @@ The prototype includes conceptual monitoring for latency, CPU utilization, memor
 
 The enclosure is designed for portability and cooling, with ventilation for the Raspberry Pi, provisions for audio I/O, and status indicators for system readiness. The final form factor targets a compact and transportable field device while maintaining safe thermal performance.
 
----
-
 ## 9. Conclusions & Limitations
+
+---
 
 ### Key Outcomes
 
@@ -813,9 +819,9 @@ This project successfully demonstrates that **real-time multilingual speech tran
 
 Despite these limitations, the system successfully validates the core hypothesis: **edge AI can enable practical, privacy-preserving speech translation for field deployment** in scenarios where cloud connectivity is unavailable, expensive, or undesirable.
 
----
-
 ## 10. Future Work
+
+---
 
 ### Immediate Improvements (0-3 months)
 
@@ -952,9 +958,9 @@ Despite these limitations, the system successfully validates the core hypothesis
 **Phase 3 (Months 10-18)**: Model optimization + commercialization prep → small-scale manufacturing
 **Phase 4 (Year 2-3)**: Hybrid cloud + multimodal → full product launch
 
----
-
 ## 11. Challenges & Mitigation
+
+---
 
 ### Challenge 1: Achieving Real-Time Latency (<5s Target)
 
@@ -1123,9 +1129,9 @@ Despite these limitations, the system successfully validates the core hypothesis
 - Would benefit from professional benchmark dataset (FLORES-200 lacks Hindi-Malayalam speech)
 - Future work: Contribute collected data to open-source benchmarks
 
----
-
 ## 11. Additional Files for Complete AI Project
+
+---
 
 To fully demonstrate benchmarking and training, the following files should be added to the repository:
 - `train_nllb.py`: Script for fine-tuning NLLB on Hindi-Malayalam dataset (uses the IndiaAI benchmark dataset).
@@ -1137,9 +1143,9 @@ To fully demonstrate benchmarking and training, the following files should be ad
 
 These ensure the project claims training and benchmarking are verifiable.
 
----
-
 ## 12. References
+
+---
 
 ### Academic Papers & Research
 
@@ -1242,9 +1248,9 @@ These ensure the project claims training and benchmarking are verifiable.
 
 *This report documents the design, implementation, and evaluation of a real-time Hindi-to-Malayalam speech translation system deployed on Raspberry Pi 4 edge hardware. The project demonstrates the feasibility of privacy-preserving, low-latency multilingual communication for field applications without cloud dependency.*
 
----
-
 ## Team Contributions
+
+---
 - **Jai Parwani**: Led the overall system architecture and edge model integration, designed the STT→NMT→TTS inference pipeline, and directed comprehensive model evaluation and optimization efforts to ensure real-time performance on resource-constrained hardware.
 - **Naveen A B**: Led audio preprocessing, TTS integration, and model quantization, prepared datasets and evaluation workflows, and contributed to deployment validation and documentation, ensuring robust audio handling and model compression for edge deployment.
 - **Venkatesh Moningi**: Led hardware deployment and field implementation, designed the Raspberry Pi audio interface, and validated the end-to-end system in realistic deployment scenarios, focusing on portability and reliability in diverse environments.

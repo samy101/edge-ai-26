@@ -4,6 +4,13 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge Deployed Crack Detection
+
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/34.png" width="400">
+</p>
+
 **Team:** Niyati Jawariya, Priyanshi Dubey.  
 **Code:** [GitHub Repository](https://github.com/priyanshiD18/crack-detection-edge)
 
@@ -15,6 +22,8 @@ Base model: YOLOv8n — optimised end-to-end for on-device deployment
 
 
 # 1. Introduction
+
+---
 
 Buildings age. Cracks, spalling, and surface defects appear over time and, if left unmonitored, become safety hazards on bridges, dams, facades, and tunnels. Today most of this inspection is still done manually — an inspector walking a site with a clipboard, or a rope-access team scaling a tall structure. It is slow, expensive, inconsistent across inspectors, and dangerous in confined or elevated spaces.
 
@@ -34,6 +43,8 @@ This project addresses all three. We trained a YOLOv8n crack detector on the BD3
 
 # 2. Project Overview
 
+---
+
 The project is structured as a reproducible end-to-end pipeline. We start with model selection — comparing three lightweight detector candidates (YOLOv8n, YOLOv8s, YOLOv10n) on the same crack dataset and picking the best base. We then take the chosen model through five optimisation stages, ranking the resulting candidates with a custom Raspberry-Pi-aware metric (PiScore), and pick the best (model, resolution) pair to deploy. The final artefact is a 3.23 MB TFLite file that runs on the Pi at real-time framerates.
 
 ## What this report covers
@@ -52,6 +63,8 @@ The project is structured as a reproducible end-to-end pipeline. We start with m
 
 # 3. Hardware Requirements
 
+---
+
 | Component | Role | Notes |
 |---|---|---|
 | VOLTA Bot Sync | Autonomous mobile platform | Carries the compute stack and camera; supports manual override |
@@ -69,6 +82,8 @@ The project is structured as a reproducible end-to-end pipeline. We start with m
 
 # 4. Software Requirements
 
+---
+
 | Tool | Version | Purpose |
 |---|---|---|
 | Visual Studio Code | 1.x | Primary development environment |
@@ -84,11 +99,13 @@ Inference on the Pi uses the TensorFlow Lite Python interpreter with the XNNPACK
 
 # 5. Dataset Collection and Pre-processing
 
+---
+
 ## 5.1 Source
 
-- Primary repository: BD3 Dataset on GitHub — https://github.com/Praveenkottari/BD3-Dataset
+- Primary repository: BD3 Dataset on GitHub — <https://github.com/Praveenkottari/BD3-Dataset>
 
-- Mirror: BD3 Dataset on Kaggle — https://www.kaggle.com/datasets/praveenkottari/bd3-dataset-for-building-defect-detection
+- Mirror: BD3 Dataset on Kaggle — <https://www.kaggle.com/datasets/praveenkottari/bd3-dataset-for-building-defect-detection>
 
 - BD3 is a building-defect detection dataset that contains annotated images of various surface defects such as cracks, peeling, stains, and spalling. The images are collected from real building surfaces under different conditions, including varying lighting, textures, and crack widths, which helps improve model generalization. The dataset includes both original images and augmented images, where transformations like rotation, flipping, and color adjustments are applied to increase diversity and robustness. Although BD3 contains multiple defect classes, in our project we focus only on crack detection. So we use major crack, minor crack, and normal images for training, converting it into a simplified detection problem.
 
@@ -139,6 +156,8 @@ We staged the dataset through Roboflow for cleanup, splitting, and augmentation.
 
 # 6. Model Comparison: YOLOv8n vs YOLOv8s vs YOLOv10n
 
+---
+
 Before optimisation we trained three lightweight detector candidates on the same dataset splits and evaluated them on the held-out test set (174 images / 187 crack instances) to identify the best base model. All three were trained from official pretrained COCO weights for 80 epochs at 672×672 input resolution with identical augmentation, batch size 8, and learning rate 1e-3. Latency and FPS below are measured with batch size 1 to give a clear per-image latency comparison; the CPU latencies reported later in the optimisation section are measured on the deployment-target Pi/ desktop CPU stack with TFLite + XNNPACK.
 
 ## 6.1 Test-set results
@@ -175,6 +194,8 @@ The plots below were generated from the comparison notebook (train_compare 1.ipy
 
 # 7. Why YOLOv8n — and Why It Quantises Well
 
+---
+
 YOLOv8n was selected as the base model not only because it leads the comparison on accuracy, latency, and size simultaneously, but also because its architecture is well-suited to the optimisation pipeline that follows. Several architectural choices in YOLOv8 make it a clean target for INT8 quantisation:
 
 - Standard Conv-BN-SiLU blocks throughout the backbone. No deformable convs, no exotic attention mechanisms, no SE blocks — every layer maps to a TFLite kernel that has a well-tested INT8 implementation.
@@ -192,6 +213,8 @@ YOLOv8n was selected as the base model not only because it leads the comparison 
 Together these properties mean YOLOv8n typically loses less than half a mAP point under post-training INT8 quantisation, and recovers fully when fine-tuned with quantisation-aware training (QAT). Larger or more exotic detectors require either FP16 (less compression) or per-layer mixed-precision schemes that are harder to deploy on a Pi.
 
 # 8. Optimisation Pipeline
+
+---
 
 Once YOLOv8n is selected, the model goes through a five-stage optimisation pipeline. Stage 0 establishes the FP32 reference. Stages 1–3 explore three orthogonal compression strategies at 640×640 (the nominal training resolution). Stage 4 sweeps the input resolution on the top-2 candidates from the first round to find the best (model, resolution) pair for Raspberry Pi.
 
@@ -250,6 +273,8 @@ The top-2 pipelines from Stages 1–3 (ranked by PiScore) are re-exported and be
 
 # 9. PiScore Metric
 
+---
+
 Picking a single "best" model from the candidate pool is a multi-objective decision — accuracy, latency, and size all matter, and they generally trade against each other. Rather than choosing arbitrarily we define a single composite score, PiScore, that combines the relevant metrics with weights chosen for Raspberry Pi deployment:
 
 | Metric | Weight | Direction |
@@ -262,6 +287,8 @@ Picking a single "best" model from the candidate pool is a multi-objective decis
 Each metric is min-max normalised across the candidate pool, then weighted and summed to produce a final score in [0, 1]. The candidate with the highest PiScore wins. Accuracy is weighted heaviest because the candidate pool already consists of small, fast quantised models — accuracy is the most discriminating axis. For the Stage 4 resolution sweep we shift to a simpler 0.7 / 0.3 accuracy/latency split so the resolution choice is dominated by the two metrics that actually move with image size.
 
 # 10. Results
+
+---
 
 ## 10.1 Stage 1–3 results (640×640)
 
@@ -307,6 +334,8 @@ S2_QAT_INT8 @ 416 px wins on the final PiScore by combining near-baseline accura
 
 # 11. Final Selected Model
 
+---
+
 WINNER: S2_QAT_INT8 @ 416 px
 
 QAT-trained, INT8-quantised YOLOv8n re-exported and validated at a 416×416 input resolution.
@@ -325,6 +354,8 @@ QAT-trained, INT8-quantised YOLOv8n re-exported and validated at a 416×416 inpu
 The deployed artefact is S2_QAT_INT8_r416.tflite (3.23 MB). At 4.93 ms per frame on a 4-thread Linux CPU, the model leaves headroom for the camera capture, pre-processing, and post-processing on the Pi 5 while still hitting real-time framerates for live navigation.
 
 # 12. Deployment
+
+---
 
 ## 12.1 On-device runtime
 
@@ -351,6 +382,8 @@ Frames are captured from the Intel RealSense D455 at 1280×720, then letter-boxe
 
 # 13. Conclusion and Future Work
 
+---
+
 We delivered a deployable real-time crack detector for the VOLTA Bot Sync platform, taking a YOLOv8n FP32 model from 6.25 MB / 38.6 ms to 3.23 MB / 4.93 ms — a 1.93× size reduction and 7.83× latency reduction — with no measurable accuracy loss. The end-to-end pipeline (model selection → PTQ → QAT → pruning → resolution sweep) is reproducible and the PiScore metric makes the final model selection auditable.
 
 ## Future work
@@ -365,16 +398,18 @@ We delivered a deployable real-time crack detector for the VOLTA Bot Sync platfo
 
 # 14. References
 
-- P. Kottari, BD3: Building Defect Detection Dataset. https://github.com/Praveenkottari/BD3-Dataset
+---
 
-- P. Kottari, BD3 on Kaggle. https://www.kaggle.com/datasets/praveenkottari/bd3-dataset-for-building-defect-detection
+- P. Kottari, BD3: Building Defect Detection Dataset. <https://github.com/Praveenkottari/BD3-Dataset>
 
-- Ultralytics, YOLOv8 documentation. https://docs.ultralytics.com
+- P. Kottari, BD3 on Kaggle. <https://www.kaggle.com/datasets/praveenkottari/bd3-dataset-for-building-defect-detection>
 
-- A. Wang et al., YOLOv10: Real-Time End-to-End Object Detection. https://github.com/THU-MIG/yolov10
+- Ultralytics, YOLOv8 documentation. <https://docs.ultralytics.com>
 
-- TensorFlow, Post-training quantization. https://www.tensorflow.org/lite/performance/post_training_quantization
+- A. Wang et al., YOLOv10: Real-Time End-to-End Object Detection. <https://github.com/THU-MIG/yolov10>
+
+- TensorFlow, Post-training quantization. <https://www.tensorflow.org/lite/performance/post_training_quantization>
 
 - W. Cai, L. Zhang, L. Huang, X. Yu, and Z. Zou, *TEA-bot: A Thermography Enabled Autonomous Robot for Detecting Thermal Leaks of HVAC Systems in Ceilings*, Proc. ACM BuildSys, 2022.
 
-- Volta Robots, Volta Bot — Autonomous Mobile Robot Platform Documentation. https://www.voltarobots.com/
+- Volta Robots, Volta Bot — Autonomous Mobile Robot Platform Documentation. <https://www.voltarobots.com/>

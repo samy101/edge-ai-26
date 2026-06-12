@@ -5,11 +5,18 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # EdgeProbe: Investigating Binary Neural Network Acceleration on a Constrained FPGA — From Knowledge Distillation to Streaming Hardware Inference
 
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/fpga/dataset_samples.png" width="400">
+</p>
+
 **Team:** Rayan Gosh, Mehuli Chatterjee, Ayush Sagar, Tanushri Naik.  
 **Code:** [GitHub Repository](https://github.com/tanushrinaik-wq/binary-cnn-fpga)
 
+## 1. Problem Statement, Motivation & Objectives
 
-## 1. Problem Statement, Motivation & Objectives 
+---
 
 This project investigates how a compact image-classification pipeline can be reworked for edge deployment when compute, memory, and latency budgets are tight. Instead of keeping the full inference path in floating-point software, the project trains a binary-friendly convolutional model and maps its inference stages to an RTL accelerator built around XNOR and popcount operations. The immediate classification task is a binary hand-gesture decision: `rock` versus `not-rock` using resized grayscale images.
 
@@ -23,6 +30,8 @@ The motivation is to study an end-to-end edge AI flow rather than stopping at mo
 
 ## 2. Proposed Solution
 
+---
+
 The system is built as a combined software-and-hardware pipeline. Public image data is preprocessed and remapped into a binary classification problem, a teacher model is trained in TensorFlow, and a compact BCNN student is trained with STE-based binary weights and binary activations. After training, the student parameters are converted into hardware-friendly artifacts for the RTL design.
 
 The full pipeline is:
@@ -32,6 +41,8 @@ The full pipeline is:
 At the RTL level, the accelerator receives grayscale bytes over SPI, thresholds them into 1-bit activations, forms `3 x 3` windows with line buffers, performs two binary convolution stages, applies global pooling, and emits a final binary class decision.
 
 ## 3. Hardware & Software Setup
+
+---
 
 ### Hardware
 
@@ -51,6 +62,8 @@ At the RTL level, the accelerator receives grayscale bytes over SPI, thresholds 
 - Quartus II 13.0 as the intended synthesis flow for Cyclone IV
 
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 The project uses the public Rock-Paper-Scissors dataset from TensorFlow Datasets and remaps it into a binary task:
 
@@ -78,6 +91,8 @@ Preprocessing steps:
 - threshold pixels to 1-bit in hardware using `pixel_bin_thr = 128`
 
 ## 5. Model Design, Training & Evaluation
+
+---
 
 The software pipeline uses a teacher-student setup. The teacher is a `MobileNetV2` backbone with a lightweight classification head. The student is a small BCNN with two binary convolution layers followed by global average pooling and a dense classifier.
 
@@ -111,6 +126,8 @@ Evaluation notes:
 
 ## 6. Model Compression & Efficiency Metrics
 
+---
+
 Compression and efficiency techniques used:
 
 - binary weights with Straight-Through Estimator training
@@ -141,6 +158,8 @@ Trade-offs observed:
 
 ## 7. Model Deployment & On-Device Performance
 
+---
+
 Deployment in this repository is simulation-first. The notebook exports layer parameters into `.hex` and `.mif` files, and the Verilog design consumes those files in simulation. The checked-in output bundle now includes both RTL-facing hex files and Quartus-oriented memory files.
 
 Deployment steps used here:
@@ -162,6 +181,8 @@ Because the current repository evidence is simulation-oriented, this section dem
 
 ## 8. System Prototype (Pictures / Figures)
 
+---
+
 Available figures in the repository:
 
 - Dataset overview: [dataset_samples.png](/edge-ai-26/assets/img/projects26/fpga/dataset_samples.png)
@@ -177,11 +198,15 @@ Repository status of hardware photos:
 
 ## 9. Conclusions & Limitations
 
+---
+
 The project successfully demonstrates a coherent edge AI workflow from public dataset preprocessing through teacher-student training to binary export and RTL simulation. The generated artifact bundle is consistent with the documented accelerator structure, and the binary software reference shows a meaningful CPU-side speedup compared with float Keras inference.
 
 The main limitation is that the repository currently proves the flow primarily through exported artifacts and RTL simulation, not through a fully measured FPGA deployment. Quartus synthesis results, board-level latency, power, and hardware photos are not yet included. In addition, final accuracy metrics are computed by the notebook but not preserved as machine-readable summary files in the current artifact bundle.
 
 ## 10. Future Work
+
+---
 
 - Add a reproducible `requirements.txt` or environment file for the notebook.
 - Store final accuracy and classification metrics in JSON or CSV alongside the timing artifacts.
@@ -192,6 +217,8 @@ The main limitation is that the repository currently proves the flow primarily t
 
 ## 11. Challenges & Mitigation
 
+---
+
 - Mapping a float-trained image model to a hardware-friendly binary inference path was addressed with STE-based binary training, knowledge distillation, alpha correction, and a refit dense head.
 - Aligning ML export artifacts with Verilog memory-file expectations was addressed by organizing the generated bundle into `hex/`, `mem/`, and `metadata/` and preserving an RTL manifest.
 - Managing latency and complexity on constrained hardware was addressed by keeping the student network compact at `8` and `16` binary filters with a `32 x 32` grayscale input.
@@ -200,10 +227,12 @@ The main limitation is that the repository currently proves the flow primarily t
 
 ## 12. References
 
-- TensorFlow Datasets, Rock-Paper-Scissors catalog: https://www.tensorflow.org/datasets/catalog/rock_paper_scissors
-- Laurence Moroney, Rock-Paper-Scissors dataset homepage: http://laurencemoroney.com/rock-paper-scissors-dataset
-- TensorFlow / Keras documentation: https://www.tensorflow.org/
-- MobileNetV2 paper: https://arxiv.org/abs/1801.04381
-- XNOR-Net paper: https://arxiv.org/abs/1603.05279
+---
+
+- TensorFlow Datasets, Rock-Paper-Scissors catalog: <https://www.tensorflow.org/datasets/catalog/rock_paper_scissors>
+- Laurence Moroney, Rock-Paper-Scissors dataset homepage: <http://laurencemoroney.com/rock-paper-scissors-dataset>
+- TensorFlow / Keras documentation: <https://www.tensorflow.org/>
+- MobileNetV2 paper: <https://arxiv.org/abs/1801.04381>
+- XNOR-Net paper: <https://arxiv.org/abs/1603.05279>
 - Project notebook: [bcnn_ste_kd.ipynb](/C:/Users/Rayaan_Ghosh/Desktop/binary-cnn-fpga/bcnn_ste_kd.ipynb)
 - RTL design notes: [RTL Design Doc.md](</C:/Users/Rayaan_Ghosh/Desktop/binary-cnn-fpga/docs/RTL Design Doc.md>)

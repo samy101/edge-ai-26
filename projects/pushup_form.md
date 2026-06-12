@@ -5,13 +5,15 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge AI-Based Real-Time Exercise Form Detection System (Push-ups + Squats)
 
+---
+
 **Team:** Anjesh (MTech CSA, IISc Bangalore) · Ashish Nambiar (MTech CSA, IISc Bangalore) · Garima Papnai (MTech AI, IISc Bangalore) · Shubham Bijalwan (MTech Smart Manufacturing, IISc Bangalore)  
 
 **Code:** [GitHub Repository](https://github.com/AshishARN/Realtime-Exercise-Form-Detection-System)
 
----
-
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 Fitness form mistakes during push-ups and squats are a leading cause of workout-related injuries and reduced training effectiveness. Real-time feedback typically requires gym trainers or expensive cloud-connected systems — neither of which is practical for everyday home use. The goal of this project is to build a **low-cost, portable, fully offline** solution that runs entirely on an embedded device.
 
@@ -30,9 +32,9 @@ This project develops a real-time, on-device exercise form detection system usin
 - Deploy models on Arduino Nicla Vision (STM32H747) using the EON Compiler
 - Build an on-device web dashboard for live feedback with model switching
 
----
+## 2. Proposed Solution
 
-## 2. Proposed Solution (Overview)
+---
 
 The system implements a complete Edge AI pipeline — from image capture to on-device classification and live feedback:
 
@@ -59,9 +61,9 @@ The Arduino Nicla Vision captures frames, converts them to the Edge Impulse floa
 | Push-up | Binary classification | `bad` (incorrect form), `good` (correct form) |
 | Squat | Multi-class classification | `badform`, `deep`, `shallow` |
 
----
-
 ## 3. Hardware & Software Setup
+
+---
 
 **Hardware:**
 
@@ -84,9 +86,9 @@ The Arduino Nicla Vision captures frames, converts them to the Edge Impulse floa
 | Arduino IDE | Firmware (.ino) development and flashing (alternative deployment path) |
 | Google Colab | Burst-frame extraction pipeline (video → labeled image dataset) |
 
----
-
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 The dataset is a combination of multiple sources to improve robustness across lighting conditions, environments, and body variations:
 
@@ -136,9 +138,9 @@ Side-view push-up videos (correct and incorrect form) were recorded and converte
 | Learning | Transfer Learning (MobileNetV1) | Transfer Learning (MobileNetV1) |
 | Output features | 2 classes: bad, good | 3 classes: badform, deep, shallow |
 
----
-
 ## 5. Model Design, Training & Evaluation
+
+---
 
 Both models use **MobileNetV1** as the backbone with transfer learning (ImageNet pretrained weights fine-tuned on exercise data), implemented via Edge Impulse's Transfer Learning block.
 
@@ -226,9 +228,9 @@ Both models use **MobileNetV1** as the backbone with transfer learning (ImageNet
 | Push-up | Binary | 2 | **85.9%** | 0.86 | 0.86 |
 | Squat | Multi-class | 3 | **79.2%** | 0.80 | 0.93 |
 
----
-
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 **Technique: INT8 Post-Training Quantization** via Edge Impulse EON Compiler (RAM-optimized)
 
@@ -249,9 +251,9 @@ All weights and activations are quantized from 32-bit float to 8-bit integer, en
 - Negligible accuracy loss between INT8 and Float32 on validation set
 - EON Compiler further reduces footprint beyond standard TFLite quantization
 
----
-
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 **Deployment Steps:**
 1. Train and validate models on Edge Impulse Studio (cloud)
@@ -271,9 +273,9 @@ All weights and activations are quantized from 32-bit float to 8-bit integer, en
 
 Both models run comfortably within Nicla Vision hardware limits (1 MB RAM, 2 MB Flash). At 42–53 ms per inference, the system achieves approximately **19–24 classifications per second** — sufficient for real-time exercise monitoring.
 
----
-
 ## 8. System Prototype
+
+---
 
 ### System Pipeline
 
@@ -311,9 +313,9 @@ The firmware hosts a lightweight web server accessible from any phone browser on
 
 The system was demonstrated live with a person performing push-ups in front of the Nicla Vision (placed on the floor). The phone browser showed real-time classification with confidence scores updating with each inference cycle. A demo video is available in the repository.
 
----
-
 ## 9. Conclusions & Limitations
+
+---
 
 **Conclusions:**
 - Successfully deployed a real-time Edge AI exercise form detection system on the Arduino Nicla Vision with no cloud dependency
@@ -330,9 +332,9 @@ The system was demonstrated live with a person performing push-ups in front of t
 - Deep vs. shallow squat confusion (25%) due to high visual similarity at intermediate depths
 - Limited environmental diversity in training data (backgrounds, body types, angles)
 
----
-
 ## 10. Future Work
+
+---
 
 - Add more exercises (lunges, planks, deadlifts, burpees)
 - Use **pose estimation (keypoints)** — e.g., MediaPipe Pose — for skeleton-based form analysis
@@ -342,9 +344,9 @@ The system was demonstrated live with a person performing push-ups in front of t
 - Expand dataset with diverse users, lighting, and camera angles
 - Explore temporal models (TCN, LSTM) using IMU data for motion-aware classification
 
----
-
 ## 11. Challenges & Mitigation
+
+---
 
 | Challenge | Impact | Mitigation Applied |
 |-----------|--------|--------------------|
@@ -355,14 +357,14 @@ The system was demonstrated live with a person performing push-ups in front of t
 | Deep vs. shallow squat class overlap | 25% misclassification | Increased epochs to 80; acknowledged as fundamental visual ambiguity |
 | Sensitivity to lighting during live demo | Inconsistent inference results | Controlled demo environment; noted as key limitation for future work |
 
----
-
 ## 12. References
 
-1. **MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications** — Howard et al., 2017 — https://arxiv.org/abs/1704.04861
-2. **TensorFlow Lite Micro** — https://www.tensorflow.org/lite/microcontrollers
-3. **Edge Impulse Documentation** — https://docs.edgeimpulse.com
-4. **Arduino Nicla Vision Documentation** — https://docs.arduino.cc/hardware/nicla-vision/
-5. **OpenMV IDE** — https://openmv.io/
-6. **Push-up Dataset (Kaggle)** — https://www.kaggle.com/code/youssefemad004/pushups-data-videopreprocssing-data
-7. **Squat Dataset (Zenodo)** — Teng, C. (2025). Squat Dataset [Data set]. Zenodo. https://doi.org/10.5281/zenodo.17558630
+---
+
+1. **MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications** — Howard et al., 2017 — <https://arxiv.org/abs/1704.04861>
+2. **TensorFlow Lite Micro** — <https://www.tensorflow.org/lite/microcontrollers>
+3. **Edge Impulse Documentation** — <https://docs.edgeimpulse.com>
+4. **Arduino Nicla Vision Documentation** — <https://docs.arduino.cc/hardware/nicla-vision/>
+5. **OpenMV IDE** — <https://openmv.io/>
+6. **Push-up Dataset (Kaggle)** — <https://www.kaggle.com/code/youssefemad004/pushups-data-videopreprocssing-data>
+7. **Squat Dataset (Zenodo)** — Teng, C. (2025). Squat Dataset [Data set]. Zenodo. <https://doi.org/10.5281/zenodo.17558630>
