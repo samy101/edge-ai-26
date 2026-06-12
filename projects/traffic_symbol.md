@@ -7,8 +7,8 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 
 ---
 
-<p align=”center”>
-  <img src=”/edge-ai-26/assets/img/projects26/19.jpg” width=”400”>
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/19.jpg" width="400">
 </p>
 
 **Team:** Sana Sreyas, Abel Thomas Titus, Joffin Jacob, Simhadri Vishnukumar  
