@@ -4,15 +4,18 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Safety Helmet Detection System
+
+---
 **Team:** Chhavi Singhal, Thivya Tharshini T  
 **Code:** [GitHub Repository](https://github.com/chhavi-singhal/Edge_Ai_Project/)  
 **Platform:** Raspberry Pi 4 Model B (4 GB RAM)  
 **Model:** YOLOv8m fine-tuned, INT8 TFLite
 
 
----
 
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 Construction and industrial sites must enforce Personal Protective Equipment (PPE) compliance, especially the use of safety helmets, to avoid head injuries and fatalities. Traditionally, human safety officers perform periodic visual checks for compliance. This method has limitations. It cannot provide constant coverage across the entire site, is subject to human fatigue and mistakes, and does not scale well to large or multi-zone worksites. Missing even one violation can lead to serious injury or legal issues for the site operator.
 
@@ -26,9 +29,10 @@ This project aims to replace manual monitoring with an always-on, automated AI-p
 - Show end-to-end operation — from raw camera frame to annotated on-screen alert — entirely offline on the edge device without relying on the cloud.
 - Measure the system's inference latency, throughput (FPS), and resource usage, and identify ways to improve it in the future.
 
----
 
 ## 2. Proposed Solution (Overview)
+
+---
 
 The system is a computer vision pipeline that continuously captures frames from a Raspberry Pi Camera Module. It processes these frames with a fine-tuned YOLOv8m object detector compressed to INT8 TFLite format, displaying results in real time on an HDMI-connected monitor. Each frame is analyzed to identify all people in the scene and classify each detected head region as either **Hardhat**  or **NO-Hardhat** . The system keeps cumulative detection counts and allows snapshot capture for audit purposes.
 
@@ -61,9 +65,10 @@ The system is a computer vision pipeline that continuously captures frames from 
 
 The system consists of two Python modules: `helmet_detector.py`, which is a reusable, hardware-independent `HardHatDetector` class containing all inference logic, and `livestream.py`, which runs the application loop that manages the camera, display, keyboard input, and session state.
 
----
 
 ## 3. Hardware & Software Setup
+
+---
 
 ### Hardware
 
@@ -90,9 +95,10 @@ The system consists of two Python modules: `helmet_detector.py`, which is a reus
 * Training Environment : Python 3.10, Google Colab 
 * Deployment Environment : Python 3.11, Raspberry Pi OS 
 
----
 
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 ### Data Source
 
@@ -116,9 +122,10 @@ The dataset was sourced from **Roboflow Universe** — specifically the *Hard Ha
 4. **Dynamic augmentation during training** — Mosaic (1.0), Mixup (0.1), CopyPaste (0.1), random horizontal flip, HSV color jitter — applied on the fly by the Ultralytics data loader, not pre-applied to disk.
 5. **Normalization** — At inference time, pixel values were divided by 255.0 to fall within the [0.0, 1.0] float32 range. Input shape was expanded to [1, 640, 640, 3] for TFLite batch dimension.
 
----
 
 ## 5. Model Design, Training & Evaluation
+
+---
 
 ### Model Architecture
 
@@ -160,9 +167,10 @@ The model was evaluated on the held-out test split using `model.val()`:
 
 The high recall (95.2%) is crucial for this safety application, as the model misses fewer than 5 out of 100 real violations, reducing the risk of undetected non-compliance.
 
----
 
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 ### Technique: Post-Training INT8 Quantization
 
@@ -198,9 +206,10 @@ Ultralytics performs post-training quantization (PTQ) during export. All weight 
 
 - **No XNNPACK delegate enabled**: The default TFLite runtime was used without the XNNPACK or NNAPI acceleration delegates. This means the ARM NEON SIMD units on the Pi were not fully used, which represents a known optimization gap.
 
----
 
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 ### Deployment Steps
 
@@ -234,9 +243,10 @@ The system works in a continuous loop. Each iteration captures a frame, runs det
 
 The 0.5 FPS throughput works for monitoring a fixed-camera entrance where a person pauses at a checkpoint. However, it does not support fast motion tracking in an open area.
 
----
 
 ## 8. System Prototype (Pictures / Figures)
+
+---
 
 > *Note: Actual photos of the hardware setup and live detection output will be inserted here in the final submission. The descriptions below indicate what each figure should show.*
 
@@ -245,9 +255,10 @@ The 0.5 FPS throughput works for monitoring a fixed-camera entrance where a pers
 **Figure 2 — Training loss curves**: ![alt text](image.png)
 
 **Figure 3 — Saved snapshot**: ![alt text](frame_0008_20260422_181836.jpg)
----
 
 ## 9. Conclusions & Limitations
+
+---
 
 ### Key Outcomes
 
@@ -264,9 +275,10 @@ This project shows a complete end-to-end Edge AI pipeline for real-time PPE comp
 - **Fixed camera position**: The system assumes a controlled field of view. Performance drops with extreme angles, poor lighting, or heavy occlusion.
 
 
----
 
 ## 10. Future Work
+
+---
 
 - **Picamera2 for continuous streaming**: Replace `rpicam-still` subprocess calls with the Picamera2 library to keep the camera open and deliver frames as NumPy arrays directly in RAM. This would remove ~700 ms of process startup time per frame.
 
@@ -278,9 +290,10 @@ This project shows a complete end-to-end Edge AI pipeline for real-time PPE comp
 
 - **Alert system integration**: Add GPIO-driven buzzer, LED indicator, or network webhook to send real-time alerts to a site supervisor's phone when a violation occurs.
 
----
 
 ## 11. Challenges & Mitigation
+
+---
 
 | Challenge | Description | Mitigation |
 |---|---|---|
@@ -291,16 +304,17 @@ This project shows a complete end-to-end Edge AI pipeline for real-time PPE comp
 | Class imbalance in dataset | Hardhat instances are about 2.7 times more common than NO-Hardhat, risking lower recall on the minority class. | Ultralytics augmentation (Mosaic, CopyPaste) artificially increases minority class variety. Per-class AP was monitored: NO-Hardhat AP@0.50 = 97.4% confirmed there was no recall drop. |
 | Coordinate space mismatch | TFLite outputs normalized coordinates in a 640×640 model input space instead of the original image resolution. | Calculated `scale_x = orig_width / 640` and `scale_y = orig_height / 640` in `preprocess_image()` and applied it at decode time. |
 
----
 
 ## 12. References
 
+---
+
 1. **Ultralytics YOLOv8 Documentation** — Model training, export, and validation.
-   https://docs.ultralytics.com
+   <https://docs.ultralytics.com>
 
 2. **Roboflow Universe — Hard Hat Universe Dataset** — Labeled PPE dataset used for training.
-   https://universe.roboflow.com/hard-hat-universe
+   <https://universe.roboflow.com/hard-hat-universe>
 
 3. **TensorFlow Lite Runtime** — Interpreter API and INT8 inference on ARM.
-   https://www.tensorflow.org/lite/guide/python
+   <https://www.tensorflow.org/lite/guide/python>
 
