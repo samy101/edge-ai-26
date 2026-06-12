@@ -5,6 +5,8 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # EdgeLLM: Efficient Deployment of Large Language Models on Resource-Constrained Edge Devices
 
+---
+
 **Aryan Kumar Singh (26769) · Bhavesh Sukhariya (26042) · Kavya Duvvuri (27494) · Lavish Singh (26318)**.  
 **Code:** [GitHub Repository](https://github.com/KavyaD02/EdgeLLM)
 
@@ -12,15 +14,17 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 
 🔗 [https://github.com/KavyaD02/EdgeLLM](https://github.com/KavyaD02/EdgeLLM)
 
----
 
 ## Abstract
 
-LLMs exhibit impressive functionality but are impractical for deployment outside cloud environments owing to massive memory and computational overhead. This paper introduces **EdgeLLM**, a full-fledged model compression framework to make LLMs practical on commodity edge devices such as the Raspberry Pi 5. We propose a three-step compression pipeline tailored to the Qwen2-0.5B model: (1) *SparseGPT with Layer-Aware Sparsity Sensitivity (LASS)*, an efficient sparse pruning algorithm that assigns sparsity budgets to individual layers according to their output tolerance to sparsity; (2) *Knowledge Distillation (KD)*, which mitigates accuracy loss resulting from sparse pruning; and (3) *SG-GPTQ with NF4 4-bit quantisation*, an effective compression technique that scales down the model size by 4.4× to 215 MB from the 942 MB of the original model. The final model demonstrates a perplexity score of 21.58 on WikiText-2, merely +3.49 more than the baseline model.
-
 ---
 
+LLMs exhibit impressive functionality but are impractical for deployment outside cloud environments owing to massive memory and computational overhead. This paper introduces **EdgeLLM**, a full-fledged model compression framework to make LLMs practical on commodity edge devices such as the Raspberry Pi 5. We propose a three-step compression pipeline tailored to the Qwen2-0.5B model: (1) *SparseGPT with Layer-Aware Sparsity Sensitivity (LASS)*, an efficient sparse pruning algorithm that assigns sparsity budgets to individual layers according to their output tolerance to sparsity; (2) *Knowledge Distillation (KD)*, which mitigates accuracy loss resulting from sparse pruning; and (3) *SG-GPTQ with NF4 4-bit quantisation*, an effective compression technique that scales down the model size by 4.4× to 215 MB from the 942 MB of the original model. The final model demonstrates a perplexity score of 21.58 on WikiText-2, merely +3.49 more than the baseline model.
+
+
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 The fast development of LLMs has led to the creation of systems with impressive abilities — ranging from code generation to multilingual reasoning — but their usage has been limited to cloud-based implementations. Even smaller production-size open models consume several gigabytes of memory and require GPU-based computation for interactive inference. Such resource requirements pose formidable obstacles for tasks that require fast inference, privacy protection, or offline inference capabilities — characteristics typical of edge applications, IoT implementations, and mobile apps.
 
@@ -34,9 +38,10 @@ Edge AI circumvents such obstacles through the design of model compression with 
 - Deliver a fully **reproducible end-to-end workflow** — from calibration to compression and inference using `llama.cpp` — tested on Qwen2-0.5B, TinyLlama-1.1B, and OPT-1.3B.
 - Demonstrate that capable LMs can run **offline on a 8 GB Raspberry Pi 5** in real time without any GPU.
 
----
 
-## 2. Proposed Solution (Overview)
+## 2. Proposed Solution
+
+---
 
 EdgeLLM compresses pre-trained LLMs through three sequential stages, each targeting a different aspect of the efficiency-quality trade-off.
 
@@ -58,9 +63,10 @@ EdgeLLM compresses pre-trained LLMs through three sequential stages, each target
 3. **Deployment:** Quantized weights are converted to GGUF format and deployed using `llama.cpp` framework on Raspberry Pi 5.
 4. **Output:** Real-time text generation on the edge device, fully offline, with no GPU requirement.
 
----
 
 ## 3. Hardware & Software Setup
+
+---
 
 ### Hardware
 
@@ -84,9 +90,10 @@ EdgeLLM compresses pre-trained LLMs through three sequential stages, each target
 | Kaggle Notebooks | Cloud GPU environment for training |
 | Raspberry Pi OS 64-bit (Bookworm) | Edge operating system |
 
----
 
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 All compression and evaluation stages use the publicly available **WikiText-2** dataset, a clean English Wikipedia corpus commonly used in language modelling research.
 
@@ -102,9 +109,10 @@ All compression and evaluation stages use the publicly available **WikiText-2** 
 - Perplexity evaluation is performed with **step 512 tokens** on the entire WikiText-2 dataset without any boundary effects.
 - No further processing or data augmentation techniques are used; the original Wikipedia texts cover all necessary calibration cases.
 
----
 
 ## 5. Model Design, Training & Evaluation
+
+---
 
 ### 5.1 Base Model
 
@@ -165,9 +173,10 @@ Lower PPL indicates better language modelling quality. Stride 512 is used for al
 | Quantisation | GPTQ bits | 4 |
 | | NF4 double quantisation | Enabled |
 
----
 
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 ### 6.1 Main Results — Qwen2-0.5B
 
@@ -207,9 +216,10 @@ Lower PPL indicates better language modelling quality. Stride 512 is used for al
 
 The key trade-off is that of model size versus quality of perplexity. Quantisation using NF4 results in the largest perplexity penalty (+2.22 for Qwen2), while achieving the biggest reduction in size (4.4×). The LASS (unstructured sparsity) method doesn't lead to faster inference on CPU when using vanilla PyTorch, as the 942 MB sparse model is just as slow as the denser version. Only after applying GPTQ + NF4 is inference on the Raspberry Pi 5 possible.
 
----
 
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 ### 7.1 Deployment Steps
 
@@ -269,9 +279,10 @@ python convert_hf_to_gguf.py ./nf4_model \
 
 The model generates coherent, contextually relevant text in real time with no GPU or cloud connectivity required.
 
----
 
 ## 8. Conclusions & Limitations
+
+---
 
 ### 8.1 Key Outcomes
 
@@ -292,9 +303,10 @@ LASS yields a consistent PPL gain of −0.18 compared to the uniform SparseGPT w
 - **No downstream task evaluation:** The study presents results only for WikiText-2 perplexity; generalization for MMLU, HumanEval, or other datasets was not demonstrated.
 - **Knowledge distillation in large models:** Knowledge distillation did not help reduce perplexity in TinyLlama-1.1B or OPT-1.3B; its benefit seems to apply only to small-scale models.
 
----
 
 ## 9. Future Work
+
+---
 
 - **Structured pruning:** Instead of using unstructured pruning, head pruning and channel pruning will produce hardware-efficient compressions and latency reductions on the CPU.
 - **QLoRA tuning post-quantisation:** The application of LoRA fine-tuning to the quantised model could further reduce the perplexity gap.
@@ -302,9 +314,10 @@ LASS yields a consistent PPL gain of −0.18 compared to the uniform SparseGPT w
 - **Downstream benchmarks:** Conducting experiments on MMLU, BoolQ, and HumanEval datasets can give a comprehensive overview of the model's practicality.
 - **Dynamic context management:** Sliding window attention and context summarisation techniques can help solve the context length issue by avoiding any increase in peak memory usage.
 
----
 
 ## 10. Challenges & Mitigation
+
+---
 
 | Challenge | Root Cause | Mitigation |
 |---|---|---|
@@ -314,9 +327,10 @@ LASS yields a consistent PPL gain of −0.18 compared to the uniform SparseGPT w
 | llama.cpp build fails on Raspberry Pi OS | Missing ARM NEON headers in default toolchain | Install `build-essential` and `libopenblas-dev`; build with `LLAMA_OPENBLAS=1` |
 | Perplexity spikes with very high NF4 compression | NF4 quantisation error amplified by earlier unstructured sparsity | Fixed global sparsity target at 0.50; LASS clips individual layers to [0.10, 0.80] to prevent catastrophic layers |
 
----
 
 ## 11. References
+
+---
 
 1. Han, S., Pool, J., Tran, J., & Dally, W. (2015). Learning both weights and connections for efficient neural networks. *NeurIPS*.
 2. Hassibi, B., & Stork, D. G. (1992). Second order derivatives for network pruning: Optimal Brain Surgeon. *NeurIPS*.
