@@ -4,12 +4,22 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # IDD Edge AI Segmentation 
+
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/10.png" width="400">
+</p>
+
 **Team:** Debanshu Mallick, Chandan Rai, Tamaghna Mandal, Yuvaraj DC  
 **Code:** [GitHub Repository](https://github.com/Deus747/Edge_AI_Project)
 
 This is a more detail report documents the complete project flow for semantic segmentation and instance segmentation on edge hardware: dataset post-processing, model training, logit knowledge distillation, quantization/compilation for Hailo, and Raspberry Pi deployment. GPU-cluster setup details are intentionally omitted, but training logs were inspected to recover the reported losses and validation metrics.
 and contains all the detailed metrics
+
 ## 1. Project Scope
+
+---
 
 The project builds a real-time road-scene perception stack for the India Driving Dataset (IDD). The final deployed demo combines:
 
@@ -19,6 +29,8 @@ The project builds a real-time road-scene perception stack for the India Driving
 - Runtime switching between three semantic model variants.
 
 ## 2. End-to-End Pipeline
+
+---
 
 The full pipeline is:
 
@@ -32,6 +44,8 @@ The full pipeline is:
 8. Deploy semantic and YOLO HEFs to Raspberry Pi with a PyQt/OpenCV/Hailo runtime.
 
 ## 3. IDD Dataset Post-Processing
+
+---
 
 The conversion logic is in `idd_polygon_to_mask.ipynb`. It reads the original IDD polygon annotations from `gtFine` and writes derived supervision targets.
 
@@ -95,6 +109,8 @@ All semantic logs report:
 | Validation | 1,995 |
 
 ## 4. Label Spaces
+
+---
 
 The semantic projects train on three IDD label levels.
 
@@ -170,6 +186,8 @@ Label3ID is a 26-class fine-granularity setup:
 
 ## 5. Semantic Training Setup
 
+---
+
 The semantic dataset loader is `IDDSegDataset`. It performs:
 
 - ImageNet normalization.
@@ -203,6 +221,8 @@ Common training settings across all projects:
 The mask encoding can run in automatic mode. If the mask already contains contiguous training IDs, it is used directly; otherwise raw IDD IDs are remapped into the target training label space.
 
 ## 6. Model Families
+
+---
 
 ### Original Teacher and Student
 
@@ -246,6 +266,8 @@ Two additional students were trained against the ConvNeXt teacher:
 
 ## 7. Logit Knowledge Distillation
 
+---
+
 Logit KD combines supervised cross-entropy with masked KL divergence between teacher and student output distributions:
 
 ```text
@@ -255,6 +277,8 @@ loss = CE(student, target) + alpha * KL(student_logits / T, teacher_logits / T)
 where `T = 4.0` is the distillation temperature and `alpha = 1.0` is the distillation weight. This method is applied consistently across all label levels and all student architectures.
 
 ## 8. Semantic Training Results
+
+---
 
 The following values were recovered from the training logs. "Best mIoU" is the best validation mIoU recorded for that run.
 
@@ -312,6 +336,8 @@ Key observation: MobileNetV4-L DeepLabV3+ closes much more of the teacher-studen
 Key observation: MobileNetV4-S DeepLabV3+ is a strong middle ground — it materially improves over the original LR-ASPP student while remaining much smaller than the MobileNetV4-L variant.
 
 ## 9. YOLOv8n Instance Segmentation
+
+---
 
 
 The dataset bridge script creates a YOLO-compatible dataset at:
@@ -377,6 +403,8 @@ Best and final YOLO metrics from `runs/idd_yolov8n_seg/results.csv`:
 | Epoch 100 mask mAP50-95 | 0.15497 |
 
 ## 10. Hailo Quantization and Compilation
+
+---
 
 The project exports selected PyTorch checkpoints to ONNX, parses them into Hailo HAR files, optimizes/quantizes with calibration images, and compiles HEF files for Hailo-8.
 
@@ -463,6 +491,8 @@ YOLO compile log summary:
 
 ## 11. Raspberry Pi Deployment
 
+---
+
 The deployment application is:
 
 ```text
@@ -537,6 +567,8 @@ The benchmark prints average milliseconds per frame and FPS for each semantic mo
 
 ## 12. Model Selection Notes
 
+---
+
 The logs support the following practical conclusions:
 
 - ConvNeXt UPerNet is the best teacher family, reaching 81.92% Label1, 73.14% Label2, and 68.54% Label3 mIoU.
@@ -546,6 +578,8 @@ The logs support the following practical conclusions:
 - Hailo compilation succeeded for all selected semantic and YOLO models, but the calibration and optimization setup was conservative — only 64 calibration samples were used and QAT was skipped.
 
 ## 13. Known Limitations
+
+---
 
 - The MobileNetV4-L DeepLabV3+ Label2 run was only recorded to epoch 17 for the KD-D variant (not used); the logit KD run completed fully.
 - The Hailo logs indicate optimization level 0 due to limited calibration data and no GPU-assisted optimization. More calibration images and full optimization/QAT could improve quantized accuracy.

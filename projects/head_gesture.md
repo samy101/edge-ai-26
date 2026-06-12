@@ -6,11 +6,18 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 
 
 # 🧠 Head Gesture Recognition System
+
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/11.jpeg" width="400">
+</p>
+
 ### TinyML-Based Assistive Communication for Elderly & Disabled Individuals
 **Team:** Tishha Agrawal, Maitreyi Tiwari, Parthib Kumar Dey, Abha Singh Sardar  
 **Code:** [GitHub Repository](https://github.com/abhaanisha/Head-Gesture-Recognition-System)  
 
-**Course:** CP 330 — Edge AI &nbsp;|&nbsp; **Instructor:** Prof. Pandarasamy Arjunan &nbsp;|&nbsp; Indian Institute of Science, Bangalore
+
 
 <!-- [![Course](https://img.shields.io/badge/CP_330-Edge_AI-purple?style=for-the-badge)](https://www.samy101.com/edge-ai-25/projects/18-blind-assistance/)
 
@@ -38,9 +45,11 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 12. References
 13. Team
 
----
 
 ## 1. Problem Statement, Motivation & Objectives
+
+---
+
 The loss of verbal and motor communication due to aging or neurological conditions (such as ALS or stroke) creates a profound barrier to independence. While voice assistants and touchscreens are common, they are often inaccessible to individuals with speech impairments or limited limb mobility. This project addresses the need for a hands-free, private, and intuitive communication interface that utilizes the "last mile" of motor control: head gestures.
 
 The motivation behind this system is to provide a reliable "communication bridge" that works in real-time and protects user privacy. By moving the intelligence from the cloud to the **Edge**, we eliminate the risks of data exposure and the critical delays associated with network latency. This ensures that an emergency gesture (like "Head shake") is detected instantly, regardless of internet connectivity.
@@ -52,9 +61,11 @@ The motivation behind this system is to provide a reliable "communication bridge
 * Minimize inference latency to ensure real-time responsiveness on the Arduino Nicla Vision.
 * Integrate an end-to-end ecosystem including on-device feedback, a Streamlit monitoring dashboard, and mobile notifications.
 
----
 
 ## 2. Proposed Solution
+
+---
+
 Our solution utilizes a head-mounted wearable that translates head motion into actionable alerts. The system processes data through a multi-stage pipeline:
 
 
@@ -122,10 +133,14 @@ Recognised gestures are broadcast over Wi-Fi UDP to two destinations simultaneou
 | *Separate UNO R4 WiFi for output* | Offloads OLED and buzzer driving from the inference board, keeping the Master free for real-time sensing and classification |
 | *ntfy push notifications* | Caregivers receive alerts on their phone even when away from the PC display — 15-second cooldown prevents notification spam |
 
----
+
 ## 3. Hardware and Software Setup
 
+---
+
 ### 3.1 Physical Setup
+
+
 
 <table>
 <tr>
@@ -170,7 +185,11 @@ All three devices connect to the same Wi-Fi network. Assign static IPs or note t
 
 ### 3.2 Software Architecture
 
+
+
 ### 3.2.1 Data Collection Firmware
+
+
 
 **slave_datacollection.py — Left Nicla Vision:**  
 This script runs on the slave device, connecting to Wi-Fi and continuously reading data from the LSM6DSRX IMU at a frequency of 50 Hz (20 ms period). It packages the 6 raw floating-point values `[ax2, ay2, az2, gx2, gy2, gz2]` into a comma-separated UDP datagram and transmits it to the master device on port 6000. Notably, the packet excludes a timestamp to keep the payload as minimal as possible, ensuring low-latency streaming.
@@ -182,6 +201,8 @@ Operating on the master device, this script reads its own onboard IMU at 50 Hz w
 This script is responsible for data aggregation on the PC. It binds to UDP port 5005 and initiates a session by prompting the user for an activity label, followed by a 5-second countdown. It records data for 250 seconds, intentionally skipping any incomplete packets where the value count does not equal 13. The incoming data is saved into a timestamped CSV file located in the `imu_data/` directory, formatted as `<activity>_<YYYYMMDD_HHMMSS>.csv`. The script gracefully handles keyboard interruptions to prevent data loss and prints the rows processed per second for throughput monitoring.
 
 ### 3.2.2 Inference Firmware — master.py (Right Nicla Vision)
+
+
 
 Runs the full recognition pipeline on-device at 50 Hz.
 
@@ -202,12 +223,21 @@ Every 20 ms:
 - Green LED indicates that slave data was received successfully, while a Red LED indicates a missed packet (where the last valid value is reused).
 
 ### 3.2.3 Inference Firmware — slave.py (Left Nicla Vision)
+
+
+
 The slave device connects to Wi-Fi and continuously samples the LSM6DSRX IMU at 50 Hz. It packages the timestamp and 6-axis data into a UDP datagram and transmits it to the Master on port 6000. Status LEDs are used for visual confirmation: a Green LED indicates a successful Wi-Fi connection, and a Red LED signifies active data transmission.
 
 ### 3.2.4 Output Firmware — arduino_uno.ino (Arduino UNO R4 WiFi)
+
+
+
 The Arduino UNO R4 acts as the output controller. It connects to the local network and listens on UDP port 5006 for incoming gesture classification strings formatted as `"cls,gesture_name"`. To optimize performance, the system only triggers actions when a gesture change is detected. If the gesture is 'Idle', it updates the I2C OLED display (address `0x3C`) to show "Waiting for Gesture..." while remaining silent. For any active gesture, it updates the display with the class number and name, and triggers a brief 150 ms beep using an active buzzer connected to digital pin 9. A single startup buzz confirms that both Wi-Fi and UDP services are ready.
 
 ### 3.2.5 PC Monitor — streamlit_app.py
+
+
+
 The PC monitor application runs a background thread listening on UDP port 5005.
 - Fills a *rolling buffer of 50 raw predictions*
 - Applies *majority vote* with *95% stability threshold* — gesture only updates when one class holds ≥95% of the last 50 samples
@@ -219,9 +249,10 @@ The PC monitor application runs a background thread listening on UDP port 5005.
   - Recent activity history (last 10 gestures with timestamps)
 
 
----
 
 ## 4. Data Collection & Dataset Preparation
+
+
 
 A custom dataset was hand-collected from multiple participants to ensure the model learned general motion patterns rather than individual-specific noise. We recorded approximately **20,000 samples per activity class**, resulting in a comprehensive dataset of **~140,000 samples** covering 7 activities: *Nod, Head Shake, Tilt Left, Tilt Right, Look Up, Look Down,* and *Idle*.
 
@@ -231,12 +262,17 @@ A custom dataset was hand-collected from multiple participants to ensure the mod
 *   **Segmentation:** Implemented a sliding window of 80 samples (1.6 s) with a 40-sample (50%) overlap to ensure full gesture capture.
 *   **Labeling:** Used regex-based parsing to extract activity codes from filenames for supervised learning.
 
----
 
 ## 5. Model Design, Training & Evaluation
+
+---
+
 We performed a comparative study between traditional Machine Learning and Deep Learning architectures to find the best fit for the Arduino Nicla Vision.
 
 ### 5.1 Deployment Model: Decision Tree Classifier
+
+
+
 The Decision Tree was selected as the primary deployment target. It provides a non-linear classification path that is extremely lightweight, consisting of a series of simple `if-else` logical branches that run nearly instantaneously on a microcontroller.
 
 ### Feature Engineering
@@ -308,8 +344,13 @@ weighted avg       1.00      1.00      1.00      1133
 ![Confusion Matrix — Decision Tree](/edge-ai-26/assets/img/projects26/head-gesture/Decision_tree_cm.png)
 
 ### 5.2 Research Model: 1D-Convolutional Neural Network (CNN)
+
+
+
 As an advanced research path, we developed a 1D-CNN to capture the temporal "shape" of gestures.
 ### 5.2.1 **Initial Architecture:**  Split-Path CNN Architecture for IMU Gesture Recognition
+
+
 
 #### Architectural Flowchart
 ```text
@@ -366,6 +407,7 @@ By concatenating both branches, the Dense layer receives the best of both worlds
 
 ### 5.2.2 **Optimized Architecture:** Sequential CNN Architecture for IMU Gesture Recognition
 
+
 #### Architectural Flowchart
 ```text
     A["Input\n(80 timesteps x 12 channels)\n6 Master IMU + 6 Slave IMU"] --> B["GaussianNoise (0.1)\nAdds random noise to prevent memorization"]
@@ -421,9 +463,10 @@ The model was evaluated on a 100% "blind" test set of files never seen during tr
 *   **Confusion Matrix:** Analyzed to confirm that distinct gestures like "Tilt Left" were not confused with "Nods."
 *   **Inference Speed:** Profiling confirmed an inference time of ~0.1 ms per window, fitting comfortably within the hardware's real-time requirements.
 
----
 
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 To ensure the system remains responsive while handling dual-IMU streams and Wi-Fi communication, we evaluated the efficiency of both our primary and research models. Our goal was to find the "Pareto Optimal" point — the best balance between high accuracy and low resource consumption.
 
@@ -481,8 +524,10 @@ The following figures provide a visual breakdown of the trade-offs in size, spee
 1.  **Complexity vs. Performance:** While the 1D-CNN is more robust to temporal shifts, the Decision Tree provided **100% accuracy** on our current feature-engineered dataset. 
 2.  **Thermal Impact:** The Decision Tree’s near-zero CPU usage was the deciding factor. It helped mitigate the **device heating issues** caused by the WiFi modules, as the processor remains in a low-power state between sampling intervals.
 3.  **Final Verdict:** The Decision Tree was selected for final deployment because it provided the highest accuracy with the lowest possible resource footprint, representing the pinnacle of "Efficiency-First" Edge AI design.
----
+
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 The deployment pipeline spans three layers — on-device inference running on the Master Nicla Vision, physical feedback via the Arduino UNO R4 WiFi, and remote monitoring via the PC Streamlit app with ntfy push notifications. All communication is over Wi-Fi UDP with no cloud dependency for inference.
 
@@ -701,6 +746,8 @@ req = urllib.request.Request(
   
 ## 8. System Prototype
 
+---
+
 <div align="center">
 
 [![Demo Video](https://img.shields.io/badge/▶_Watch_Full_Demo_Video-SharePoint-0078D4?style=for-the-badge&logo=microsoft)](https://indianinstituteofscience-my.sharepoint.com/:v:/g/personal/abhas_iisc_ac_in/IQCmHS_j7puyQ6OWcKqMe5GkAeruAGz5R6FupJL88lnMZLk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=pOxfAL)
@@ -710,8 +757,10 @@ req = urllib.request.Request(
 
 </div>
 
----
+
 ## 9. Conclusions & Limitations
+
+---
 
 ### Conclusions
 
@@ -727,51 +776,85 @@ Despite the successful prototype, several technical and practical limitations we
 3.  **Dataset Diversity:** The current dataset was collected from a limited cohort of five participants. While the model shows high generalization, it may require further calibration to handle individuals with specific neck mobility constraints or different physiological movement speeds.
 4.  **Mechanical Sensitivity:** The accuracy of the 12-axis feature vector is highly dependent on the consistent alignment of the headband. Small shifts in the physical placement of the sensors relative to each other can introduce bias into the gravity-based accelerometer readings.
    
----
+
 ## 10. Future Work
+
+---
 
 The current prototype serves as a foundation for a sophisticated assistive communication system. Future development will focus on enhancing the hardware efficiency, model robustness, and user personalization.
 
 ### 1. Hardware & Power Optimization
+
+
+
 To resolve the identified thermal heating issues, we plan to transition the Master-Slave communication from WiFi/UDP to **Bluetooth Low Energy (BLE)** or a high-speed **hard-wired UART link**. This will significantly reduce the power consumption of the Nicla Vision boards, prolonging battery life and making the device comfortable for continuous daily wear.
 
 ### 2. Advanced Model Deployment (CNN Pruning)
+
+
+
 While the Decision Tree provided high accuracy for our initial dataset, we intend to deploy our **1D-Convolutional Neural Network (CNN)** for its superior temporal recognition. To make this feasible for the Edge, we will implement **Weight Pruning** and **Sparsification** to remove redundant connections in the network. This will shrink the CNN’s memory footprint, allowing it to provide deep-learning-level robustness with the same efficiency as a simpler model.
 
 ### 3. Personalized AI via Transfer Learning
+
+
+
 Human motion varies significantly based on age and physical condition. We aim to implement a **User Calibration Mode**. By using **Transfer Learning**, the system could be "fine-tuned" for a specific patient using just 30 seconds of their individual head-movement data. This would allow the system to adapt to users with limited ranges of motion or unique physiological "signatures."
 
 ### 4. Expanded Gesture Vocabulary
+
+
 We plan to expand the recognition library beyond the current seven activities to include more complex commands, such as "Double-Nod" for confirmation or "Head Circle" for specific environmental requests (e.g., controlling a smart-home light or television).
 
 ### 5. Multi-Modal Feedback Integration
+
+
+
 Future iterations will include haptic (vibration) feedback on the headband itself. This would provide the user with immediate confirmation that their gesture was recognized without them needing to look at an OLED screen, making the interaction loop even more seamless and intuitive.
 
 ## 11. Challenges & Mitigation
 
+---
+
 The development of a dual-sensor wearable on an Edge platform presented several multi-disciplinary hurdles. Below are the primary technical, hardware, and data challenges faced during the project and the strategies implemented to mitigate them.
 
 ### 1. Technical Challenge: Model Overfitting and "Data Leakage"
+
+
+
 *   **Challenge:** During early model training in CNN, we observed a common deep learning trap where the model reported a perfect (100%) validation accuracy but failed completely (under 2% accuracy) on real-world test files. 
 *   **Mitigation:** We identified this as **data leakage**; because we used a sliding window with 50% overlap, nearly identical data points were appearing in both training and validation sets. We mitigated this by implementing a strict **File-Based Data Split**. By ensuring that 100% of the windows from a single CSV file remained together in either the Training or Validation set, we forced the model to learn general head gestures rather than specific recording noise.
 
 ### 2. Hardware Challenge: Failure of Wired UART Communication
+
+
+
 *   **Challenge:** Our initial planned architecture relied on a hard-wired UART link for Master-Slave communication, we were also going to utilize Wi-fi connection to send data to PC for collection and inferencing. However due to hardware limitations and incompatibility of UART with Wi-fi we were unable to set this up.
 *   **Mitigation:** We performed a technical pivot to a completely wireless architecture using **UDP over WiFi**. This allowed the two boards to communicate without physical wires. To handle the lack of a handshake in UDP, we developed a robust listener script on the Master board that could gracefully handle occasional dropped packets without crashing the inference loop.
 
 ### 3. Data Challenge: Wireless Jitter and Signal Synchronization
+
+
 *   **Challenge:** Unlike a wired connection, UDP over WiFi introduces **network jitter**, where data packets from the Slave board arrive at irregular intervals. This made it difficult to perfectly align the left and right IMU signals into a single 12-axis feature vector.
 *   **Mitigation:** We optimized the sampling rate to **50Hz**. This frequency was the "sweet spot"—fast enough to capture the high-frequency motion of a head shake, but slow enough to provide the UDP buffer sufficient time to recover from network delays. We also implemented a **"Last-Known-Value" buffer** to fill temporary gaps in the Slave’s data stream, ensuring the feature vector remained complete.
 
 ### 4. Debugging Challenge: Device Thermal Management (Heating)
+
+
+
 *   **Challenge:** During long data collection and testing sessions, we observed significant **thermal heating** of the Nicla Vision boards. This was primarily caused by the high power consumption of the WiFi modules combined with continuous CPU-intensive processing.
 *   **Mitigation:** To reduce the thermal profile, we chose to deploy the **Decision Tree model** for the final prototype. Because a Decision Tree is a series of simple logical branches (`if-else`), it requires near-zero CPU cycles compared to a CNN. This allowed the processor to remain in a low-power state between samples, successfully mitigating the heating issue while maintaining high accuracy.
 
 ### 5. Mechanical Challenge: Sensor Alignment and Gravity Bias
+
+
+
 *   **Challenge:** Every participant wears the headband slightly differently, which changes the baseline "gravity vector" on the accelerometer. A model trained on one person's "Idle" position would fail on another person because their resting "zero point" was different.
 *   **Mitigation:** We utilized **StandardScaler (Z-score Normalization)** during pre-processing. By centering all 12 axes around a mean of zero and scaling by standard deviation, we made the model **"Gravity-Invariant."** This forced the neural network to focus on the *relative change* in motion rather than the absolute angle of the sensors, allowing the system to generalize across different users.
----
+
 ## 12. References
+
+---
 
 [1] Gouwanda, D., & Senanayake, S. A. (2011). Identifying gait asymmetry using gyroscopes — A cross-correlation and Normalized Symmetry Index approach. *Journal of Biomechanics*, 44(5), 972–978.
 
@@ -779,9 +862,10 @@ The development of a dual-sensor wearable on an Edge platform presented several 
 
 > *Note: AI tools (LLMs) were used for debugging assistance during development.*
 
----
 
 ## 13. Team Members and Roles
+
+---
 
 | Name | Key Contributions & Responsibilities |
 |:---|:---|

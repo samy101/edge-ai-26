@@ -6,6 +6,13 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 
 
 # Real Time Helmet Detection Project 
+
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/12.png" width="400">
+</p>
+
 **Team:** M Divya, Kavali Rohitha, Katragadda Navya  
 **Code:** [GitHub Repository](https://github.com/rohitha-kavali/Real-time-helmet-detection-project)
 This project was completed as part of the *Edge AI Course*, which focuses on real-time AI deployment on edge devices.
@@ -13,9 +20,9 @@ This project was completed as part of the *Edge AI Course*, which focuses on rea
 
 google drive link for video presentation : <https://drive.google.com/file/d/1yNl1FJYWZVjtlT5UGi9V5FdqgKGQ1F8Q/view?usp=sharing>
 
----
-
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 Road accidents involving two-wheeler riders without helmets are a major safety concern. Manual monitoring by traffic authorities is inefficient and not scalable. This project addresses the need for an automated system that can detect helmet usage in real time using computer vision.
 
 The motivation behind this work is to build a low-cost, real-time edge AI system that can operate without reliance on cloud infrastructure. By performing inference on edge devices like Raspberry Pi, the system reduces latency, improves privacy, and minimizes bandwidth usage.
@@ -28,9 +35,10 @@ The motivation behind this work is to build a low-cost, real-time edge AI system
 - Implement a TCP client-server architecture for distributed frame capture and inference
 - Evaluate model quality using Precision, Recall, mAP@0.5, and mAP@0.5:0.95
 - Achieve measurable on-device inference with target latency under 1 second per frame on CPU
----
 
 ## 2. Proposed Solution
+
+---
 
 The system implements a two-node distributed inference pipeline, where the laptop acts as a client for real-time frame capture, compression, and TCP streaming, while the Raspberry Pi 5 serves as the inference server running the ONNX model and returning structured JSON detections, which are rendered as bounding boxes on the client for visualization.
 
@@ -55,9 +63,9 @@ Webcam (Laptop)
 | Transport | TCP + length-prefixed framing | Guarantees ordered, lossless delivery of variable-length image payloads; prevents partial reads |
 | Compression | JPEG at quality 80 | Reduces per-frame TCP payload size with negligible detection quality impact |
 
----
-
 ## 3. Hardware & Software Setup
+
+---
 
 **Hardware:**
 
@@ -81,11 +89,11 @@ The Raspberry Pi 5 was selected for its significantly improved CPU performance o
 | Communication | Custom TCP protocol (length-prefixed binary framing) |
 | Utilities | NumPy, JSON |
 
----
-
 ## 4. Data Collection & Dataset Preparation
 
-**Source:** link : https://www.kaggle.com/datasets/aneesarom/rider-with-helmet-without-helmet-number-plate
+---
+
+**Source:** link : <https://www.kaggle.com/datasets/aneesarom/rider-with-helmet-without-helmet-number-plate>
 Public Kaggle helmet detection dataset with YOLO-format annotations (normalized bounding boxes).
 
 **Class Distribution:**
@@ -115,9 +123,10 @@ Although the overall dataset size is relatively small, it is sufficient to demon
 - **Occlusion:** Helmets and number plates are sometimes partially hidden in real traffic scenes, helping the model learn to handle such cases.  
 - **Class distribution:** The *"With Helmet"* class has fewer samples, providing an opportunity to further improve performance with additional data.  
 - **Lighting variability:** The dataset includes both bright and low-light conditions, making the model more adaptable to real-world environments.  
----
 
 ## 5. Model Design, Training & Evaluation
+
+---
 
 ### Architecture: YOLOv5s
 
@@ -218,9 +227,9 @@ Overall, YOLOv5s provides a strong balance between speed and accuracy, making it
 **Figure 10: Recall–confidence curves for all classes. Recall decreases as confidence increases, highlighting the trade-off between capturing all detections and maintaining prediction certainty.**
 <img width="2048" height="1365" alt="image" src="https://github.com/user-attachments/assets/06f2ec16-8b56-4237-bc86-5337d4c46604" />
 
----
-
 ## 6. Model Conversion & Efficiency Metrics
+
+---
 
 **Conversion:** PyTorch (`.pt`) → ONNX (`.onnx`) via `torch.onnx.export`
 
@@ -243,6 +252,8 @@ ONNX export is a **runtime optimization**, not a compression technique. It seria
 - For production use, INT8 quantization combined with hardware acceleration is the natural next step toward achieving real-time throughput (≥10 FPS)
 
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 ### Deployment Steps
 The deployment pipeline is designed to enable efficient edge inference on the Raspberry Pi 5 using a lightweight ONNX-based runtime. The complete flow, including preprocessing and postprocessing, is as follows:
@@ -292,6 +303,8 @@ The system maintains consistent performance during continuous operation, with st
 
 ## 8. System Prototype (Pictures / Figures)
 
+---
+
 The prototype demonstrates a complete distributed edge AI system with real-time interaction between a laptop and Raspberry Pi 5.
 
 - **Hardware Setup:** Raspberry Pi 5 acts as the inference server, while the laptop handles frame capture and visualization  
@@ -323,6 +336,8 @@ The system overlays runtime statistics such as FPS and inference latency directl
 
 ## 9. Conclusions & Limitations
 
+---
+
 ### Conclusion
 
 A complete real-time helmet monitoring system was successfully implemented using a distributed edge AI architecture. The system demonstrates that low-cost hardware such as the Raspberry Pi 5 can perform real-time object detection using optimized inference pipelines without relying on cloud infrastructure.
@@ -341,6 +356,8 @@ The use of ONNX Runtime, TCP-based streaming, and efficient preprocessing enable
 
 ## 10. Future Work
 
+---
+
 The system can be further improved in the following ways:
 
 - Integrate hardware accelerators such as Coral TPU or Hailo for significant speed improvements  
@@ -351,6 +368,8 @@ The system can be further improved in the following ways:
 - Upgrade to newer architectures such as YOLOv8 or YOLO-NAS for improved accuracy and efficiency  
 
 ## 11. Challenges & Mitigation
+
+---
 
 ### Challenges
 
@@ -371,6 +390,8 @@ The system can be further improved in the following ways:
 - Added error handling for decode failures and connection resets to maintain stability
 
 ## 12. Edge AI Optimization and Deployment Impact
+
+---
 
 This project incorporates key Edge AI principles by optimizing the trained model for deployment on a resource-constrained device (Raspberry Pi 5). Instead of running inference using PyTorch, the model was converted to ONNX format and executed using ONNX Runtime, enabling efficient CPU-based inference.
 
