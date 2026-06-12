@@ -5,6 +5,9 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Medi-Dock: Intelligent Medication Identification Station for the Visually Impaired
 ---
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/6.jpeg" width="400">
+</p>
 
 **Team:** Athikesavan V · Madina Gowtham Kumar · Pranav Kumar Rowlo · Vedang Mangrulkar  
 **Code:** [GitHub Repository](https://github.com/vmcodes/medidock-edge-ai/tree/main)
@@ -346,12 +349,12 @@ Medi-Dock demonstrates that a fully offline, sub-10-second medication identifica
 1. Hinton, G., Vinyals, O., & Dean, J. (2015). *Distilling the Knowledge in a Neural Network*. arXiv:1503.02531.
 2. He, K., Zhang, X., Ren, S., & Sun, J. (2016). *Deep Residual Learning for Image Recognition*. CVPR 2016.
 3. Nitesh31Mishra. *Medicine Tablet Pack Image Dataset*. Kaggle. <https://www.kaggle.com/datasets/nitesh31mishra/medicine-tablet-pack-image-dataset>
-4. Aryashah2k. *Mobile Captured Pharmaceutical Medication Packages*. Kaggle. https://www.kaggle.com/datasets/aryashah2k/mobile-captured-pharmaceutical-medication-packages
-5. Pkdarabi. *The Drug Name Detection Dataset*. Kaggle. https://www.kaggle.com/datasets/pkdarabi/the-drug-name-detection-dataset
-6. EasyOCR Documentation. https://github.com/JaidedAI/EasyOCR
-7. Sentence-Transformers: `all-MiniLM-L6-v2`. https://www.sbert.net/docs/sentence_transformer/pretrained_models.html
-8. ONNX Runtime Quantisation. https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html
-9. TensorFlow Lite Optimisations. https://www.tensorflow.org/lite/performance/post_training_quantization
-10. Albumentations: Fast Image Augmentation Library. https://albumentations.ai/
-11. Picamera2 Documentation. https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf
-12. Raspberry Pi 5 Product Page. https://www.raspberrypi.com/products/raspberry-pi-5/
+4. Aryashah2k. *Mobile Captured Pharmaceutical Medication Packages*. Kaggle. <https://www.kaggle.com/datasets/aryashah2k/mobile-captured-pharmaceutical-medication-packages>
+5. Pkdarabi. *The Drug Name Detection Dataset*. Kaggle. <https://www.kaggle.com/datasets/pkdarabi/the-drug-name-detection-dataset>
+6. EasyOCR Documentation. <https://github.com/JaidedAI/EasyOCR>
+7. Sentence-Transformers: `all-MiniLM-L6-v2`. <https://www.sbert.net/docs/sentence_transformer/pretrained_models.html>
+8. ONNX Runtime Quantisation. <https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html>
+9. TensorFlow Lite Optimisations. <https://www.tensorflow.org/lite/performance/post_training_quantization>
+10. Albumentations: Fast Image Augmentation Library. <https://albumentations.ai/>
+11. Picamera2 Documentation. <https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf>
+12. Raspberry Pi 5 Product Page. <https://www.raspberrypi.com/products/raspberry-pi-5/>
