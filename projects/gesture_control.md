@@ -5,13 +5,18 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Gesture-Controlled Toy Car
 
+---
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/3.png" width="400">
+</p>
 **Student:** D Rushikesh (26501) Rudrani Barik (26161) Aman Kumar Rai (26750) Prajwal GM (26654)  
 **Code:** [GitHub Repository](https://github.com/RBarik25/gesture_control_toy_car)  
 **Supervisor:** Prof. Pandarasamy  
 
----
 
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 Hand gesture recognition has gained significant traction in human-computer interaction, robotics, and assistive technology. Traditional remote-controlled vehicles rely on physical controllers such as joysticks, RF transmitters, or smartphone applications, all of which require the user to hold and operate a dedicated device. This project addresses the challenge of building a contactless, intuitive vehicle control system by recognizing real-time hand gestures through a camera feed and translating them into motor commands — all running on a resource-constrained edge device (Raspberry Pi 5) without any cloud connectivity.
 
@@ -26,9 +31,10 @@ The motivation behind choosing Edge AI for this project stems from the fundament
 - Implement a Flask-based web streaming interface for remote monitoring of the gesture car via any device on the same WiFi network.
 - Explore model compression via magnitude-based weight pruning (TFMOT) for potential inference speedup and analyze the challenges encountered.
 
----
 
-## 2. Proposed Solution (Overview)
+## 2. Proposed Solution
+
+---
 
 The system follows a three-stage edge AI pipeline: **Sense → Think → Act**, with an additional **Stream** stage for remote monitoring.
 
@@ -64,9 +70,10 @@ Camera Frame (640×480 RGB)
 | Local (HDMI) | `gesture_car.py` | OpenCV `cv2.imshow` | ~126 ms | Direct demo with monitor |
 | Web Streaming | `gesture_flask.py` | Flask MJPEG in browser | ~126 ms (motors), ~200–300 ms (display) | Remote monitoring via phone/laptop |
 
----
 
 ## 3. Hardware & Software Setup
+
+---
 
 ### 3.1 Hardware Components
 
@@ -145,9 +152,10 @@ pip install flask opencv-python mediapipe numpy==1.24.3
 - NumPy must be pinned to 1.24.3 — version 2.x causes binary incompatibility with system packages.
 - `libcap-dev` is required for building `python-prctl` (a dependency of picamera2).
 
----
 
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 ### 4.1 Data Source — MediaPipe Pre-trained Model
 
@@ -193,9 +201,10 @@ The rules compute:
 
 For the pruning experiment (Section 6), a real gesture image dataset was not collected due to time constraints. The pruning script (`gesture_car_pruning.py`) was designed to load images from `./gesture_data/<class_name>/*.jpg` with five classes: `fist`, `open_palm`, `thumb_left`, `thumb_right`, `unknown`. Since this directory was absent, the script ran in **DRY-RUN mode** using 32 randomly generated 96×96 RGB images with random labels , sufficient to validate the pruning pipeline end-to-end, but not to produce a usable classifier.
 
----
 
 ## 5. Model Design, Training & Evaluation
+
+---
 
 ### 5.1 Model Architecture — MediaPipe Hand Landmarker
 
@@ -244,9 +253,10 @@ Since the primary pipeline uses rule-based classification on MediaPipe landmarks
 - **False positive rate:** Low due to the 3–5 frame debounce filter; transient misclassifications are suppressed before reaching the motors.
 - **Detection range:** Camera reliably detects and tracks hand landmarks up to approximately 3 meters.
 
----
 
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 ### 6.1 Pruning Technique
 
@@ -304,9 +314,10 @@ Since pruning was not successfully applied to the deployed model, the efficiency
 | Frame resolution | 640 × 480 pixels |
 | Detection range | Up to ~3 meters |
 
----
 
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 ### 7.1 Deployment Steps
 
@@ -367,9 +378,10 @@ The system consistently left over 14 GB of RAM free and ~70% of CPU headroom, co
 
 This is well within human reaction time (~200 ms) and acceptable for toy vehicle control.
 
----
 
 ## 8. Web Streaming Implementation
+
+---
 
 ### 8.1 Motivation
 
@@ -428,9 +440,10 @@ Several optimizations were implemented to minimize web streaming latency:
 
 The web interface is a minimal HTML page served by Flask, accessible at `http://<pi-ip>:5000`. It displays a live MJPEG video feed with gesture label and motor state overlaid on the frame. The page uses responsive CSS (`max-width: 100%`) for mobile compatibility.
 
----
 
 ## 9. System Prototype (Pictures & Figures)
+
+---
 
 ### 9.1 Hardware Assembly
 
@@ -518,9 +531,10 @@ The web interface is a minimal HTML page served by Flask, accessible at `http://
 ![Pruning Error](/edge-ai-26/assets/img/projects26/gesture-control/pruning.png)  
 *Figure 24: Terminal showing pruning script crash — ValueError due to weight count mismatch*
 
----
 
 ## 10. Conclusions & Limitations
+
+---
 
 ### 10.1 Key Outcomes
 
@@ -544,9 +558,10 @@ Additionally, a **Flask-based web streaming interface** was successfully impleme
 
 - **Power management:** No battery voltage monitoring is implemented.
 
----
 
 ## 11. Future Work
+
+---
 
 - **WebRTC streaming:** Replace MJPEG with WebRTC for sub-50 ms streaming latency.
 
@@ -564,9 +579,10 @@ Additionally, a **Flask-based web streaming interface** was successfully impleme
 
 - **INT8 quantization:** Apply post-training quantization to further reduce model size and inference latency.
 
----
 
 ## 12. Challenges & Mitigation
+
+---
 
 ### Challenge 1: DNS Resolution Failure on Raspberry Pi
 
@@ -640,22 +656,23 @@ Additionally, a **Flask-based web streaming interface** was successfully impleme
 
 **Mitigation:** Multi-threaded architecture, frame resizing (640×480 → 320×240), low JPEG quality (30–50), no-cache HTTP headers. Accepted remaining latency as protocol limitation. Motor control unaffected.
 
----
 
 ## 13. References
 
-1. Google MediaPipe Hand Landmarker documentation: https://developers.google.com/mediapipe/solutions/vision/hand_landmarker
-2. MediaPipe Hand Landmark model card: https://storage.googleapis.com/mediapipe-assets/Model%20Card%20Hand%20Tracking%20Lite%20MediaPipe.pdf
-3. TensorFlow Model Optimization Toolkit (TFMOT) — Pruning guide: https://www.tensorflow.org/model_optimization/guide/pruning
-4. Raspberry Pi 5 GPIO documentation: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html
-5. Picamera2 library documentation: https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf
-6. gpiozero Motor class documentation: https://gpiozero.readthedocs.io/en/stable/api_output.html#motor
-7. L298N motor driver datasheet: https://www.st.com/resource/en/datasheet/l298.pdf
+---
+
+1. Google MediaPipe Hand Landmarker documentation: <https://developers.google.com/mediapipe/solutions/vision/hand_landmarker>
+2. MediaPipe Hand Landmark model card: <https://storage.googleapis.com/mediapipe-assets/Model%20Card%20Hand%20Tracking%20Lite%20MediaPipe.pdf>
+3. TensorFlow Model Optimization Toolkit (TFMOT) — Pruning guide: <https://www.tensorflow.org/model_optimization/guide/pruning>
+4. Raspberry Pi 5 GPIO documentation: <https://www.raspberrypi.com/documentation/computers/raspberry-pi.html>
+5. Picamera2 library documentation: <https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf>
+6. gpiozero Motor class documentation: <https://gpiozero.readthedocs.io/en/stable/api_output.html#motor>
+7. L298N motor driver datasheet: <https://www.st.com/resource/en/datasheet/l298.pdf>
 8. MobileNetV2 — Sandler, M. et al., "MobileNetV2: Inverted Residuals and Linear Bottlenecks," CVPR 2018.
-9. OpenCV Python documentation: https://docs.opencv.org/4.x/
-10. TensorFlow Lite XNNPACK delegate: https://www.tensorflow.org/lite/performance/xnnpack
-11. Flask Web Framework: https://flask.palletsprojects.com/
-12. MJPEG streaming with Flask: https://blog.miguelgrinberg.com/post/video-streaming-with-flask
+9. OpenCV Python documentation: <https://docs.opencv.org/4.x/>
+10. TensorFlow Lite XNNPACK delegate: <https://www.tensorflow.org/lite/performance/xnnpack>
+11. Flask Web Framework: <https://flask.palletsprojects.com/>
+12. MJPEG streaming with Flask: <https://blog.miguelgrinberg.com/post/video-streaming-with-flask>
 
 ---
 

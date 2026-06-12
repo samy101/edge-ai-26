@@ -30,7 +30,7 @@ This project aims to replace manual monitoring with an always-on, automated AI-p
 - Measure the system's inference latency, throughput (FPS), and resource usage, and identify ways to improve it in the future.
 
 
-## 2. Proposed Solution (Overview)
+## 2. Proposed Solution
 
 ---
 
