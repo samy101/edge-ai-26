@@ -5,13 +5,20 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # SignBridge — Real-Time ASL Finger-Spelling Recognition on the Edge
 
-**Team:** Vedant Saxena · Shruti Jain · Somava Roy  
-**Affiliation:** Indian Institute of Science (IISc), Bengaluru  
-**GitHub:** https://github.com/1024shrutijain-design/Sign_Language_recognition_system.git
-
 ---
 
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/9.png" width="400">
+</p>
+
+**Team:** Vedant Saxena · Shruti Jain · Somava Roy  
+**Affiliation:** Indian Institute of Science (IISc), Bengaluru  
+**GitHub:** <https://github.com/1024shrutijain-design/Sign_Language_recognition_system.git>
+
+
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 Approximately 70 million people worldwide use sign language as their primary mode of communication, yet the vast majority of the hearing population cannot interpret it. This creates a persistent and significant communication barrier in everyday contexts — classrooms, hospitals, public services — where real-time, accurate translation is critical. Existing solutions either require expensive specialised hardware, depend on cloud APIs (introducing latency and privacy risks), or are limited to static gesture recognition with no natural word-building capability.
 
@@ -24,9 +31,10 @@ This project addresses that gap with **SignBridge**, a fully offline, real-time 
 - Implement a dwell-timer input mechanism to enable hands-free, deliberate letter selection robust to transient hand movement.
 - Provide real-time spoken word output via eSpeak TTS, making the system usable as an end-to-end assistive communication device.
 
----
 
-## 2. Proposed Solution (Overview)
+## 2. Proposed Solution
+
+---
 
 SignBridge is a real-time, edge-deployed sign language recognition system built around a three-stage pipeline: **data collection → model training → live inference with TTS output**.
 
@@ -56,9 +64,10 @@ Dwell Timer (1.5 s hold)  ──►  Letter added to BUFFER
 eSpeak TTS  ──►  Spoken word output  +  Sentence accumulation
 ```
 
----
 
 ## 3. Hardware & Software Setup
+
+---
 
 ### Hardware
 
@@ -85,9 +94,10 @@ The system targets commodity hardware to maximise accessibility. No specialised 
 | Text-to-Speech | eSpeak | System package |
 | System Dependency | espeak (apt) | `sudo apt-get install espeak` |
 
----
 
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 ### Data Source
 The dataset was collected entirely in-house using `Data_Collection.py`, a custom webcam-based capture tool. No public dataset was used. All team members participated in multi-session data collection.
@@ -114,9 +124,10 @@ The dataset was collected entirely in-house using `Data_Collection.py`, a custom
 4. **Varied conditions:** Collection was performed under different lighting conditions and with varied hand positions to improve generalisation.
 5. **Label encoding:** Labels are stored as uppercase letters (A–Z) in the CSV and handled natively by scikit-learn's Random Forest.
 
----
 
 ## 5. Model Design, Training & Evaluation
+
+---
 
 ### Model Architecture
 A **Random Forest Classifier** was selected as the model for this project. The justification for this choice in an edge AI context is:
@@ -148,9 +159,10 @@ The model is evaluated on the held-out 20% test set using the following metrics,
 
 Typical accuracy on well-collected datasets of this type ranges from **92%–98%** depending on sample count and consistency. Per-class F1-scores below 0.90 indicate letters requiring additional training samples.
 
----
 
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 SignBridge intentionally avoids deep learning to eliminate the need for compression entirely. The Random Forest model is inherently compact and edge-ready without additional optimisation steps.
 
@@ -178,9 +190,10 @@ SignBridge intentionally avoids deep learning to eliminate the need for compress
 - Inference speed is **not a bottleneck**: MediaPipe landmark extraction dominates the per-frame budget, not the classifier.
 - The model size grows linearly with the number of trees (`n_estimators`); 100 trees is a practical balance between accuracy and file size for this feature space.
 
----
 
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 ### Deployment Steps
 1. **Data Collection:** Run `Data_Collection.py` to generate `dataset1.csv` on the target device.
@@ -210,9 +223,10 @@ SignBridge intentionally avoids deep learning to eliminate the need for compress
 - eSpeak runs in a non-blocking `subprocess.Popen` so word synthesis never interrupts the video loop.
 - The system recovers gracefully when the hand leaves the frame (confidence drops below threshold, dwell timer resets).
 
----
 
 ## 8. System Prototype (Pictures / Figures)
+
+---
 
 > **Note:** The figures below describe the UI layout and pipeline. Actual hardware photos and screenshots should be inserted here from your project documentation.
 
@@ -275,9 +289,10 @@ SignBridge intentionally avoids deep learning to eliminate the need for compress
 
 *Insert actual prototype photos and screenshots here (e.g., hand detection overlay, dwell timer in action, spoken word output).*
 
----
 
 ## 9. Conclusions & Limitations
+
+---
 
 ### Key Outcomes
 - SignBridge successfully demonstrates a fully offline, real-time ASL finger-spelling recognition pipeline running on commodity CPU hardware with no cloud dependency.
@@ -293,9 +308,10 @@ SignBridge intentionally avoids deep learning to eliminate the need for compress
 - **Lighting sensitivity:** MediaPipe detection quality degrades significantly under poor or highly variable lighting conditions.
 - **Fixed vocabulary:** The model only classifies A–Z. Digits, punctuation, and common ASL words are not covered.
 
----
 
 ## 10. Future Work
+
+---
 
 - **Dynamic sign support:** Extend to motion-based ASL gestures (J, Z, and full word signs) using an LSTM or Temporal Convolutional Network over sequences of landmark frames.
 - **Expanded vocabulary:** Train on ASL digits (0–9), common phrases, and eventually the full ASL vocabulary using a larger, publicly available dataset (e.g., ASL-LEX, MS-ASL).
@@ -306,9 +322,10 @@ SignBridge intentionally avoids deep learning to eliminate the need for compress
 - **Mobile deployment:** Export the model to ONNX or TensorFlow Lite for deployment in a mobile app (Android/iOS) using the device camera.
 - **Larger, diverse dataset:** Collaborate with a broader group of signers across different backgrounds, lighting conditions, and hand sizes to improve real-world generalisation.
 
----
 
 ## 11. Challenges & Mitigation
+
+---
 
 | Challenge | Description | Mitigation |
 |---|---|---|
@@ -321,40 +338,41 @@ SignBridge intentionally avoids deep learning to eliminate the need for compress
 | **Dataset imbalance** | Initial collection produced uneven sample counts across letters (easier letters recorded more often) | Enforced a per-letter recording discipline during data collection sessions; README recommends 100–200 samples per class |
 | **X11/VNC window rendering** | OpenCV default fixed-size window did not resize correctly on remote Linux sessions | Used `cv2.WINDOW_NORMAL` and explicit `resizeWindow(1024, 768)` for compatibility with VNC-forwarded displays |
 
----
 
 ## 12. References
 
+---
+
 1. **MediaPipe Hands** — Google LLC.  
    *MediaPipe Solutions — Hand Landmark Detection.*  
-   https://google.github.io/mediapipe/solutions/hands.html
+   <https://google.github.io/mediapipe/solutions/hands.html>
 
 2. **scikit-learn: Machine Learning in Python** — Pedregosa et al., 2011.  
    *Journal of Machine Learning Research*, 12, pp. 2825–2830.  
-   https://scikit-learn.org/
+   <https://scikit-learn.org/>
 
 3. **OpenCV** — Open Source Computer Vision Library.  
-   https://opencv.org/
+   <https://opencv.org/>
 
 4. **eSpeak Text-to-Speech Synthesiser** — Jonathan Duddington.  
    http://espeak.sourceforge.net/
 
 5. **Random Forests** — Breiman, L. (2001).  
    *Machine Learning*, 45(1), 5–32.  
-   https://doi.org/10.1023/A:1010933404324
+   <https://doi.org/10.1023/A:1010933404324>
 
 6. **American Sign Language Finger-Spelling Reference** — Lifeprint / ASLU.  
-   https://www.lifeprint.com/asl101/pages-layout/handshapes.htm
+   <https://www.lifeprint.com/asl101/pages-layout/handshapes.htm>
 
 7. **MediaPipe Python API Documentation.**  
-   https://developers.google.com/mediapipe/api/solutions/python/mp
+   <https://developers.google.com/mediapipe/api/solutions/python/mp>
 
 8. **NumPy** — Harris, C.R. et al. (2020).  
    *Nature*, 585, 357–362.  
-   https://numpy.org/
+   <https://numpy.org/>
 
 9. **pandas: Powerful Python Data Analysis Toolkit.**  
-   https://pandas.pydata.org/
+   <https://pandas.pydata.org/>
 
 10. **Project Repository** — Shruti Jain et al., IISc Bengaluru.  
-    https://github.com/1024shrutijain-design/Sign_Language_recognition_system.git
+    <https://github.com/1024shrutijain-design/Sign_Language_recognition_system.git>

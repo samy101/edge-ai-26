@@ -5,17 +5,18 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # WNAVI: Wearable Navigation Aid for Visually Impaired — Project Report
 
+---
+
 
 **Team Members:** Harshit Garhewal (25937), Anshul Verma (25881), Sourin Das (26033), Tushar Dewangan (26361)  
 **Code:** [GitHub Repository](https://github.com/Harshit892/blind-assist-edge-ai.git)
 
-**Deployment Target:** Arduino Nicla Vision  
 
-**Date:** 1, May 2026
 
----
 
 ## 1. Introduction
+
+---
 
 ### 1.1 Problem Statement
 
@@ -34,9 +35,10 @@ We propose an AI-powered wearable device that provides real-time object classifi
 | **Availability** | No internet/cloud dependency |
 | **Power** | Runs on battery for portable use |
 
----
 
 ## 2. Hardware Platform
+
+---
 
 ### 2.1 Arduino Nicla Vision
 
@@ -54,9 +56,10 @@ The Nicla Vision was chosen for its compact form factor, built-in camera, and na
 
 <!-- INSERT: Photo of hardware setup / helmet mount -->
 
----
 
 ## 3. System Architecture
+
+---
 
 ```
 ┌──────────┐    ┌───────────────┐    ┌──────────────┐    ┌──────────────┐
@@ -80,9 +83,10 @@ The Nicla Vision was chosen for its compact form factor, built-in camera, and na
 
 <!-- INSERT: System architecture diagram -->
 
----
 
 ## 4. Dataset
+
+---
 
 ### 4.1 Data Collection
 
@@ -147,9 +151,10 @@ These augmentations simulate real-world helmet camera variations: head tilts (ro
 <!-- INSERT: Data augmentation examples screenshot -->
 <!-- INSERT: Dataset distribution bar chart -->
 
----
 
 ## 5. Model Development Pipeline
+
+---
 
 ```
 Step 1: Data Collection & Augmentation                 
@@ -173,9 +178,10 @@ Step 9: INT8 TFLite Conversion & Calibration
 Step 10: Deploy to Arduino Nicla Vision                
 ```
 
----
 
 ## 6. Model Training & Results
+
+---
 
 ### 6.1 Decision Tree Baseline
 
@@ -241,9 +247,10 @@ Dense(128, ReLU) → Dropout(0.3) → Dense(5, softmax)
 <!-- INSERT: Teacher MobileNetV2 training curves -->
 <!-- INSERT: Teacher MobileNetV2 confusion matrix -->
 
----
 
 ## 7. Model Compression Techniques
+
+---
 
 ### 7.1 Knowledge Distillation
 
@@ -344,9 +351,10 @@ converter.inference_output_type = tf.uint8
 
 **Final model:** ~120 KB INT8 TFLite — a **73x compression** from the 8.8 MB Teacher.
 
----
 
 ## 8. Model Comparison & Results
+
+---
 
 | Stage | Technique | Lab | Accuracy | Size | Parameters |
 |-------|-----------|-----|----------|------|-----------|
@@ -364,9 +372,10 @@ converter.inference_output_type = tf.uint8
 <!-- INSERT: Model size comparison bar chart -->
 <!-- INSERT: Final INT8 confusion matrix -->
 
----
 
 ## 9. Deployment
+
+---
 
 ### 9.1 Deployment Script (`main.py`)
 
@@ -404,9 +413,10 @@ while True:
 
 A BLE UART service (`6E400001-B5A3-F393-E0A9-E50E24DCCA9E`) sends detection results to a paired smartphone running an MIT App Inventor companion app.
 
----
 
 ## 10. Deployment Challenges & Solutions
+
+---
 
 ### Challenge 1: "Failed to Allocate Tensors"
 
@@ -450,9 +460,10 @@ A BLE UART service (`6E400001-B5A3-F393-E0A9-E50E24DCCA9E`) sends detection resu
 
 **Solution:** Replaced blocking sleep with a non-blocking `time.ticks_diff()` timer. Camera runs `sensor.snapshot()` at full speed (30+ FPS) while inference triggers only every 500ms.
 
----
 
 ## 11. Limitations
+
+---
 -Classification Only, No Localization — The model only tells what is in front (e.g., "obstacle") but not where it is (left, right, center) or how far it is. A blind user needs spatial awareness, not just object labels.
 
 -Limited Class Coverage — Only 5 classes are supported (clear_path, human, door, obstacle, stairs). Real-world environments contain many more hazards — vehicles, potholes, wet floors, traffic signals, animals — that the system cannot detect.
@@ -463,6 +474,8 @@ A BLE UART service (`6E400001-B5A3-F393-E0A9-E50E24DCCA9E`) sends detection resu
 
 ## 12. Future Work
 
+---
+
 - **Expanded Dataset:** 10,000+ images across more diverse environments.
 - **Object Localization:** Detect WHERE objects are (left/right/center) using FOMO.
 - **Distance Estimation:** Monocular depth cues from the camera.
@@ -470,17 +483,18 @@ A BLE UART service (`6E400001-B5A3-F393-E0A9-E50E24DCCA9E`) sends detection resu
 - **Federated Learning (Lab 12):** Collaborative model updates across devices.
 - **GPS Integration:** Outdoor navigation assistance.
 
----
 
 ## 13. References
-[1] C.-D. Sahoo, "Image-Classification-Under-256KB," GitHub, 2023. [Online]. Available: https://github.com/Chinmay-Deep-Sahoo/Image-Classification-Under-256KB. [Accessed: May 1, 2026].
 
-[2] [Uploader Name], "[Video Title]," YouTube, [Year]. [Online]. Available: https://youtu.be/zeybEOM2BHY?si=vKVm2QDbGAw6GP3D. [Accessed: May 1, 2026].
+---
+[1] C.-D. Sahoo, "Image-Classification-Under-256KB," GitHub, 2023. [Online]. Available: <https://github.com/Chinmay-Deep-Sahoo/Image-Classification-Under-256KB>. [Accessed: May 1, 2026].
 
-[3] [Author Name], "[Document/File Title]," Google Share, [Year]. [Online]. Available: https://share.google/FC6kqlOlAXq5ktKyz. [Accessed: May 1, 2026].
+[2] [Uploader Name], "[Video Title]," YouTube, [Year]. [Online]. Available: <https://youtu.be/zeybEOM2BHY?si=vKVm2QDbGAw6GP3D>. [Accessed: May 1, 2026].
 
-[4] BrianMacG, "Arduino Deployment with Nicla Vision - Initial Success Followed by 'Failed to run classifier'," Edge Impulse Forum, Apr. 19, 2025. [Online]. Available: https://forum.edgeimpulse.com/t/arduino-deployment-with-nicla-vision-initial-success-followed-by-failed-to-run-classifier/13868. [Accessed: May 1, 2026].
+[3] [Author Name], "[Document/File Title]," Google Share, [Year]. [Online]. Available: <https://share.google/FC6kqlOlAXq5ktKyz>. [Accessed: May 1, 2026].
 
-[5] milnepe, "Image Recognition with Arduino Nicla Vision: A Radxa ROCK SBC Classifier," DesignSpark, Jun. 10, 2024. [Online]. Available: https://www.rs-online.com/designspark/image-recognition-with-arduino-nicla-vision-a-radxa-rock-sbc-classifier.
+[4] BrianMacG, "Arduino Deployment with Nicla Vision - Initial Success Followed by 'Failed to run classifier'," Edge Impulse Forum, Apr. 19, 2025. [Online]. Available: <https://forum.edgeimpulse.com/t/arduino-deployment-with-nicla-vision-initial-success-followed-by-failed-to-run-classifier/13868>. [Accessed: May 1, 2026].
+
+[5] milnepe, "Image Recognition with Arduino Nicla Vision: A Radxa ROCK SBC Classifier," DesignSpark, Jun. 10, 2024. [Online]. Available: <https://www.rs-online.com/designspark/image-recognition-with-arduino-nicla-vision-a-radxa-rock-sbc-classifier>.
 
 **Tools:** TensorFlow, TFLite, TF Model Optimization Toolkit, OpenMV IDE, MicroPython, Arduino Nicla Vision, Google Colab, MIT App Inventor.
