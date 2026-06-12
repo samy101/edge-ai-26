@@ -2,17 +2,22 @@
 layout: page
 title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
----
-# Edge AI Plant Disease Detection System
 
+# Edge AI Plant Disease Detection System
+---
  
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/plant-disease/leaf_disease.png" width="400">
+</p>
+
 **Team:** Aayush Jeevan Patil (22220) · Vansh Dhar (22156)  
 **Hardware:** Raspberry Pi 5 · Pi Camera Module v2  
 **Repository:** https://github.com/vanshdhar999/EdgeAI-Project
 
----
+
 
 ## 1. Problem Statement, Motivation & Objectives
+---
 
 Farmers in rural and semi-urban areas often lack timely access to agricultural experts, leading to undetected crop diseases, delayed treatment, and significant yield losses. Early and accurate disease identification is critical for food security, yet current solutions require laboratory analysis, internet connectivity, or trained personnel — none of which are reliably available in the field.
 
@@ -25,9 +30,9 @@ This project addresses that gap by building a fully offline, real-time plant dis
 - Deliver < 1.5 s inference latency entirely on-device with no GPU
 - Deploy a live camera feed with real-time disease overlay on the Raspberry Pi 5
 
----
 
-## 2. Proposed Solution (Overview)
+## 2. Proposed Solution
+---
 
 The system is a transfer-learning pipeline built on MobileNetV3-Small (ImageNet pretrained), fine-tuned on a balanced subset of PlantVillage, exported to ONNX, and quantized to INT8 for edge deployment. A live camera feed on the Pi runs the ONNX Runtime inference engine and overlays the predicted class and confidence score on each frame.
 
@@ -45,10 +50,10 @@ PlantVillage dataset
 
 **Output:** Live video with overlaid disease label, confidence score, and detection state (scanning / detected / healthy).
 
----
+
 
 ## 3. Hardware & Software Setup
-
+---
 ### Hardware
 
 | Component | Details |
@@ -74,9 +79,10 @@ PlantVillage dataset
 | OS (training) | Ubuntu 22.04 |  — |
 | Python | 3.11 (Pi), 3.12 (training) | — |
 
----
+
 
 ## 4. Data Collection & Dataset Preparation
+---
 
 **Source:** PlantVillage dataset (color variant) — [Kaggle: emmarex/plantdisease](https://www.kaggle.com/datasets/emmarex/plantdisease)  
 **Full dataset:** 38 classes, ~54,000 images captured under controlled lab conditions on plain backgrounds.
@@ -111,9 +117,10 @@ PlantVillage dataset
 | Colour jitter | brightness ±0.2, contrast ±0.3 |
 | ImageNet normalise | mean=[0.485,0.456,0.406], std=[0.229,0.224,0.225] |
 
----
+
 
 ## 5. Model Design, Training & Evaluation
+---
 
 ### Architecture
 
@@ -154,9 +161,10 @@ Evaluated on held-out test set (15% of data) using `src/evaluate.py`:
 <p align="center">
   <img src="/edge-ai-26/assets/img/projects26/plant-disease/confusion_matrix.png" width="400">
 </p>
----
+
 
 ## 6. Model Compression & Efficiency Metrics
+---
 
 ### Techniques Used
 
@@ -185,9 +193,10 @@ Evaluated on held-out test set (15% of data) using `src/evaluate.py`:
 - Accuracy drop < 2% confirms the representative calibration dataset was sufficient
 - Both models are far under the 1,500 ms target; INT8 is preferred for Pi deployment
 
----
+
 
 ## 7. Model Deployment & On-Device Performance
+---
 
 ### Deployment Steps
 
@@ -234,9 +243,10 @@ BGR frame from camera
 | CPU temperature at load | ~72°C |
 | RAM consumed by runtime | ~40 MB (INT8) |
 
----
+
 
 ## 8. System Prototype (Pictures / Figures)
+---
 
 > Add photos of:
 > - Raspberry Pi 5 with Camera Module v2 mounted
@@ -245,9 +255,10 @@ BGR frame from camera
 
 *(Insert prototype images here before final submission)*
 
----
+
 
 ## 9. Conclusions & Limitations
+---
 
 The system successfully demonstrates real-time, offline plant disease detection on a Raspberry Pi 5. The INT8-quantized MobileNetV3-Small model runs at **6.1 ms per inference** — 246× under the 1.5 s target — in a **1.1 MB** file. The detection state machine with confidence gating (≥ 80%) and a 10-second hold provides a stable, flicker-free user experience.
 
@@ -257,9 +268,10 @@ The system successfully demonstrates real-time, offline plant disease detection 
 - Only Tomato leaf samples were physically tested on the Pi; Potato and Pepper classes were evaluated on the test set only
 - Model collapse was observed when Corn classes (visually distinct monocot leaves) were included alongside dicot crops — removed from final training
 
----
+
 
 ## 10. Future Work
+---
 
 - **Field image fine-tuning:** Collect real farm photos and fine-tune the model to close the lab-to-field accuracy gap
 - **Text-to-speech output:** Add `pyttsx3` or `espeak` for audio diagnosis — removes the need for the farmer to read the screen
@@ -268,9 +280,10 @@ The system successfully demonstrates real-time, offline plant disease detection 
 - **Mobile app:** Stream inference results via Bluetooth to a simple Android app for a better farmer UX
 - **Solar-powered enclosure:** Make the Pi unit fully self-contained for field deployment
 
----
+
 
 ## 11. Challenges & Mitigation
+---
 
 | Challenge | How it was addressed |
 |-----------|----------------------|
@@ -284,14 +297,15 @@ The system successfully demonstrates real-time, offline plant disease detection 
 | Class imbalance causing Late blight dominance | Added `balanced` dataset mode with 1,000 images/class hard cap |
 | Git divergence between training machine and dev machine | Resolved with `git pull --rebase` and PAT-based authentication |
 
----
+
 
 ## 12. References
+---
 
-- **PlantVillage Dataset:** https://www.kaggle.com/datasets/emmarex/plantdisease
-- **MobileNetV3 Paper:** Howard et al., 2019 — "Searching for MobileNetV3" — https://arxiv.org/abs/1905.02244
-- **ONNX Runtime Post-Training Quantization:** https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html
-- **TorchVision Models:** https://pytorch.org/vision/stable/models.html
-- **picamera2 Documentation:** https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf
-- **PlantVillage Original Paper:** Hughes & Salathé, 2015 — "An open access repository of images on plant health" — https://arxiv.org/abs/1511.08060
-- **ONNX Opset 17 Specification:** https://onnx.ai/onnx/operators/
+- **PlantVillage Dataset:** <https://www.kaggle.com/datasets/emmarex/plantdisease>
+- **MobileNetV3 Paper:** Howard et al., 2019 — "Searching for MobileNetV3" — <https://arxiv.org/abs/1905.02244>
+- **ONNX Runtime Post-Training Quantization:** <https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html>
+- **TorchVision Models:** <https://pytorch.org/vision/stable/models.html>
+- **picamera2 Documentation:** <https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf>
+- **PlantVillage Original Paper:** Hughes & Salathé, 2015 — "An open access repository of images on plant health" — <https://arxiv.org/abs/1511.08060>
+- **ONNX Opset 17 Specification:** <https://onnx.ai/onnx/operators/>
