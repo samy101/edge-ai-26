@@ -12,7 +12,7 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 
 **Team:** Aayush Jeevan Patil (22220) · Vansh Dhar (22156)  
 **Hardware:** Raspberry Pi 5 · Pi Camera Module v2  
-**Repository:** https://github.com/vanshdhar999/EdgeAI-Project
+**Repository:** <https://github.com/vanshdhar999/EdgeAI-Project>
 
 
 
