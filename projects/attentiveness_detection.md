@@ -3,11 +3,20 @@ layout: page
 title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
-# Edge-Based-Acoustic-Event-Detection-for-Water-Activities
+# EdgeAttend: Distributed Real-Time Attentiveness Detection on the Edge
+
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/4.png" width="400">
+</p>
+
 **Team:** Veera Subrahmanya Vignesh Vemula, Tata Umesh, Botta Lokesh Appa Rao, Anumala Sadhan.  
 **Code:** [GitHub Repository](https://github.com/appsbotta/EdgeAttend)
 
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 ### Problem Statement 
 Remote work environments have expanded rapidly, yet existing meeting room monitoring systems struggle to meet real-world requirements. Traditional cloud-based solutions introduce significant latency (200–500 ms) and rely heavily on stable internet connectivity, limiting their reliability in dynamic or bandwidth-constrained settings. Meanwhile, on-device approaches either depend on costly specialized hardware such as GPUs to run computationally intensive models or compromise accuracy to achieve real-time performance. This highlights a critical gap in developing a solution that can deliver low-latency, reliable and accurate monitoring without reliance on high-end hardware.
@@ -25,9 +34,10 @@ This project addresses the growing need for real-time attentiveness detection in
 - **Implement Edge Computing**, ensuring all inference occurs locally on client devices, server aggregates attentiveness label.
 
 
----
 
 ## 2. Proposed Solution 
+
+---
 
 ### High-Level System Architecture
 
@@ -93,8 +103,9 @@ The proposed solution implements a **distributed edge AI system** for real-time 
 - **Dual Grid Strategy**: Clean grid sent to clients, annotated grid kept server-side to enable local overlay without revealing all mood states
 
 
----
 ## 3. Hardware and Software Setup
+
+---
 
 ### Hardware Requirements
 
@@ -128,9 +139,10 @@ The following Python packages are required:
 | **scikit-learn** | 1.0+ | Data splitting, metrics, evaluation |
 | **tqdm** | 4.62+ | Progress bars for loops |
 | **matplotlib** | 3.4+ | Visualization and plotting |
----
 
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 ### Data Source
 - **Dataset**: DAiSEE (Dataset for Engagement Estimation in Education)
@@ -195,9 +207,10 @@ The following Python packages are required:
 - Resize to 160×160
 - Normalization only (ImageNet statistics)
 
---- 
 
 ## 5. Model Design, Training & Evaluation
+
+---
 
 ### Model Architecture: AttentiveMobileNetV2
 
@@ -355,9 +368,10 @@ True   Attentive   TP   |      FN
 - **Minimal False Positives**: Only 26 false alarms out of 750 non-attentive samples
 - **Zero False Negatives**: No missed detections of attentive students
 
----
 
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 ### Techniques used
 
@@ -464,9 +478,10 @@ The graph shows a sharper dependency on fine-tuning for structural pruning as we
 
 Among the compression methods tested, **INT8 quantization is the best choice overall**. It keeps accuracy almost identical to the FP32 baseline while delivering a large reduction in model size and a clear latency improvement during inference. The pruned models are useful as research comparisons and structural pruning is attractive when memory is extremely limited, but for this project quantization provides the strongest balance of accuracy, compression, and runtime efficiency.
 
----
 
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 ### Deployment Architecture Overview
 
@@ -525,9 +540,10 @@ To reduce prediction noise from single-frame inference:
 - **Webcam unavailable**: Server shows blank black tile for host, continues serving other clients
 - **TCP keep-alive**: Enabled on all sockets to detect dead connections
   
----
 
 ## 8. System Prototype 
+
+---
  
 - Hardware Setup - Laptop (Multiple for server and clients)
 - [Working Prototype](https://drive.google.com/file/d/1OrYBnVFEIoRykKdxpj0wWBbnSqfuKUvb/view?usp=drive_link)
@@ -548,9 +564,10 @@ To reduce prediction noise from single-frame inference:
 *Figure 8: One Non Attentive*
 
 
----
 
 ## 9. Conclusions & Limitations
+
+---
 
 ### Key Outcomes Achieved
 
@@ -581,9 +598,10 @@ This project successfully demonstrates a **practical edge AI system for real-tim
 4. **No Temporal Modeling** – Each frame independent, no RNN for sequential context
 5. **Constrained Environments** – Designed for indoor meetings, fails outdoors or with accessories (sunglasses, masks)
 
----
 
 ## 10. Future Work
+
+---
 
 This project can be extended to improve performance and robustness in real-world scenarios.
 
@@ -591,9 +609,10 @@ One key improvement is the introduction of parallel processing at the server sid
 
 Another important extension is the integration of multimodal inputs, such as eye gaze tracking, head pose estimation, and facial micro-expressions. These additional cues can enhance the accuracy and robustness of attentiveness detection, especially in situations where facial features alone are not sufficient.
 
----
 
 ## 11. Challenges & Mitigation
+
+---
 
 #### 1: Class Imbalance in Original Dataset
 **Problem**: Original DAiSEE dataset label distribution is skewed.
@@ -609,8 +628,9 @@ Another important extension is the integration of multimodal inputs, such as eye
 - Selected INT8 quantization as the optimal trade-off between performance and accuracy.
 - Enabled efficient real-time inference on standard CPU-based systems without specialized hardware.
 
----
 
 ## 12. References
+
+---
 [1] A Gupta, A DCunha, K Awasthi, V Balasubramanian, DAiSEE: Towards User Engagement Recognition in the Wild, arXiv preprint: arXiv:1609.01885 <br>
 [2] AI-based tools (Gemini and ChatGPT) were used to assist in certain parts of the implementation, including structured pruning techniques, visualization design, and data preprocessing and resolving implementation errors. All outputs were reviewed and validated by us.

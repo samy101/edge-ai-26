@@ -4,11 +4,20 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge-Based-Acoustic-Event-Detection-for-Water-Activities
+
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/4.png" width="400">
+</p>
+
 **Team:** Gantavya Sharma, Areti Harshith Nagar Sai Gopesh Swamy, Chinmay Bhatt, Sushanth G
 **Code:** [GitHub Repository](https://github.com/harshith20/Edge-Based-Acoustic-Event-Detection-for-Water-Activities/blob/main/Report.md)
 
 
 # Problem statement
+
+---
 
 To detect and classify water based activities based on audio. 
 
@@ -24,11 +33,15 @@ Although we were not able to achive this ultimate goal of estimating the water u
 
 # Proposed Solution
 
+---
+
 We propose the following solution. The system consists of a edge device (either an PCB with an audio module or a mobile phone) that both records the audio and does the necessary processing to classify the audio. Another device that collects the classification scores and other meta data from this edge device and provides statistics, insights and suggestions into water usage based on the data. (We were not able to finish the second part). 
 
 `Record Audio (Edge Device)` -> `Classification (Edge Device)` -> `Statistics and Insights (Server/PC)`
 
 # Hardware and Software Setup
+
+---
 
 This section describes the hardware components and software tools used in the Water Detection System.
 
@@ -58,6 +71,8 @@ This section describes the hardware components and software tools used in the Wa
 | Google Firebase                   | Real-time data storage and statistics                      |
 
 #  Data Collection
+
+---
 
 This was the most crucial step since we had no available datasets to work with. We created our own dataset and we had to go through multiple iterations to do it.
 
@@ -100,6 +115,8 @@ During the course of data collection we encountered several challenges, some of 
 - While collecting data we were faced with the dillema of water wastage. So we tried to minimize the water wastage (by bare minimum) by using water filled in bottles to water the plants nearby.
 
 # Data Processing and Feature Extraction
+
+---
 
 ## Feature Extraction
 
@@ -180,9 +197,10 @@ Since the feature space is high-dimensional, **Principal Component Analysis (PCA
   <img src="/edge-ai-26/assets/img/projects26/acoustic-detection/pca.png" alt="metrics" width="600">
 </p>
 
----
 
 # Model Development
+
+---
 
 ## Iteration 1: The Background Noise Problem
 **The Challenge:** Initially, we recorded data as continuous 2 to 3-minute audio files for each activity. When we tested the first model, it failed on new data. The model was memorizing the background room noise rather than the actual water sounds.
@@ -347,28 +365,3 @@ The trained 2D CNN model can be deployed directly from Edge Impulse to:
 **The Change:** We embedded the feature engineering directly inside the TensorFlow model by adding a custom preprocessing layer at the front of the network.
 
 **The Result:** The mobile app now records 13 second chunks of raw audio and passes it directly to the model. The model handles its own feature extraction internally, which resolved the mismatch and stabilized the live predictions.
-
-
-## Deployment on Aurdirino device.
-
-
-
-
-
-
-
-
-
-
-<!-- ![alt text](/edge-ai-26/assets/img/projects26/acoustic-detection/2d_cnn_architecture.png) -->
-
-
-
-
-
-
-
-
-
-
-<img src="drawing.jpg" alt="drawing" width="200"/>
