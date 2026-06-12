@@ -4,14 +4,21 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge AI Intelligent Traffic System
+
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/17.jpeg" width="400">
+</p>
+
 **Team:** Boddu Amarnath, Utkarsh Vats, Rohan Kumar Biswal  
 **Code:** [GitHub Repository](https://github.com/bodduamarnath2004/Edge-ai-traffic-intelligent-system)
 
 > A dual-camera (triple nicla vision) edge AI system for real-time vehicle detection, speed estimation, siren detection, and traffic safety analytics — deployed on Arduino Nicla Vision + Raspberry Pi.
 
----
-
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 Urban traffic monitoring remains a critical unsolved challenge in modern cities. Conventional systems rely on fixed-timer signals and cloud-dependent video analytics that introduce unacceptable latency, raise serious privacy concerns, and demand expensive infrastructure. As traffic density grows, the inability to respond in real time to congestion, dangerous tailgating, sudden braking, or emergency vehicle presence leads to accidents, gridlock, and wasted emergency response time. There is a clear need for a low-cost, privacy-preserving, low-latency solution that can be embedded directly at the traffic edge.
 
@@ -25,9 +32,9 @@ Edge AI addresses this by moving inference onto the device itself — eliminatin
 - Detect emergency sirens in real time using FFT-based audio analysis on the Nicla Vision's onboard microphone, with wail-pattern validation.
 - Produce structured traffic safety analytics (congestion detection, tailgating alerts, braking detection, composite risk scoring) visualized on a live OpenCV dashboard.
 
----
-
 ## 2. Proposed Solution
+
+---
 
 The system consists of three Arduino Nicla Vision and two are used for cameras (FRONT and REAR roles) connected over WiFi to a Raspberry Pi. Each Nicla Vision streams compressed MJPEG video over HTTP (port 8080) while simultaneously embedding real-time IMU-derived ego-vehicle speed in the HTTP response headers (`X-Speed`). One Nicla Vision additionally runs a dedicated siren detector using its onboard microphone and MicroPython audio library.
 
@@ -48,9 +55,9 @@ On the Raspberry Pi, a dedicated Python thread per camera continuously decodes t
                                                EdgeAIMetrics logger (latency / FPS / RAM)
 ```
 
----
-
 ## 3. Hardware & Software Setup
+
+---
 
 **Hardware:**
 
@@ -77,9 +84,9 @@ On the Raspberry Pi, a dedicated Python thread per camera continuously decodes t
 | Visualization | OpenCV (`cv2`) | Live annotated video + analytics dashboard |
 | Audio analysis | `ulab.numpy`, MicroPython `audio` (FFT-based) | Siren band energy, wail pattern detection |
 
----
-
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 **Data source:** COCO 2017 validation set (`val2017`), filtered to vehicle categories only. No custom data collection was performed — the COCO benchmark was used for its rich, diverse, real-world vehicle annotations.
 
@@ -110,9 +117,9 @@ On the Raspberry Pi, a dedicated Python thread per camera continuously decodes t
 6. Organized into `images/train2017`, `images/val2017`, `labels/train2017`, `labels/val2017` directory structure.
 7. Generated `vehicles.yaml` dataset descriptor for Ultralytics YOLO training.
 
----
-
 ## 5. Model Design, Training & Evaluation
+
+---
 
 **Model architecture:** YOLOv11n (nano variant of YOLO11), a single-stage anchor-free object detector based on the Ultralytics YOLO11 architecture. Chosen for its minimal parameter count (2.591 M parameters, 3.222 GFLOPs) making it suitable for edge deployment, while retaining multi-scale feature extraction via its C3k2/SPPF backbone.
 
@@ -143,9 +150,9 @@ On the Raspberry Pi, a dedicated Python thread per camera continuously decodes t
 
 Primary metrics: mAP50 and mAP50-95 (COCO-style box detection). The QAT model achieved the best mAP50 (0.4585) and lowest latency (11.29 ms) among the three variants.
 
----
-
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 **Techniques applied:**
 
@@ -166,9 +173,9 @@ Primary metrics: mAP50 and mAP50-95 (COCO-style box detection). The QAT model ac
 
 **Trade-offs observed:** Despite a 35% pruning ratio, the structured pruning did not reduce model file size in this run — all three variants share the same 5.45 MB file size and 2.591 M parameter count. This is because `torch-pruning`'s channel-level pruning on YOLO11n's depthwise-separable and C3k2 blocks does not always translate to immediate parameter reduction at the `.pt` checkpoint level due to re-initialization during fine-tuning. However, QAT did yield a small but consistent improvement in both latency (11.29 ms vs 11.37 ms baseline) and mAP50 (0.4585 vs 0.4529), confirming its value for edge deployment. At inference time on the Raspberry Pi, the model runs at `imgsz=320` (half of training resolution) to further reduce compute.
 
----
-
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 **Deployment steps:**
 
@@ -197,9 +204,9 @@ Primary metrics: mAP50 and mAP50-95 (COCO-style box detection). The QAT model ac
 
 **Real-time behavior:** The system sustains real-time visual tracking. SORT tracking with Kalman prediction fills detection gaps between YOLO inference frames, maintaining smooth trajectory continuity. The ego-motion compensation (Lucas-Kanade optical flow with RANSAC affine estimation) corrects vehicle speed readings for the camera's own movement. The live dashboard updates per frame showing per-camera: ego speed (km/h), vehicle count, congestion state, speed variance level, tailgating alert, braking-ahead alert, and a composite risk score (0–100).
 
----
-
 ## 8. System Prototype (Pictures / Figures)
+
+---
 
 **Hardware setup diagram:**
 
@@ -233,9 +240,10 @@ Primary metrics: mAP50 and mAP50-95 (COCO-style box detection). The QAT model ac
 
 **Explanation of the project**
 [Explanation of the project](project%20explanation.mp4)
----
 
 ## 9. Conclusions & Limitations
+
+---
 
 This project successfully demonstrates a fully edge-resident intelligent traffic monitoring system. Key outcomes include: a compressed YOLOv11n-QAT model (5.45 MB, 11.29 ms GPU latency) deployed on a Raspberry Pi; dual-camera real-time vehicle detection and tracking with IMU-compensated speed estimation; FFT-based siren detection on the Nicla Vision's onboard microphone; and a live multi-metric analytics dashboard covering congestion, tailgating, braking, and composite risk scoring — all operating without cloud connectivity.
 
@@ -248,9 +256,9 @@ This project successfully demonstrates a fully edge-resident intelligent traffic
 - Siren detection thresholds (`CONCENTRATION_THRESH`, `SNR_THRESH`, `WAIL_SWING_THRESH`) were hand-tuned and may produce false positives in high-noise environments (horns, loud music).
 - The system currently has no night-vision or low-light capability.
 
----
-
 ## 10. Future Work
+
+---
 
 - **Night-time detection:** Integrate IR-capable cameras or fine-tune on low-light datasets to enable 24/7 operation.
 - **Larger and region-specific dataset:** Fine-tune on Indian Driving Dataset (IDD) or similar datasets to improve detection of two-wheelers, auto-rickshaws, and other region-specific vehicle types.
@@ -261,9 +269,9 @@ This project successfully demonstrates a fully edge-resident intelligent traffic
 - **Web dashboard:** Replace the OpenCV display with a browser-based dashboard (Flask + WebSocket) for remote monitoring.
 - **Edge-cloud hybrid:** Offload historical analytics and model retraining to cloud while keeping real-time inference entirely on-device.
 
----
-
 ## 11. Challenges & Mitigation
+
+---
 
 **WiFi streaming latency and reliability:** The Nicla Vision's HTTP MJPEG stream occasionally drops or stalls on poor WiFi. Mitigated by implementing a reconnect loop in `NiclaStream._connect()` with a 2-second retry interval, and a 5-second socket timeout to prevent indefinite blocking.
 
@@ -277,40 +285,42 @@ This project successfully demonstrates a fully edge-resident intelligent traffic
 
 **Siren false positives:** Initial thresholds caused false siren detections from honking or music. Mitigated by adding a wail-pattern validator (`check_wailing`) that requires a minimum frequency sweep (`WAIL_SWING_THRESH = 4 bins`) and direction reversals (`MIN_REVERSALS = 2`) over at least 8 chunks, combined with a consecutive-window confirmation counter (`CONSECUTIVE_NEEDED = 3`) with hysteresis decay.
 
----
-
 ## 12. References
 
+---
+
 **Models & Frameworks:**
-- Ultralytics YOLO11: https://docs.ultralytics.com/
-- torch-pruning (dependency-graph pruning): https://github.com/VainF/Torch-Pruning
-- filterpy (Kalman Filter): https://github.com/rlabbe/filterpy
+- Ultralytics YOLO11: <https://docs.ultralytics.com/>
+- torch-pruning (dependency-graph pruning): <https://github.com/VainF/Torch-Pruning>
+- filterpy (Kalman Filter): <https://github.com/rlabbe/filterpy>
 
 **Dataset:**
-- COCO 2017 Dataset: https://cocodataset.org/
-- pycocotools: https://github.com/cocodataset/cocoapi
+- COCO 2017 Dataset: <https://cocodataset.org/>
+- pycocotools: <https://github.com/cocodataset/cocoapi>
 
 **Hardware & Firmware:**
-- Arduino Nicla Vision documentation: https://docs.arduino.cc/hardware/nicla-vision/
-- OpenMV MicroPython firmware: https://openmv.io/
-- Raspberry Pi documentation: https://www.raspberrypi.com/documentation/
+- Arduino Nicla Vision documentation: <https://docs.arduino.cc/hardware/nicla-vision/>
+- OpenMV MicroPython firmware: <https://openmv.io/>
+- Raspberry Pi documentation: <https://www.raspberrypi.com/documentation/>
 
 **Algorithms:**
-- SORT tracker (Bewley et al., 2016): https://arxiv.org/abs/1602.00763
-- Lucas-Kanade Optical Flow (OpenCV): https://docs.opencv.org/4.x/d4/dee/tutorial_optical_flow.html
-- Hungarian Algorithm (scipy.optimize.linear_sum_assignment): https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linear_sum_assignment.html
+- SORT tracker (Bewley et al., 2016): <https://arxiv.org/abs/1602.00763>
+- Lucas-Kanade Optical Flow (OpenCV): <https://docs.opencv.org/4.x/d4/dee/tutorial_optical_flow.html>
+- Hungarian Algorithm (scipy.optimize.linear_sum_assignment): <https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linear_sum_assignment.html>
 
 **Libraries:**
-- OpenCV: https://opencv.org/
-- NumPy: https://numpy.org/
-- psutil: https://psutil.readthedocs.io/
-- ONNX: https://onnx.ai/
+- OpenCV: <https://opencv.org/>
+- NumPy: <https://numpy.org/>
+- psutil: <https://psutil.readthedocs.io/>
+- ONNX: <https://onnx.ai/>
 
 **Reference paper**
-- https://ieeexplore.ieee.org/document/1699915
+- <https://ieeexplore.ieee.org/document/1699915>
 
 
 ## 12. Instructions to Run the code
+
+---
 - Download the Nicla Vision code and run it using OpenMV software. Make sure to enter the Wi-Fi username and password. The IP address will be displayed in the output screen. Note this IP address and update the code in the main.py file on your PC (you will see the Nicla Vision drive). Repeat this process for both Nicla Vision devices.
 - For the third Nicla Vision, download the Nicla Audio code, run it using OpenMV, and update the main.py file on that device.
 - Run the Colab notebook and download the quantized YOLO model from it.

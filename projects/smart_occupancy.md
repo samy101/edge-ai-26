@@ -4,12 +4,19 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # SmartSeat: Real-Time Library & Classroom Seat Occupancy Detection using YOLOv8 on Raspberry Pi 5
-**Team:** Kongari Kunal Ganesh, Samriddhi Bhattacharjee, Aryan Dahiya, Hake Shivam Panjab  
-**Code:** [GitHub Repository](https://github.com/kunalkongari/SmartSeat-EdgeAI.git)
 
 ---
 
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/15.png" width="400">
+</p>
+
+**Team:** Kongari Kunal Ganesh, Samriddhi Bhattacharjee, Aryan Dahiya, Hake Shivam Panjab  
+**Code:** [GitHub Repository](https://github.com/kunalkongari/SmartSeat-EdgeAI.git)
+
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 Library and classroom seat management is a persistent challenge in academic institutions. Students often waste time walking through crowded spaces looking for available seats, and administrators have no real-time visibility into space utilization. Traditional solutions rely on manual counting or expensive IoT sensor arrays, neither of which scale well or provide real-time insights.
 
@@ -22,9 +29,9 @@ Edge AI offers a compelling alternative: a low-cost camera + edge device combina
 - Build a live local web dashboard displaying real-time seat counts, a visual seat map, and occupancy rate
 - Benchmark and compare inference performance (FPS, CPU utilization) across all three quantization formats
 
----
+## 2. Proposed Solution
 
-## 2. Proposed Solution (Overview)
+---
 
 SmartSeat uses a pretrained YOLOv8n model (COCO weights) to detect **persons** and **chairs** in live camera frames. Seat occupancy is determined by a spatial IoU-based logic: if a detected person bounding box significantly overlaps a detected chair bounding box, that seat is marked **occupied** (red 🔴); otherwise it is **vacant** (green 🟢).
 
@@ -48,9 +55,9 @@ Pi Camera Module
 
 The system runs entirely on-device with no internet connection required after setup, and was tested across three distinct real-world environments.
 
----
-
 ## 3. Hardware & Software Setup
+
+---
 
 ### Hardware
 | Component | Details |
@@ -71,9 +78,9 @@ The system runs entirely on-device with no internet connection required after se
 | Raspberry Pi OS (64-bit) | Operating system |
 | ChatGPT (OpenAI) | Debugging, optimization ideas, documentation |
 
----
-
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 SmartSeat uses the **pretrained `yolov8n.pt`** model trained on the **COCO dataset** — no custom dataset collection or fine-tuning was performed. The pretrained COCO weights detect `person` and `chair` across varied lighting, camera angles, and room types, as validated through real-world testing.
 
@@ -85,9 +92,9 @@ SmartSeat uses the **pretrained `yolov8n.pt`** model trained on the **COCO datas
 | Preprocessing | Frame resize to 640×640, normalization |
 | Environments Tested | Open lounge, classroom rows, computer lab workstations |
 
----
-
 ## 5. Model Design, Training & Evaluation
+
+---
 
 ### Model Architecture
 - **Model:** YOLOv8n (nano — lightest in YOLOv8 family), source: `yolov8n.pt`
@@ -105,9 +112,9 @@ SmartSeat uses the **pretrained `yolov8n.pt`** model trained on the **COCO datas
 | Chair confidence range (observed) | 0.46 – 0.88 |
 | Person confidence range (observed) | 0.51 – 0.77 |
 
----
-
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 `yolov8n.pt` was exported to TensorFlow Lite in three quantization formats using the Ultralytics export API:
 
@@ -135,9 +142,9 @@ model.export(format="tflite", int8=True)  # INT8
 - **Float32 TFLite (7–8 FPS)** outperforms FP16 because TFLite's Float32 runtime is better optimized for ARM than FP16 emulation
 - INT8 is clearly the optimal format for Raspberry Pi 5 deployment, offering the best FPS, lowest CPU usage, and smallest model size simultaneously
 
----
-
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 ### Deployment Steps
 1. Export `yolov8n.pt` to TFLite (Float32, FP16, INT8) using Ultralytics API
@@ -155,9 +162,9 @@ model.export(format="tflite", int8=True)  # INT8
 | FP16 TFLite | 5–6 | 35% | ~6–7 MB |  No speed benefit on RPi 5 |
 | **INT8 TFLite** | **14–15** | **34%** | **~3–4 MB** | **Best** |
 
----
-
 ## 8. System Prototype — Demo Screenshots
+
+---
 
 All screenshots below are from the live SmartSeat dashboard running on Raspberry Pi 5, across three real-world environments.
 
@@ -208,9 +215,9 @@ All screenshots below are from the live SmartSeat dashboard running on Raspberry
 - **Occupancy Stats** — Total Seats, Occupied (red), Vacant (green), FPS, Occupancy Rate progress bar
 - **Seat Map** — per-seat status tiles with chair icon, seat number, OCCUPIED/VACANT label in real-time
 
----
-
 ## 9. Conclusions & Limitations
+
+---
 
 ### Key Outcomes
 - Successfully deployed YOLOv8n on Raspberry Pi 5 achieving **14–15 FPS** (INT8) with only **34% CPU usage** — a 44% reduction vs the 61% CPU load of the baseline normal mode
@@ -226,9 +233,9 @@ All screenshots below are from the live SmartSeat dashboard running on Raspberry
 - Single Pi Camera has limited FOV; large halls require multiple camera units
 - Fixed IoU threshold may need per-room tuning depending on chair size and camera height
 
----
-
 ## 10. Future Work
+
+---
 
 - Multi-camera support with centralized dashboard for large lecture halls and libraries
 - Custom fine-tuning on library/classroom-specific dataset for improved low-light performance
@@ -238,9 +245,9 @@ All screenshots below are from the live SmartSeat dashboard running on Raspberry
 - Full INT8 pipeline optimization to sustain 14–15 FPS in the dashboard stream
 - Real-time alerting when specific seats become available
 
----
-
 ## 11. Challenges & Mitigation
+
+---
 
 | Challenge | Impact | Mitigation |
 |-----------|--------|-----------|
@@ -249,15 +256,15 @@ All screenshots below are from the live SmartSeat dashboard running on Raspberry
 | Lighting variation (day/night, shadows, lab fluorescent lighting) | Chair detection confidence drops to ~0.46 in darker environments | Tuned confidence threshold; flagged for future fine-tuning on low-light data |
 | Live video lag on web dashboard | Dashboard feed delayed 2–3 seconds at full resolution | Reduced capture resolution to 640×480 and optimized Flask MJPEG streaming pipeline |
 
----
-
 ## 12. References
 
-1. Jocher, G. et al. (2023). *Ultralytics YOLOv8*. https://github.com/ultralytics/ultralytics
-2. Lin, T.Y. et al. (2014). *Microsoft COCO: Common Objects in Context*. ECCV 2014. https://cocodataset.org
-3. TensorFlow Lite — Post-Training Quantization. https://www.tensorflow.org/lite/performance/post_training_quantization
-4. OpenCV Documentation. https://docs.opencv.org
-5. Raspberry Pi Foundation. *Raspberry Pi 5*. https://www.raspberrypi.com/products/raspberry-pi-5/
-6. Ultralytics — Export & Quantization Docs. https://docs.ultralytics.com/modes/export/
+---
+
+1. Jocher, G. et al. (2023). *Ultralytics YOLOv8*. <https://github.com/ultralytics/ultralytics>
+2. Lin, T.Y. et al. (2014). *Microsoft COCO: Common Objects in Context*. ECCV 2014. <https://cocodataset.org>
+3. TensorFlow Lite — Post-Training Quantization. <https://www.tensorflow.org/lite/performance/post_training_quantization>
+4. OpenCV Documentation. <https://docs.opencv.org>
+5. Raspberry Pi Foundation. *Raspberry Pi 5*. <https://www.raspberrypi.com/products/raspberry-pi-5/>
+6. Ultralytics — Export & Quantization Docs. <https://docs.ultralytics.com/modes/export/>
 7. ChatGPT (OpenAI) — Debugging, optimization ideas, and documentation support.
-8. Edge AI Course Projects 2025. https://www.samy101.com/edge-ai-25/project/
+8. Edge AI Course Projects 2025. <https://www.samy101.com/edge-ai-25/project/>

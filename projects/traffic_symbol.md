@@ -4,15 +4,25 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # AI Powered Smart Helmet for Traffic Sign Detection with 120 degree FoV
+
+---
+
+<p align=”center”>
+  <img src=”/edge-ai-26/assets/img/projects26/19.jpg” width=”400”>
+</p>
+
 **Team:** Sana Sreyas, Abel Thomas Titus, Joffin Jacob, Simhadri Vishnukumar  
 **Code:** [GitHub Repository](https://github.com/abelttitus/AI-Powered-Smart-Helmet-for-Traffic-Sign-Detection-with-120-degree-FoV)
 
 This Edge Impulse project implements a real-time, high PoV, on-device road sign detection and alerting system using the Arduino Nicla Vision. The goal is to prototype an “AI Helmet” that can detect critical road signs and provide immediate alerts to two-wheeler riders.
 
-
 ## ✨ Highlights
 
+---
+
 ## Key Features
+
+---
 
 - **Fully on-device Edge AI** – Detection and alerts run entirely on the [Arduino Nicla Vision](https://store.arduino.cc/products/nicla-vision) using TinyML + FOMO, eliminating the need for cloud connectivity or smartphone support for core operation.
 
@@ -27,10 +37,9 @@ This Edge Impulse project implements a real-time, high PoV, on-device road sign 
 
 - **Multi-modal safety feedback** – Provides instant alerts through **on-frame overlays**, **RGB LED indicators**, along with **real-time audio feedback via Bluetooth using a text-to-speech system** for intuitive rider interaction.
 
----
-
-
 ## 📁 Repository Structure
+
+---
 
 ```text
 .
@@ -41,10 +50,9 @@ This Edge Impulse project implements a real-time, high PoV, on-device road sign 
 └── README.md              # Project overview and documentation (this file)
 ````
 
----
-
-
 ## 🚥 Problem Statement
+
+---
 
 Riders — motorcyclists and cyclists — often miss or fail to react to traffic signs in time due to limited field of view, distractions, or poor visibility. This poses a significant road safety risk, especially in traffic-dense Indian road environments.
 
@@ -58,15 +66,17 @@ However, two-wheeler riders often fail to notice or correctly interpret these si
 * Poor illumination or adverse weather
 * Fatigue, distraction, or high cognitive load in traffic
 
-
 ## System Block Diagram
+
+---
 
 This project addresses that gap by exploring how existing helmets can be transformed into an **AI Helmet** using a compact, low-power Edge AI device. The system perceives its surroundings through computer vision, enhanced by a **three-camera setup providing a wide 120° field of view**, enabling reliable detection of important signboards in real time. It actively alerts riders through **real-time audio feedback via Bluetooth using text-to-speech**, ensuring critical information is conveyed instantly without requiring visual attention.
 
 ![AI Helmet Prototype](/edge-ai-26/assets/img/projects26/smart-helmet/block_diagram.png)
----
 
 ## 🎯 Project Objectives
+
+---
 
 The main objective is to develop a prototype AI Helmet module that:
 
@@ -82,9 +92,9 @@ The prototype demonstrates an **end-to-end Edge Impulse pipeline**:
 
 > Data collection → Dataset & labels → FOMO model training → On-device deployment → Real-time alerts in a helmet-mounted setup.
 
----
-
 ## 🔧 Hardware & Software Used
+
+---
 
 ### Hardware Required
 
@@ -116,10 +126,9 @@ The prototype demonstrates an **end-to-end Edge Impulse pipeline**:
   * Writing and flashing MicroPython deployment scripts to Nicla Vision
 * 🐍 **MicroPython**
 
+## 🧱 Hardware Platform
 
 ---
-
-## 🧱 Hardware Platform
 
 **Core device:** [Arduino Nicla Vision](https://store.arduino.cc/products/nicla-vision)
 
@@ -136,9 +145,9 @@ These capabilities make it possible to:
 * Run **Edge AI / TinyML models locally**
 * Stream **annotated video** to a browser (for debugging and visualization)
 
----
-
 ## 📸 Data Collection
+
+---
 
 Data collection is done directly **on the Nicla Vision** using the scripts in `data-collection/`:
 
@@ -149,9 +158,9 @@ Data collection is done directly **on the Nicla Vision** using the scripts in `d
 
 Using this simple setup, we collected images of **real sign boards** around the IISc.
 
----
-
 ## 🧮 Dataset & Augmentation
+
+---
 
 The captured images are imported into **Edge Impulse** for dataset preparation.
 
@@ -175,9 +184,9 @@ The captured images are imported into **Edge Impulse** for dataset preparation.
 * **172 images total** across all classes
 * An additional **background class** (added by Edge Impulse) represents scenes with **no sign board**, helping the model distinguish meaningful signs from ordinary road backgrounds.
 
----
-
 ## 🏷️ Annotation & Labeling
+
+---
 
 Bounding box annotation is carried out inside **Edge Impulse** using its labeling interface:
 
@@ -185,9 +194,9 @@ Bounding box annotation is carried out inside **Edge Impulse** using its labelin
 
 This  strategy significantly speeds up labeling while maintaining high annotation quality suitable for embedded object detection.
 
----
-
 ## 🧠 Model Design: FOMO for TinyML
+
+---
 
 We use **Edge Impulse FOMO (Faster Objects, More Objects)** for TinyML-based object detection.
 
@@ -219,9 +228,9 @@ The model predicts **5 object classes** (non-background):
 * **21%** used for **testing**
 * **20% of the training set** is further reserved as a **validation set**
 
----
-
 ## 🧪 Training Details (Edge Impulse)
+
+---
 
 The Keras-based object detection block in Edge Impulse uses a **FOMO-specific training script** with:
 
@@ -256,14 +265,17 @@ This corresponds to roughly:
 
 which is sufficient for real-time detection and alerting on the helmet.
 
----
 ## Model Performance
+
+---
  The performance of the model is evaluated using test dataset and various metrics were calculated. The model
  has performed satisfactorily and the metrics are summarized below:
 
  ![Results](/edge-ai-26/assets/img/projects26/smart-helmet/model_performance.png)
- 
+
 ## 🧩 Impulse Design (Edge Impulse)
+
+---
 
 The complete impulse in Edge Impulse consists of:
 
@@ -284,10 +296,9 @@ The complete impulse in Edge Impulse consists of:
    * Architecture: **FOMO MobileNetV2 0.35**
    * Output: 5 object classes + background (grid-based localization)
 
+## 🚀 On-Device Deployment (OpenMV + MicroPython)
 
 ---
-
-## 🚀 On-Device Deployment (OpenMV + MicroPython)
 
 Deployment is done via the scripts in `deployment/OpenMV/`.
 
@@ -321,10 +332,10 @@ This combination of real-time detection, visual overlays, and simple acoustic/vi
 
 ### System Prototype
  ![Prototype](/edge-ai-26/assets/img/projects26/smart-helmet/system_proto.jpg)
----
-
 
 ## 🎬 Demo (Real-Time Detection)
+
+---
 
 Below are example frames from the real-time detection pipeline running on the AI Helmet prototype:
 ## Demo 1
@@ -333,23 +344,26 @@ Below are example frames from the real-time detection pipeline running on the AI
 ## Demo 2
 [![Watch Video](https://img.youtube.com/vi/hZljtHW5vYY/0.jpg)](https://youtu.be/hZljtHW5vYY)
 
----
 ## Achievements
+
+---
 * 92.6% F1 score on 5-class traffic sign detection
 * int8 quantized FOMO model running at 61ms inference
 * 3-camera coverage with USB serial pipeline to Pi
 * Priority-based audio announcement via Bluetooth
 * Deduplication to prevent repeated announcements
 
----
-
 ## Challenges
+
+---
 * Multi-camera synchronization for 120° FoV
 * Edge AI resource constraints - Arduino Nicla Vision
 * Robustness in real-world conditions
 * Low-latency audio feedback
----
+
 ## Planned Improvements
+
+---
 
 In future iterations, we plan to:
 
@@ -359,17 +373,14 @@ In future iterations, we plan to:
 * Helmet integration with vibration haptic alerts
 * Natural TTS voice (gTTS) with internet connectivity
 
-  ---
- ## References
- * https://github.com/samy101/ai-helmet
+## References
+
+---
+
+ * <https://github.com/samy101/ai-helmet>
  * ChatGPT
  * Claude AI
 
-## Course Details
-* CP330 Edge AI - https://www.samy101.com/edge-ai-26/
- 
-
----
 
 
 

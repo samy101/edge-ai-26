@@ -4,10 +4,15 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Nighttime Street Light Functional Audit Using Computer Vision on Edge Device
+
+---
+
 **Team:** Anant Rajput, Kartikeya Gaur, Revathy Ramesh, Vuyyuru Gopi Chand  
 **Code:** [GitHub Repository](https://github.com/AnantRajput415/Nighttime-Street-Light-Functional-Audit-Using-Computer-Vision-on-Edge-Device)
 
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 Urban street lighting is a critical component of public infrastructure it improves visibility, reduces crime, and supports safe vehicular and pedestrian movement after dark. Yet maintaining expansive street lighting networks at city scale remains a formidable challenge. Cities worldwide operate hundreds of thousands of streetlights (Los Angeles alone maintains over 220,000 units), and globally the number is projected to exceed 350 million. Despite their importance, most cities still rely on outdated maintenance practices: periodic manual inspections and citizen complaint-driven reporting. These approaches are labor-intensive, error-prone, and slow to detect outages, leaving malfunctioning lamps unnoticed for extended periods and compromising both public safety and energy efficiency.
 
 The motivation for an automated, vision-based approach is clear: IoT sensor networks that instrument every lamp post carry prohibitive deployment and maintenance costs, while manual drive-by surveys lack scientific reliability and scalability. Computer vision offers a compelling middle path using cameras mounted on ordinary vehicles to perform continuous nighttime drive-by surveys, turning everyday city fleets into infrastructure monitoring platforms. 
@@ -23,9 +28,9 @@ Kumar et al. (2016) demonstrated the feasibility of this paradigm using a car-to
 
 4. Deploy a real-time web-based interface for live monitoring.
 
----
+## 2. Proposed Solution
 
-## 2. Proposed Solution (Overview)
+---
 
 The system is a vehicle-mounted, edge-deployed streetlight fault detector. A camera captures nighttime video during drive-by patrols; the webapp runs a compressed YOLO model to classify each detected lamp as ON or OFF in real time, logging faults with timestamps for subsequent municipal review — with no cloud connectivity required.
 
@@ -33,7 +38,7 @@ The system is a vehicle-mounted, edge-deployed streetlight fault detector. A cam
 
 **Data** → Nighttime video is captured along pre-planned routes and extracted into frames. Each frame is labelled with bounding boxes for `ON_Streetlight` and `OFF_Streetlight` classes. A preprocessing pipeline (CLAHE, gamma correction, unsharp masking) is applied to compensate for low ambient light and motion blur before training.
 
-https://drive.google.com/drive/folders/1SJH9nexL3rW9DqcZN_Q-33obRFqGnCKH?usp=sharing
+<https://drive.google.com/drive/folders/1SJH9nexL3rW9DqcZN_Q-33obRFqGnCKH?usp=sharing>
 
 
 **Model** → Multiple full-precision (FP32) baseline models are trained on a GPU workstation (Google Colab, Tesla T4): YOLOv5nu, YOLOv5su, YOLOv8n, and YOLOv8s. The best-performing lightweight model (YOLOv5nu) is selected for compression.
@@ -44,9 +49,9 @@ https://drive.google.com/drive/folders/1SJH9nexL3rW9DqcZN_Q-33obRFqGnCKH?usp=sha
 
 **Output** → Per-frame bounding box predictions with class labels (ON / OFF) and confidence scores, rendered in real time and logged for fault mapping.
 
----
-
 ## 3. Hardware & Software Setup
+
+---
 
 **Hardware:**
 
@@ -68,9 +73,9 @@ https://drive.google.com/drive/folders/1SJH9nexL3rW9DqcZN_Q-33obRFqGnCKH?usp=sha
 | Edge runtime | TFLite runtime / ONNX Runtime on Mobile Phone; ORT CPU benchmark (4 threads) as RPi 4 proxy |
 | Development | Python 3.12.13, Google Colab, Jupyter Notebook |
 
----
-
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 **Data source:** Custom dataset — nighttime video collected by the project team during vehicle drive-bys across three localities in Bengaluru, Karnataka, India.
 
@@ -116,9 +121,9 @@ Final Dataset: The resulting processed dataset consists of ~ 2.1k frames ready f
 
 **Labelling:** Bounding box annotations created manually; each frame is tagged with class ID, centre coordinates, and box dimensions in YOLO format.
 
----
-
 ## 5. Model Design, Training & Evaluation
+
+---
 
 **Architecture overview:**
 
@@ -160,9 +165,10 @@ All YOLO models follow the standard one-stage detection paradigm: a CNN backbone
 
 
 **Key finding:** YOLOv5nu achieves the best balance of accuracy and speed, highest mAP50 (0.886), smallest parameter count (2.5M), and fastest GPU inference (3.2ms). 
----
 
 ## 6. Model Compression & Efficiency Metrics
+
+---
 
 Four compression strategies were applied to produce edge-ready models, targeting constrained compute and memory budgets on mobile and Raspberry Pi 4 class hardware. The pipeline corrects several methodological issues present in earlier versions (dynamic PyTorch INT8 on Conv2d is a no-op; RPi FPS now measured via ORT CPU benchmarking, not a formula estimate; KD loss is injected by wrapping `model.loss` rather than dead-code trainer overrides; the detection head is excluded from pruning to prevent mAP collapse).
 
@@ -205,41 +211,9 @@ A larger teacher model supervises a smaller student model via a weighted loss co
 - Schedule: Cosine annealing, patience=5 early stopping
 - Goal: Transfer knowledge from the larger model to a model with fewer parameters at no extra data cost
 
-**Summary of compressions:**
-
-| Tag | Category | mAP50 | F1 | FileSizeMB | FileSizeMB_gz | RPi_FPS |
-|---|---|---|---|---|---|---|
-| yolov5nu | Baseline | 0.8859 | 0.8294 | 5.25 | 4.74 | 5.7 |
-| yolov5nu_fp16 | Quantized-FP16 | 0.8859 | 0.8290 | 5.14 | 4.69 | 4.1 |
-| yolov8s | Baseline | 0.8782 | 0.8322 | 22.50 | 20.74 | 1.9 |
-| yolov8s_fp16 | Quantized-FP16 | 0.8781 | 0.8328 | 22.37 | 20.67 | 1.9 |
-| yolov8n_fp16 | Quantized-FP16 | 0.8775 | 0.8175 | 6.13 | 5.62 | 3.5 |
-| yolov8n | Baseline | 0.8774 | 0.8174 | 6.23 | 5.66 | 4.6 |
-| yolov5su_pruned_20pct | Pruned-OneShot | 0.8636 | 0.8266 | 36.62 | 27.59 | 2.2 |
-| yolov5su | Baseline | 0.8625 | 0.8316 | 18.50 | 17.02 | 2.3 |
-| yolov5su_fp16 | Quantized-FP16 | 0.8623 | 0.8317 | 18.36 | 16.96 | 2.1 |
-| yolov5nu_pruned_20pct | Pruned-OneShot | 0.8284 | 0.7725 | 10.18 | 7.80 | 4.7 |
-| yolov5su_pruned_30pct | Pruned-OneShot | 0.7788 | 0.7082 | 36.62 | 25.37 | 2.2 |
-| yolov8n_pruned_20pct | Pruned-OneShot | 0.7435 | 0.7209 | 12.18 | 9.33 | 3.5 |
-| yolov8s_pruned_20pct | Pruned-OneShot | 0.5152 | 0.5531 | 44.66 | 33.50 | 1.9 |
-| yolov8n_pruned_30pct | Pruned-OneShot | 0.4385 | 0.4676 | 12.18 | 8.53 | 4.6 |
-| yolov5nu_pruned_30pct | Pruned-OneShot | 0.3951 | 0.4473 | 10.18 | 7.15 | 4.1 |
-| yolov8s_pruned_30pct | Pruned-OneShot | 0.2206 | 0.2490 | 44.66 | 30.72 | 1.9 |
-| yolov5su_pruned_50pct | Pruned-OneShot | 0.0045 | 0.0152 | 36.62 | 20.32 | 2.2 |
-| yolov5nu_pruned_50pct | Pruned-OneShot | 0.0013 | 0.0050 | 10.18 | 5.71 | 6.0 |
-| yolov8s_pruned_50pct | Pruned-OneShot | 0.0000 | 0.0000 | 44.66 | 24.50 | 1.9 |
-| yolov8n_pruned_50pct | Pruned-OneShot | 0.0000 | 0.0000 | 12.18 | 6.77 | 3.5 |
-| yolov5nu_ort_int8 | Quantized-ORT-INT8 | NaN | NaN | 2.75 | 1.94 | 10.8 |
-| yolov5nu_tflite_int8 | Quantized-TFLite | NaN | NaN | 2.71 | 2.26 | NaN |
-| yolov5su_ort_int8 | Quantized-ORT-INT8 | NaN | NaN | 9.38 | 6.45 | 5.1 |
-| yolov5su_tflite_int8 | Quantized-TFLite | NaN | NaN | 9.39 | 7.99 | NaN |
-| yolov8n_ort_int8 | Quantized-ORT-INT8 | NaN | NaN | 3.23 | 2.28 | 10.8 |
-| yolov8n_tflite_int8 | Quantized-TFLite | NaN | NaN | 3.20 | 2.69 | NaN |
-| yolov8s_ort_int8 | Quantized-ORT-INT8 | NaN | NaN | 11.36 | 7.83 | 4.4 |
-| yolov8s_tflite_int8 | Quantized-TFLite | NaN | NaN | 11.39 | 9.68 | NaN |
----
-
 ## 7. Model Deployment & On-Device Performance
+
+---
 
 **Deployment steps:**
 
@@ -264,9 +238,9 @@ A larger teacher model supervises a smaller student model via a weighted loss co
 
 **Real-time behaviour:** The deployed system processes each incoming frame, draws bounding boxes labelled ON_Streetlight or OFF_Streetlight with confidence scores, and logs detections to a timestamped GPS CSV for post-route fault mapping.
 
----
-
 ## 8. Conclusions & Limitations
+
+---
 
 **Key outcomes:**
 
@@ -283,9 +257,9 @@ A larger teacher model supervises a smaller student model via a weighted loss co
 - **Class imbalance:** Very less OFF_Streetlight instances in the validation set; model robustness on diverse fault types (partial occlusion, dimming, intermittent faults) is not fully validated
 - **Single city, single season:** Data was collected in Bengaluru under dry-season nighttime conditions; performance under rain, fog, or different lamp architectures is unknown
 
----
-
 ## 9. Future Work
+
+---
 
 - **Dataset expansion:** Collect additional OFF_Streetlight examples across rain, fog, and different lamp types to improve class balance and generalisation
 
@@ -293,9 +267,9 @@ A larger teacher model supervises a smaller student model via a weighted loss co
 
 - **Fleet-scale deployment:** Integrate the system into existing municipal maintenance vehicles (BBMP, BESCOM fleet) to survey the full city lighting network on routine patrol routes
 
----
-
 ## 10. Challenges & Mitigation
+
+---
 
 | Challenge | Description | Mitigation |
 |---|---|---|
@@ -305,15 +279,15 @@ A larger teacher model supervises a smaller student model via a weighted loss co
 | **GPU-to-edge latency gap** | Tesla T4 inference times (3–11 ms) are not representative of Raspberry Pi performance | RPi 4 speed is now proxied by real ORT CPU benchmarking with 4 threads pinned (mimicking RPi 4 cores)|
 | **Data collection logistics** | Nighttime driving routes required planned sorties across three localities with consistent camera placement | Used a fixed dashboard mount and pre-planned OSM-exported routes to ensure route reproducibility and coverage |
 
----
-
 ## 11. References
 
-1. Kumar, S., Deshpande, A., Ho, S.S., Ku, J.S., & Sarma, S.E. (2016). *Urban Street Lighting Infrastructure Monitoring Using a Mobile Sensor Platform.* IEEE Sensors Journal, 16(12), 4981–4994. https://doi.org/10.1109/JSEN.2016.2552249
+---
+
+1. Kumar, S., Deshpande, A., Ho, S.S., Ku, J.S., & Sarma, S.E. (2016). *Urban Street Lighting Infrastructure Monitoring Using a Mobile Sensor Platform.* IEEE Sensors Journal, 16(12), 4981–4994. <https://doi.org/10.1109/JSEN.2016.2552249>
 
 2. Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016). *You Only Look Once: Unified, Real-Time Object Detection.* arXiv:1506.02640.
 
-3. Ultralytics. (2024). *YOLOv5 and YOLOv8 Documentation.* https://docs.ultralytics.com
+3. Ultralytics. (2024). *YOLOv5 and YOLOv8 Documentation.* <https://docs.ultralytics.com>
 
 4. Hu, J., Shen, L., & Sun, G. (2018). *Squeeze-and-Excitation Networks.* Proceedings of CVPR, 7132–7141.
 
@@ -325,8 +299,8 @@ A larger teacher model supervises a smaller student model via a weighted loss co
 
 8. Hinton, G., Vinyals, O., & Dean, J. (2015). *Distilling the Knowledge in a Neural Network.* arXiv:1503.02531.
 
-9. TensorFlow Lite. (2024). *Post-Training Quantization.* https://www.tensorflow.org/lite/performance/post_training_quantization
+9. TensorFlow Lite. (2024). *Post-Training Quantization.* <https://www.tensorflow.org/lite/performance/post_training_quantization>
 
 10. Buslaev, A. et al. (2020). *Albumentations: Fast and Flexible Image Augmentations.* Information, 11(2), 125.
 
-11. OpenStreetMap contributors. (2024). *Bengaluru road network data.* https://www.openstreetmap.org
+11. OpenStreetMap contributors. (2024). *Bengaluru road network data.* <https://www.openstreetmap.org>

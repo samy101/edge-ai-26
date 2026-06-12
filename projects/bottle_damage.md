@@ -4,84 +4,21 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # 🍾 Bottle Detection Pipeline: Real-Time Damage Classification System
+
+---
+
 **Team:** Garvit, Shreemay, Naina.  
 **Code:** [GitHub Repository](https://github.com/sihag-21/waste-segregation)
 
 This project implements a **real-time, on-device bottle damage detection and classification system** using **YOLOv8** for bottle localization and a **ResNet50V2 TFLite model** for damage classification on the **Raspberry Pi 6**.
 
----
-
 Download Dataset : <https://indianinstituteofscience-my.sharepoint.com/:f:/g/personal/garvitsingh_iisc_ac_in/IgBZL7K_GBsFTKEEFdSSHR2iATd8kEWolyq1uzfXkRLRkwc?e=uzx9Id>
 
----
 
-## 📋 Table of Contents
-
-- [Highlights](#-highlights)
-- [Repository Structure](#-repository-structure)
-- [Problem Statement](#-problem-statement)
-- [Project Objectives](#-project-objectives)
-- [Hardware & Software Used](#-hardware--software-used)
-- [Pipeline Architecture](#-pipeline-architecture)
-  - [Custom Containment NMS](#custom-containment-nms-remove_overlapping_boxes)
-- [Classifier: ResNet50V2 Training](#-classifier-resnet50v2-training-resnet50ipynb)
-  - [Dataset & Split](#dataset--split)
-  - [Augmentation Pipeline](#augmentation-pipeline)
-  - [Figure 1: Augmented Training Samples](#figure-1-augmented-training-samples)
-  - [Model Architecture](#model-architecture)
-  - [Training: Two Phases](#training-two-phases)
-  - [Figure 2: Training Curves (Phase 1 + Phase 2)](#figure-2-training-curves-phase-1--phase-2)
-  - [Figure 3: Confusion Matrix](#figure-3-confusion-matrix)
-  - [Quantization](#quantization)
-  - [Figure 4: QAT Training Curves](#figure-4-qat-training-curves)
-  - [Output Files](#output-files)
-- [Performance Benchmarks](#-performance-benchmarks-raspberry-pi-6-arm64)
-  - [Figure 5: Timing Breakdown Chart (best.pt baseline)](#figure-5-timing-breakdown-chart-bestpt-baseline)
-  - [Figure 6: QAT Model Results — 5× YOLO Speedup](#figure-6-qat-model-results--5-yolo-speedup)
-  - [Figure 7: INT8 Model Results](#figure-7-int8-model-results)
-  - [Memory Usage](#memory-usage-rpi6-8-gb-lpddr5)
-  - [Figure 8: Memory Usage Profile](#figure-8-memory-usage-profile)
-- [Usage Modes](#-usage-modes)
-  - [Image Mode](#image-mode)
-  - [Folder Mode](#folder-mode)
-  - [Camera Mode — Photo Booth Workflow](#camera-mode--photo-booth-workflow)
-  - [Figure 9: Live Detection Output](#figure-9-live-detection-output)
-- [Data Structures](#-data-structures)
-- [Raspberry Pi Setup](#-raspberry-pi-setup)
-- [Troubleshooting](#-troubleshooting)
-- [V2 Roadmap](#-v2-roadmap-scaling-to-real-time-conveyor-speeds)
-- [Team](#-team)
-
----
-
-## ✨ Highlights
-
-* **Fully offline Edge AI pipeline** — All detection and classification runs locally on the Raspberry Pi 6 with **no cloud or internet dependency** for core functionality.
-* **Two-stage architecture** — YOLOv8 handles fast spatial bottle localization across the full frame; ResNet50V2 provides high-fidelity per-crop defect analysis with richer texture features than a single-model head alone.
-* **Tiny but capable classifier** — ResNet50V2 INT8 quantized TFLite model (~25 MB), running at **~277 ms per bottle** on RPi6 ARM64 with the XNNPACK delegate.
-* **5× YOLO speedup via model switch** — Switching from `best.pt` (custom fine-tuned) to `yolov8n.pt` reduced YOLO inference from ~1550 ms to **~308 ms** with no accuracy configuration change. Note: the CLI defaults to `yolov8s.pt`; pass `--yolo-model yolov8n.pt` explicitly for maximum speed on RPi.
-* **Democratises QC for FMCG** — Traditional industrial vision systems cost ₹50,000+. This pipeline runs on a **₹6,000 Raspberry Pi**, making automated quality control accessible to small and mid-scale manufacturers.
-
----
-
-## 📁 Repository Structure
-
-```text
-bottle_pipeline/
-├── bottle_pipeline.py        # Main entry point — 3 operating modes
-├── resnet50.ipynb            # Classifier training notebook (Colab/Kaggle)
-├── setup_rpi5.sh             # 7-step installation script for Raspberry Pi
-├── requirements.txt          # Python dependencies
-└── models/
-    ├── yolov8s.pt            # YOLOv8s detection weights (default)
-    ├── yolov8n.pt            # YOLOv8n detection weights (recommended for RPi speed)
-    ├── *.tflite              # ResNet50V2 damage classifier (INT8 / QAT / FP32)
-    └── labels.txt            # Class labels: damaged, non_damaged
-```
-
----
 
 ## 🚥 Problem Statement
+
+---
 
 Packaging quality control is a critical step in FMCG manufacturing. Damaged bottles reaching consumers lead to product spoilage, customer complaints, and brand damage. Current automated inspection solutions require:
 
@@ -91,9 +28,9 @@ Packaging quality control is a critical step in FMCG manufacturing. Damaged bott
 
 This project addresses that gap with a **fully open-source, offline Edge AI pipeline** that can be deployed on low-cost hardware — enabling quality control for small and mid-scale producers who previously had no viable option.
 
----
-
 ## 🎯 Project Objectives
+
+---
 
 The main objective is to develop a production-grade bottle inspection module that:
 
@@ -106,9 +43,9 @@ The prototype demonstrates an **end-to-end Edge pipeline**:
 
 > Dataset preparation → Transfer learning (ResNet50V2) → QAT quantization → TFLite export → On-device deployment on RPi6
 
----
-
 ## 🔧 Hardware & Software Used
+
+---
 
 ### Hardware Required
 
@@ -127,9 +64,9 @@ The prototype demonstrates an **end-to-end Edge pipeline**:
 * 🔢 **scikit-learn** — `classification_report`, `confusion_matrix`, `compute_class_weight`
 * 🖥️ **Google Colab / Kaggle** — cloud GPU environment for training
 
----
-
 ## 🏗️ Pipeline Architecture
+
+---
 
 The pipeline uses a **two-stage architecture** (see PPT Slide 2 — Pipeline Overview):
 
@@ -152,9 +89,9 @@ Standard IoU-based NMS fails in two real scenarios this pipeline encounters. The
 
 **Logic:** Boxes are sorted by area (largest first). A large box is removed if it contains **1 or more** smaller boxes with ≥ 80% overlap (`containment_threshold=0.80`, `iou_threshold=0.30`). Only the tightest individual-bottle boxes are forwarded to the classifier.
 
----
-
 ## 🧠 Classifier: ResNet50V2 Training (`resnet50.ipynb`)
+
+---
 
 The damage classifier is trained in a Jupyter notebook on Colab/Kaggle using a two-phase transfer learning approach. The notebook follows a 14-step pipeline from data loading to TFLite export.
 
@@ -288,9 +225,9 @@ OUTPUT_DIR/qat_training_curves.png
 | `augmented_samples.png` | 5 | Figure 1: 3×3 grid of augmented training samples |
 | `qat_training_curves.png` | 12 | Figure 4: QAT accuracy and loss curves |
 
----
-
 ## 📊 Performance Benchmarks (Raspberry Pi 6, ARM64)
+
+---
 
 All benchmarks run on RPi6 ARM64 with XNNPACK delegate. Confidence threshold: 0.10.
 
@@ -330,9 +267,9 @@ All benchmarks run on RPi6 ARM64 with XNNPACK delegate. Confidence threshold: 0.
 
 > **PPT Slide 15** — Horizontal utilization bar showing pipeline RSS (~665 MB, 8.1%) vs. total 8 GB with ~7.4 GB free. Right panel breaks down RAM by component. Headroom section projects V2 expansion: multi-camera ×4 feeds (~2.2 GB total), 640×480 resolution input (+80 MB), Edge TPU runtime overhead (+50 MB), remaining free after V2 (>5 GB). Note: *"Only 8.1% of available RAM consumed. The pipeline can scale to 10+ simultaneous models, higher-resolution inputs, or multi-camera feeds without requiring a hardware upgrade."*
 
----
-
 ## 🚀 Usage Modes
+
+---
 
 The pipeline supports three operating modes via the `--mode` flag. Entry point: `bottle_pipeline.py`. See PPT Slide 6.
 
@@ -385,9 +322,9 @@ python bottle_pipeline.py \
 
 > **PPT Slide 11** — Real inference output on 4 bottles (Bisleri and similar PET bottles). Pipeline correctly identifies 2 as `Not Damaged` (61%, 68%) and 2 as `Damaged` (68%, 72%). All 4 have individual bounding boxes. Summary overlay top-left: *"Total: 4 | Damaged: 2 | Non Damaged: 2"*. Boxes appear green for both classes in this screenshot — in the actual runtime, damaged bottles get red boxes.
 
----
-
 ## 🧱 Data Structures
+
+---
 
 Results are returned as typed Python `@dataclass` objects for type safety and easy JSON serialization. See PPT Slide 5.
 
@@ -443,9 +380,9 @@ class PipelineResult:
 
 Crop files are saved as `{image_name}_bottle_{id}_{class}.jpg`.
 
----
-
 ## ⚙️ Raspberry Pi Setup
+
+---
 
 Run `setup_rpi5.sh` for automated 7-step installation. See PPT Slide 8.
 
@@ -498,9 +435,9 @@ cd ~/bottle_pipeline
 python bottle_pipeline.py --mode camera --yolo-model models/yolov8n.pt
 ```
 
----
-
 ## 🔍 Troubleshooting
+
+---
 
 See PPT Slide 9 for the full fault tree.
 
@@ -522,9 +459,9 @@ See PPT Slide 9 for the full fault tree.
 | Confidence threshold | Higher threshold → fewer crops forwarded → faster overall |
 | Batch size | Process 1 image at a time on RPi (pipeline already does this) |
 
----
-
 ## 🗺️ V2 Roadmap: Scaling to Real-Time Conveyor Speeds
+
+---
 
 See PPT Slide 14.
 
@@ -538,9 +475,9 @@ See PPT Slide 14.
 **Current V1:** ~2–3.5 s/tray (batch processing, best.pt FP32, RPi CPU only — suitable for offline QC inspection workflow).
 **Target V2:** ~50 ms/bottle on continuous conveyor stream with industrial-grade zero missed-defect guarantee.
 
----
-
 ## 👥 Team
+
+---
 
 * **Bottle Pipeline Team** — 2026
 

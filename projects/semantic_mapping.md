@@ -5,22 +5,21 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # 🤖 Real-Time 2D Semantic Mapping 
 
+---
 
-[![Python](https://img.shields.io/badge/Python-3.10-blue)](https://python.org)
-[![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-orange)](https://ultralytics.com)
-[![Hailo](https://img.shields.io/badge/Hailo--8-13%20TOPS-purple)](https://hailo.ai)
-[![License](https://img.shields.io/badge/License-MIT-brightgreen)](LICENSE)
-[![Project Page](https://img.shields.io/badge/Project%20Page-GitHub%20Pages-222?logo=github)](https://rajneeshbabu.github.io/Edge-AI-Based-Hailo-Accelerated-Real-Time-2D-Semantic-Mapping-with-RPi5-for-Assistive-Navigation/)
-  
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/semantic-mapping/demo_detection_live.jpg" width="400">
+</p>
+
 **Instructor:** Dr. Pandarasamy Arjunan  
 **Team:** Karney Jayanath, Shreevathsa K S, Rajneesh Babu  
 🌐 **[View Project Page →](https://rajneeshbabu.github.io/Edge-AI-Based-Hailo-Accelerated-Real-Time-2D-Semantic-Mapping-with-RPi5-for-Assistive-Navigation/)**
 
 A real-time, on-device semantic navigation aid for the visually impaired using **Raspberry Pi 5 + Hailo-8 AI HAT** (13 TOPS NPU). A pruned, INT8-quantized YOLOv8n model detects 20 indoor-relevant object classes at **24.7 FPS** and fuses detections with gyroscope yaw from an Arduino Nicla Vision to build a live **2D polar semantic map** — fully offline, no cloud, no GPU required.
 
----
-
 ##  Highlights
+
+---
 
 - **True edge deployment** — everything runs on RPi5 + Hailo-8; no cloud, no GPU, no internet required at runtime
 - **5-stage compression pipeline** — FP32 → PTQ → QAT → L1 Structured Pruning → Hailo HEF; pruned model achieves **+9.4% mAP50** over the FP32 baseline
@@ -28,9 +27,9 @@ A real-time, on-device semantic navigation aid for the visually impaired using *
 - **Sensor fusion** — IMU yaw from Nicla Vision combined with bounding-box geometry to compute real-world object heading and distance every frame
 - **Live dual-window display** — Window 1: detection feed with labeled bounding boxes; Window 2: top-down 2D polar map with range rings at 1 m intervals
 
----
-
 ##  Repository Structure
+
+---
 
 ```text
 .
@@ -63,9 +62,9 @@ A real-time, on-device semantic navigation aid for the visually impaired using *
 └── README.md                   # Project overview + full report (this file)
 ```
 
----
-
 ##  Quick Navigation
+
+---
 
 | Folder | What's inside | Guide |
 |---|---|---|
@@ -75,9 +74,9 @@ A real-time, on-device semantic navigation aid for the visually impaired using *
 | [`RPI-Rpi5 deployment/`](RPI-Rpi5%20deployment/) | Edge inference script | [Steps 4, 5 & 6 →](RPI-Rpi5%20deployment/README.md) |
 | [`report/`](report/) | IEEE-format PDF report | [PDF →](report/report/edge_slam_report.pdf) |
 
----
-
 ##  Problem Statement
+
+---
 
 Visually impaired individuals navigate indoor environments with limited situational awareness. Existing assistive technologies — white canes, GPS-based devices — either lack real-time object-level perception or require connectivity. Recent edge AI hardware now makes it possible to run deep-learning perception pipelines on compact, battery-powered computers at interactive frame rates, at a fraction of the cost of specialized robotic platforms.
 
@@ -86,9 +85,9 @@ The challenge is threefold:
 2. **NPU deployment**: handling the non-standard multi-head output of YOLOv8 on a proprietary accelerator (Hailo-8) that requires its own compilation toolchain
 3. **Sensor fusion**: combining per-frame camera detections with continuous IMU yaw to maintain a persistent spatial model of nearby objects
 
----
-
 ##  Project Objectives
+
+---
 
 - Train and compress a YOLOv8n model for 20 indoor-relevant COCO classes using a reproducible Colab pipeline
 - Compile the model to Hailo Executable Format (HEF) using the Hailo Dataflow Compiler (DFC)
@@ -96,9 +95,9 @@ The challenge is threefold:
 - Fuse detections with gyroscope yaw from a Nicla Vision IMU to estimate each object's world heading and distance
 - Display results as a live detection feed and a 2D top-down polar semantic map
 
----
-
 ##  Hardware & Software
+
+---
 
 ### Hardware
 
@@ -133,9 +132,9 @@ Power Bank       ── USB-C      ──► RPi5
 | pyttsx3 | Text-to-speech audio announcements |
 | NumPy | DFL post-processing math |
 
----
-
 ##  Dataset
+
+---
 
 We used **COCO128** (a 128-image subset of MS-COCO) for training, fine-tuning, and INT8 calibration. Only the **20 VI-relevant classes** out of COCO's 80 were used; all others were discarded.
 
@@ -151,9 +150,9 @@ We used **COCO128** (a 128-image subset of MS-COCO) for training, fine-tuning, a
 
 **Dataset link:** [COCO128 on Ultralytics HUB](https://github.com/ultralytics/assets/releases/download/v0.0.0/coco128.zip) — auto-downloaded when running the notebook.
 
----
-
 ##  Model: YOLOv8n
+
+---
 
 We start from the publicly pretrained **YOLOv8n** (nano) checkpoint and fine-tune it on our 20-class subset. YOLOv8 uses an **anchor-free Detect head** with **Distribution Focal Loss (DFL)** for bounding-box regression — which requires special handling on the Hailo NPU (see [Deployment](#-deployment-on-rpi5--hailo-8)).
 
@@ -164,9 +163,9 @@ We start from the publicly pretrained **YOLOv8n** (nano) checkpoint and fine-tun
 
 **Why YOLOv8n?** Smallest YOLO variant, designed for edge deployment. Its DFL head is more accurate than anchor-based heads at small model sizes.
 
----
-
 ##  Training & Optimization Pipeline
+
+---
 
 All training runs on **Google Colab T4 GPU**. The full notebook is in [`Colab Development flow/EDGE_SLAM.ipynb`](Colab%20Development%20flow/EDGE_SLAM.ipynb). The pipeline has 5 stages:
 
@@ -230,9 +229,9 @@ YOLOv8s teacher generates pseudo-labels; pruned YOLOv8n student trains on them. 
 
 *Figure 1: Four-panel benchmark chart (FPS, mAP50, model size, latency) across all optimization stages — from the Colab notebook output.*
 
----
-
 ##  Deployment on RPi5 + Hailo-8
+
+---
 
 ### Hailo HEF Compilation (Colab Phase B)
 
@@ -278,9 +277,9 @@ Each detected object is placed on a polar map using:
 
 Objects not seen for > 10 s are pruned. The 520×520 px OpenCV canvas shows range rings at 1 m intervals; dots are orange (< 2.5 m) or green (≥ 2.5 m).
 
----
-
 ##  Demo
+
+---
 
 Two OpenCV windows run simultaneously on the RPi5:
 
@@ -304,9 +303,9 @@ Two OpenCV windows run simultaneously on the RPi5:
 | Speed-up vs FP32 | **1.87×** |
 | IMU yaw update rate | 50 Hz |
 
----
-
 ##  Step-by-Step Reproduction Guide
+
+---
 
 ### Step 1 — Nicla Vision Setup
 
@@ -396,9 +395,9 @@ python main.py
 
 Two OpenCV windows open on the RPi5 display. Press **`q`** to quit.
 
----
-
 ##  Results & Analysis
+
+---
 
 ### Model Optimization Results
 
@@ -427,9 +426,9 @@ The pruning improvement is counterintuitive: removing 20% of filters with the lo
 - **COCO128 dataset**: 128 images is too small for QAT and KD to generalize; these stages would outperform PTQ on the full 118K-image COCO dataset
 - **Indoor-only**: The 20 selected classes are optimised for indoor navigation; outdoor deployment would require retraining
 
----
-
 ##  Planned Improvements
+
+---
 
 - Replace the reference-height distance heuristic with a **lightweight monocular depth estimator** (e.g., MiDaS-small) for more accurate distance
 - Add **visual odometry** for drift-free position tracking over long sessions (the gyroscope-only yaw drifts gradually)
@@ -438,9 +437,9 @@ The pruning improvement is counterintuitive: removing 20% of filters with the lo
 - Port to a wearable form factor (e.g., glasses or vest-mounted)
 - Run QAT and KD on the full COCO dataset for a fair comparison
 
----
-
 ##  Team
+
+---
 
 **Course:** CP330 — Edge AI, Department of Computational and Data Sciences, IISc Bengaluru  
 **Instructor:** Dr. Pandarasamy Arjunan
@@ -451,9 +450,9 @@ The pruning improvement is counterintuitive: removing 20% of filters with the lo
 | **Shreevathsa K S** | 25905 | RPi5 inference pipeline — Hailo HEF deployment, HailoRT integration, DFL decoder, Picamera2 capture loop, NMS, bounding-box rendering |
 | **Rajneesh Babu** | 26058 | 2D semantic mapping — Nicla Vision IMU firmware, gyro calibration, yaw streaming, polar map, EMA smoothing, distance estimation |
 
----
-
 ##  References
+
+---
 
 - [Ultralytics YOLOv8 Documentation](https://docs.ultralytics.com/)
 - [Hailo Developer Zone](https://hailo.ai/developer-zone/)
