@@ -5,24 +5,35 @@ subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Offline Multimodal AI for Real-Time Banana Disease Diagnostics
 
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/banana-disease/demo.jpeg" width="400">
+</p>
 
 **[1] Ritik Kumar Badiya [2] Devendra Umbrajkar [3] Vikash Singh**.  
 **Code:** [GitHub Repository](https://github.com/ritikbadiyap/EdgeAI-Project/tree/main)
 
 ## Abstract
+
+---
 This report documents the end-to-end methodology required to port a domain-specific Large Multimodal Model (LMM) for local inference on mobile edge devices. The base architecture, MobileVLM V2 (1.4B parameters), was previously fine-tuned via Low-Rank Adaptation (LoRA) by peer researchers to specifically predict, describe, and provide remedial solutions for pathological diseases in banana plants. The primary scope of this project focuses strictly on the post-training pipeline: extracting the multimodal projector, executing variable-precision quantization (4-bit, 8-bit, 16-bit), and natively compiling the llama.cpp inference engine for edge execution. This document details the architectural dissection, hardware-specific compilation strategies (Android) and establishes a benchmarking framework to evaluate on-device throughput and latency without cloud reliance.
 
 ## Acknowledgement
+
+---
 We would like to express our gratitude to Arun Kumar, Project Associate at the Edge Intelligence Lab (CPS), for his invaluable contribution in training the foundational vision-language model for agriculture. Our current work is built upon the robust framework and model he developed under the guidance of Prof. Pandarasamy Arjunan.
 
 ## 1 Introduction and Project Scope
+
+---
 Deploying Large Multimodal Models (LMMs) on mobile edge devices presents significant hardware challenges, primarily bounded by memory bandwidth and active RAM constraints. This project successfully establishes a pipeline to run a custom-trained multimodal model locally on an Android device, synthesizing agricultural domain specificity with edge AI optimization.
 
 ### 1.1 Project Scope: Banana Plant Pathology
 The model utilized in this deployment pipeline is a specialized agricultural diagnostic tool. Peer researchers utilized the open-source MobileVLM V2 1.4B base model and performed LORA (Low-Rank Adaptation) fine-tuning. This fine-tuning targeted the visual recognition and linguistic description of various diseases affecting banana plants, enabling the model to not only identify visual symptoms but also generate actionable agricultural solutions. The scope of this current research phase assumes the model as a pre-trained asset. The core objective is not the training methodology, but the complex engineering task of taking these heavy, 32-bit floating-point LoRA-merged weights and successfully quantizing and deploying them onto constrained mobile hardware without destroying the model's domain-specific reasoning capabilities.
 
 ### 1.2 MobileVLM V2 Architecture (Meituan-AutoML)
-The repository https://github.com/Meituan-AutoML/MobileVLM defines the foundational architecture used as our base. Unlike massive desktop-grade models (e.g., LLaVA-1.5), MobileVLM V2 makes edge inference feasible through a highly optimized architectural trio:
+The repository <https://github.com/Meituan-AutoML/MobileVLM> defines the foundational architecture used as our base. Unlike massive desktop-grade models (e.g., LLaVA-1.5), MobileVLM V2 makes edge inference feasible through a highly optimized architectural trio:
 1. **Text Foundation Model:** A lightweight language model scaled down to 1.7B parameters.
 2. **Vision Encoder:** A pre-trained CLIP-ViT (clip-vit-large-patch14-336) model capable of extracting semantic embeddings from raw images.
 3. **Lightweight Downsample Projector (LDPv2):** The critical component for edge AI. LDPv2 effectively downsamples spatial visual tokens while preserving semantic context, drastically reducing the computational cost during the cross-modal fusion phase.
@@ -36,8 +47,9 @@ During inference, the generation of the output occurs as follows:
 ![Model MobileVLM2 Architecture](/edge-ai-26/assets/img/projects26/banana-disease/Model_arch.png)
 *Figure 1: Model MobileVLM2 Architecture*
 
-
 ## 2 The Conversion and Surgery Pipeline
+
+---
 To transition the raw 32-bit floating-point fine-tuned model into a mobile-ready format, the multimodal components had to be isolated, converted, and quantized independently.
 
 ### 2.1 Vision Projector Extraction (The Surgery)
@@ -79,6 +91,8 @@ python ./examples/convert_legacy_llama.py path/to/MobileVLM-1.7B --skip-unknown
 
 ## 3 Mobile Application Development and Edge Deployment
 
+---
+
 ### 3.1 Deployment Strategy
 The deployment of the Vision-Language Model (VLM) for banana plant disease identification on edge devices required bridging low-level C++ inferencing engines with a native Android frontend. To achieve this, an agent-assisted development pipeline was utilized to construct a robust, asynchronous architecture. The strategy centered on leveraging the Android Native Development Kit (NDK) to cross-compile the llama.cpp library for ARM64 architectures, minimizing computational overhead and maximizing hardware utilization. Instead of relying on cloud-based APIs, the application executes fully offline by loading quantized GGUF models directly into the device's memory, ensuring zero-latency communication, uninterrupted agricultural use, and absolute data privacy.
 
@@ -92,6 +106,8 @@ The development pipeline was executed in four primary stages, focusing on memory
 ![Architectural Deployment Flow](/edge-ai-26/assets/img/projects26/banana-disease/App_dia.png)
 
 ## 4 Performance Benchmarking
+
+---
 
 ### Deployment Hardware Specifications
 The quantized MobileVLM model was deployed and evaluated on a OnePlus Pad 3. The relevant system specifications impacting inference performance are as follows:
@@ -136,6 +152,8 @@ The following table serves as the primary data collection framework for on-devic
 Here we use the app to describe the image.
 
 ## 5 Conclusion and Future Work
+
+---
 This project successfully establishes a robust, end-to-end pipeline for the edge deployment of a domain-specific Large Multimodal Model (LMM). By systematically dissecting the MobileVLM V2 architecture, extracting the Lightweight Downsample Projector (LDPv2), and employing variable-precision quantization on the language foundation, a specialized agricultural diagnostic tool for banana pathology was effectively ported to an Android ecosystem. 
 
 The deployment of the custom C++ inference engine via the Android Native Development Kit (NDK) proved that complex, multi-gigabyte models can execute entirely offline, achieving viable latency and token generation speeds on mobile hardware without cloud dependency. 

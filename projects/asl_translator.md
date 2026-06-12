@@ -4,14 +4,20 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Real-Time Two-Way ASL Translator on Raspberry Pi 5
- 
+
+---
+
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/realtime-asl/ASL_GUI_1.png" width="400">
+</p>
+
 > **Team:** Liz Maria George, Naznin Amirul Haque, Ayush Kumar, Prayanshu Sharma  
 > *(M.Tech. MVLSI, ECE, IISc)*  
 **Code:** [GitHub Repository](https://github.com/prayanshus/Realtime_ASL_RasPi)
 
----
-
 ## 1. Introduction
+
+---
 
 Communication between ASL users and non-signers is a persistent everyday barrier. This project builds a **real-time, two-way ASL translator** that runs entirely on a Raspberry Pi 5 — no cloud ML inference required.
 
@@ -24,9 +30,9 @@ Communication between ASL users and non-signers is a persistent everyday barrier
 
 The Sign-to-Speech pipeline recognises **19 ASL signs** using MediaPipe landmark extraction + a CNN classifier (TFLite). Speech-to-Text uses Google Speech Recognition API.
 
----
-
 ## 2. System Architecture
+
+---
 
 ### High-Level Pipeline
 
@@ -75,9 +81,9 @@ Main Thread (Tkinter loop, 15 ms tick)
  └── STTWorker       ← PyAudio + Google STT (Listener mode only)
 ```
 
----
-
 ## 3. Hardware
+
+---
 
 | Component | Specification |
 |-----------|--------------|
@@ -87,11 +93,9 @@ Main Thread (Tkinter loop, 15 ms tick)
 | Audio I/O | Sony SRS-XB12 (BT speaker + mic) |
 | OS | Raspberry Pi OS Bookworm 64-bit |
 
-
+## 4. Dataset
 
 ---
-
-## 4. Dataset
 
 Data collected **on the Pi itself** (same camera as deployment) to eliminate domain gap.
 
@@ -114,10 +118,9 @@ Data collected **on the Pi itself** (same camera as deployment) to eliminate dom
 | stop | time | me | food |
 | want | help | *(18 shown)* | |
 
+## 5. Feature Engineering
 
 ---
-
-## 5. Feature Engineering
 
 Raw landmarks → engineered features for robustness to hand size, distance, and orientation.
 
@@ -137,9 +140,9 @@ Raw landmarks → engineered features for robustness to hand size, distance, and
 **+ Velocity features:** `np.diff` of all 252 base features = **504 features/frame**  
 **Model input tensor:** **(30 frames × 504 features)**
 
----
-
 ## 6. Model Training
+
+---
 
 Training on GPU workstation (`train.py`) — 3 automated stages:
 
@@ -163,9 +166,9 @@ Best scheduler → final exported model.
 <img src="/edge-ai-26/assets/img/projects26/realtime-asl/ASL_ConfMat.png" alt="Confusion Matrix" width="50%"/>
 > *Figure 2: Confusion matrix on held-out test set (19 classes)*
 
----
-
 ## 7. Model Optimisation & Quantisation
+
+---
 
 | Property | FP32 Model | INT8 Model |
 |----------|-----------|-----------|
@@ -178,9 +181,9 @@ Best scheduler → final exported model.
 - **INT8:** Post-training integer quantisation using 200 representative calibration samples; input/output remain float32 for compatibility  
 - Both models **swappable at runtime** via GUI radio buttons
 
----
-
 ## 8. Deployment Optimisations
+
+---
 
 | Optimisation | Effect |
 |-------------|--------|
@@ -191,9 +194,9 @@ Best scheduler → final exported model.
 | TTS queue flush on new word | No audio pileup |
 | 2-second same-word cooldown | Prevents repetition |
 
----
-
 ## 9. Application Interface
+
+---
 
 Tkinter GUI designed for touchscreen:
 
@@ -210,9 +213,9 @@ Tkinter GUI designed for touchscreen:
 <img src="/edge-ai-26/assets/img/projects26/realtime-asl/ASL_GUI_1.png" alt="GUI Screenshot - Listener Mode" width="50%"/>
 > *Figure 4: GUI in Listener mode — transcribed speech displayed*
 
----
-
 ## 10. Results
+
+---
 
 | Metric | FP32 | INT8 |
 |--------|------|------|
@@ -226,9 +229,9 @@ Tkinter GUI designed for touchscreen:
 
 > INT8 quantisation achieves **4× model compression** and **3.6× faster inference** with **zero accuracy loss**.
 
----
-
 ## 11. Challenges & Learnings
+
+---
 
 | Challenge | Solution |
 |-----------|----------|
@@ -238,9 +241,9 @@ Tkinter GUI designed for touchscreen:
 | Hand-size / distance variance | Wrist-normalised + hand-scale features |
 | Whisper on-device STT (deferred) | Used Google Speech API; distil-whisper planned for v2 |
 
----
-
 ## 12. Future Work
+
+---
 
 - **Vocabulary expansion:** Fingerspelling (A–Z) + more conversational signs
 - **Fully offline STT:** On-device distil-Whisper to replace Google Speech API
@@ -248,9 +251,9 @@ Tkinter GUI designed for touchscreen:
 - **Wearable form factor:** Chest-/head-mounted camera on smaller SBC or custom PCB
 - **Continuous learning:** Few-shot on-device fine-tuning for user-specific signs
 
----
-
 ## 13. Quick-Start Reproduction
+
+---
 
 ```bash
 # 1. Clone
@@ -274,9 +277,9 @@ cd Demo_RasPi && python3 pi_two_way_translator_V2.py
 
 See `README.md` for full retraining pipeline (`data_capture → preprocess → train`).
 
----
-
 ## 14. Project Structure
+
+---
 
 ```
 Realtime_ASL_RasPi/
@@ -292,9 +295,9 @@ Realtime_ASL_RasPi/
         └── train.py                  # NAS + K-Fold + LR search
 ```
 
----
-
 ## 15. References
+
+---
 
 - [MediaPipe Holistic](https://google.github.io/mediapipe/solutions/holistic.html) — Pose & hand landmarks (Google)
 - [TensorFlow Lite](https://www.tensorflow.org/lite/guide) — On-device inference
@@ -305,9 +308,9 @@ Realtime_ASL_RasPi/
 
 **AI Tools Disclosure:** GitHub Copilot used for Tkinter boilerplate. Claude used for documentation. All architecture, feature engineering, and system design decisions were made by the team.
 
----
-
 ## Team
+
+---
 
 | Name | Affiliation | Email | Contribution |
 |------|-------------|-------|--------------|

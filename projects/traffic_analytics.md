@@ -4,12 +4,19 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Edge AI Traffic Analytics and violation Detection
-**Team:** Ashish Kumar Verma, Uppugunduru Sriram Anush, Prince Kumar  
-**GitHub:** https://github.com/Prince-IISc-CalUniv/Edge-AI-Traffic-Analytics-and-violation-Detection
 
 ---
 
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/23.jpg" width="400">
+</p>
+
+**Team:** Ashish Kumar Verma, Uppugunduru Sriram Anush, Prince Kumar  
+**GitHub:** <https://github.com/Prince-IISc-CalUniv/Edge-AI-Traffic-Analytics-and-violation-Detection>
+
 ## 1. Problem Statement, Motivation and Objectives
+
+---
 
 India's traffic landscape presents some of the most complex and chaotic road conditions in the world. With over 1.55 lakh fatalities in road accidents annually (MoRTH 2023), key violations such as helmetless riding, triple riding on two-wheelers, overspeeding, and poor road infrastructure such as potholes remain leading contributors to road injuries and deaths. Manual enforcement is labour-intensive, inconsistent, and cannot scale across the country's vast road network.
 
@@ -25,9 +32,9 @@ This project demonstrates a multi-task edge AI traffic monitoring system that pe
 - Compress all models (pruning, FP16 quantization, NCNN/TFLite export) to achieve real-time inference (>2 FPS) on the Raspberry Pi 5
 - Deploy an integrated, self-contained edge system using the Raspberry Pi Camera Module with no cloud or internet required
 
----
+## 2. Proposed Solution
 
-## 2. Proposed Solution (Overview)
+---
 
 The system follows a three-pipeline architecture where each pipeline handles a distinct traffic monitoring task, and a unified inference script orchestrates all three on the edge device.
 
@@ -78,9 +85,9 @@ Data Collection   -->  Model Training   -->  Compression    -->  Deployment
 
 **Deployment:** A single Python script loads all three compressed models, reads the PiCamera stream, runs detection + tracking (ByteTrack), and produces annotated video with real-time HUD overlays.
 
----
-
 ## 3. Hardware and Software Setup
+
+---
 
 ### Hardware
 
@@ -106,9 +113,9 @@ Data Collection   -->  Model Training   -->  Compression    -->  Deployment
 | **ByteTrack** | Built-in (Ultralytics) | Multi-object tracking |
 | **Kaggle Notebooks** | T4/P100 GPU | Cloud training environment |
 
----
-
 ## 4. Data Collection and Dataset Preparation
+
+---
 
 ### Pipeline 1 - Helmet and Triple-Riding Detection
 
@@ -165,10 +172,9 @@ Data Collection   -->  Model Training   -->  Compression    -->  Deployment
 5. Generated the `data.yaml` configuration file required for Ultralytics YOLOv8 training
 6. Verified dataset integrity with visual sanity checks before training
 
+## 5. Model Design, Training and Evaluation
 
 ---
-
-## 5. Model Design, Training and Evaluation
 
 ### Pipeline 1 - YOLOv8-Nano (Helmet and Triple-Riding)
 
@@ -230,9 +236,9 @@ Data Collection   -->  Model Training   -->  Compression    -->  Deployment
 | Pipeline 2 (YOLOv11n .pt) | ~0.82 | ~0.55 | UVH-26 validation set |
 | Pipeline 3 (YOLOv8n .pt) | ~0.75 | ~0.48 | Pothole Detection |
 
----
-
 ## 6. Model Compression and Efficiency Metrics
+
+---
 
 ### Compression Techniques Applied
 
@@ -277,6 +283,8 @@ TFLite Note: TFLite export was initially evaluated during development, but ONNX 
 - **Memory:** Peak RAM usage is approximately 1.2 GB when all three integrated models (Traffic, Helmet, and Pothole) are loaded simultaneously well within the Raspberry Pi 5's 8 GB capacity.
 
 ## 7. Model Deployment and On-Device Performance
+
+---
 
 ### Deployment Steps
 
@@ -325,9 +333,9 @@ The system processes live PiCamera frames in a continuous loop:
 4. **Congestion classification** uses the Level-of-Service (LOS) A-F scale based on vehicle density and average speed within the calibrated ROI
 5. **HUD overlay** displays real-time FPS, vehicle count, average speed, congestion level, and violation counts
 
----
-
 ## 8. System Prototype (Pictures / Figures)
+
+---
 
 ### Vehicle Detection and Tracking
 
@@ -383,9 +391,9 @@ This enables post-hoc analysis, plotting trends over time, and generating aggreg
 
 The deployment setup consists of the Raspberry Pi 5 connected to the PiCamera Module via CSI ribbon cable, with an HDMI display for real-time visualization. The system runs headlessly (via SSH) in production, saving output to disk.
 
----
-
 ## 9. Conclusions and Limitations
+
+---
 
 ### Key Outcomes
 
@@ -408,9 +416,9 @@ The deployment setup consists of the Raspberry Pi 5 connected to the PiCamera Mo
 - **Pothole model integration** is prepared in the code but not fully active in the unified pipeline (placeholder for future work)
 - **No real-world deployment** in an actual traffic intersection was conducted; all testing used recorded video feeds
 
----
-
 ## 10. Future Work
+
+---
 
 - **INT8 quantization with proper calibration pipeline:** Use a small representative calibration dataset (100-200 images) loaded in batches to enable INT8 quantization without OOM, potentially doubling inference speed
 - **Jetson Nano / Orin deployment:** Leverage GPU-accelerated TensorRT for 15-30 FPS real-time performance
@@ -421,9 +429,9 @@ The deployment setup consists of the Raspberry Pi 5 connected to the PiCamera Mo
 - **License plate recognition:** Add an ANPR module for linking violations to specific vehicles
 - **Federated learning:** Enable model updates across multiple deployed Pi units without centralizing video data
 
----
-
 ## 11. Challenges and Mitigation
+
+---
 
 | # | Challenge | Impact | Mitigation |
 |---|-----------|--------|------------|
@@ -435,9 +443,9 @@ The deployment setup consists of the Raspberry Pi 5 connected to the PiCamera Mo
 | 6 | **f-string TypeError in speed display** - `avg_speed` was `None` when no vehicles were in ROI, causing format crash | Runtime crash during empty-road periods | Added safe fallback: `avg_speed_display = avg_speed if avg_speed is not None else 0.0` |
 | 7 | **Two-stage training convergence** - Pipeline 1 training at 320px underfitted small objects | Low recall on distant motorcycles | Implemented progressive training: 30 epochs @ 320px for fast convergence, then 50 epochs @ 640px for fine-grained accuracy |
 
----
-
 ## 12. References
+
+---
 
 ### Datasets
 1. UVH-26: Indian Urban Vehicle and Helmet Dataset - [https://huggingface.co/datasets/iisc-aim/UVH-26](https://huggingface.co/datasets/iisc-aim/UVH-26)
@@ -448,11 +456,11 @@ The deployment setup consists of the Raspberry Pi 5 connected to the PiCamera Mo
 6. Indian Roads Dataset (mitangshu11) - [Kaggle](https://www.kaggle.com/datasets/mitangshu11/indian-roads-dataset)
 
 ### Frameworks and Tools
-6. Ultralytics YOLOv8 - [https://docs.ultralytics.com/](https://docs.ultralytics.com/)
-7. Ultralytics YOLOv11 - [https://docs.ultralytics.com/models/yolo11/](https://docs.ultralytics.com/models/yolo11/)
-8. NCNN - High-performance inference framework for mobile/ARM - [https://github.com/Tencent/ncnn](https://github.com/Tencent/ncnn)
+6. Ultralytics YOLOv8 - <https://docs.ultralytics.com/>
+7. Ultralytics YOLOv11 - <https://docs.ultralytics.com/models/yolo11/>
+8. NCNN - High-performance inference framework for mobile/ARM - <https://github.com/Tencent/ncnn>
 9. ByteTrack: Multi-Object Tracking by Associating Every Detection Box - Zhang et al., ECCV 2022
-10. OpenCV - [https://opencv.org/](https://opencv.org/)
+10. OpenCV - <https://opencv.org/>
 
 ### Concepts and Techniques
 11. Highway Capacity Manual (HCM) - Level-of-Service (LOS) classification for congestion estimation
@@ -461,6 +469,6 @@ The deployment setup consists of the Raspberry Pi 5 connected to the PiCamera Mo
 14. FOMO (Faster Objects, More Objects) - Edge Impulse, TinyML object detection
 
 ### Course and Reference Projects
-15. CP 330 Edge AI Course - Prof. Pandarasamy Arjunan, IISc Bangalore - [https://www.samy101.com/edge-ai-25/](https://www.samy101.com/edge-ai-25/)
-16. AI Helmet Project (Reference) - [https://github.com/samy101/ai-helmet](https://github.com/samy101/ai-helmet)
+15. CP 330 Edge AI Course - Prof. Pandarasamy Arjunan, IISc Bangalore - <https://www.samy101.com/edge-ai-25/>
+16. AI Helmet Project (Reference) - <https://github.com/samy101/ai-helmet>
 17. Ministry of Road Transport and Highways, India - Road Accident Statistics 2023

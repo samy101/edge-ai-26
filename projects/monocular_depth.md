@@ -4,12 +4,19 @@ title: Edge AI
 subtitle: CP 330 | January 2026 | CPS, Indian Institute of Science
 ---
 # Vision-Aided Beam Selection using Edge AI
-**Team:** Kemmasaram Varma, Guna Vardhan Vyas N, Erfan Naseri Taheri  
-**Code:** [GitHub Repository](https://github.com/erfannsr/EdgeAI-Vision-Assisted-Beam-Selection-using-Monocular-Depth-Estimation)
 
 ---
 
+<p align="center">
+  <img src="/edge-ai-26/assets/img/projects26/26.jpeg" width="400">
+</p>
+
+**Team:** Kemmasaram Varma, Guna Vardhan Vyas N, Erfan Naseri Taheri  
+**Code:** [GitHub Repository](https://github.com/erfannsr/EdgeAI-Vision-Assisted-Beam-Selection-using-Monocular-Depth-Estimation)
+
 ## 1. Problem Statement, Motivation & Objectives
+
+---
 
 Modern wireless communication systems (5G/mmWave) rely on **beamforming** to direct signals toward users. However, selecting the optimal beam traditionally requires **beam sweeping**, where all beams are tested sequentially, leading to high latency and inefficiency.
 
@@ -26,9 +33,9 @@ Modern wireless communication systems (5G/mmWave) rely on **beamforming** to dir
 *   Enable **real-time inference** on edge devices like the Raspberry Pi.
 *   Improve **efficiency and responsiveness** of beam selection.
 
----
+## 2. Proposed Solution
 
-## 2. Proposed Solution (Overview)
+---
 
 This project proposes a **vision-assisted beam selection system** using Edge AI to replace traditional RF-only methods.
 
@@ -40,9 +47,9 @@ This project proposes a **vision-assisted beam selection system** using Edge AI 
 *   Combined output provides the **3D position (angle + distance)**.
 *   Position is mapped directly to a **Beam Index** in the codebook.
 
----
-
 ## 3. Hardware & Software Setup
+
+---
 
 ### Hardware
 *   **Raspberry Pi 5:** Primary edge device.
@@ -56,9 +63,9 @@ This project proposes a **vision-assisted beam selection system** using Edge AI 
 *   **LightDepthNet:** Custom-trained depth model[cite: 1].
 *   **OpenCV:** For real-time preprocessing and visualization.
 
----
-
 ## 4. Data Collection & Dataset Preparation
+
+---
 
 ### Datasets Used
 *   **Mobile Phone Detection Dataset [2]:** Sourced from **Roboflow**, this dataset contains annotated images of phones in various orientations and hand-held scenarios. It consists of approximately **238 annotated images**.
@@ -72,9 +79,9 @@ This project proposes a **vision-assisted beam selection system** using Edge AI 
 *   **Image Resizing:** All inputs scaled to **416×416** to ensure Hailo NPU compatibility.
 *   **Normalization:** Specific Mean/Std normalization applied for the LightDepthNet encoder.
 
----
-
 ## 5. Model Design, Training & Evaluation
+
+---
 
 ### A. YOLOv8 (Object Detection)
 *   **Model:** YOLOv8m (Medium).
@@ -92,22 +99,23 @@ The **LightDepthNet** is a lightweight **Encoder-Decoder** architecture designed
 
 ![model1](/edge-ai-26/assets/img/projects26/monocular-depth/model1.jpg)
 ![model2](/edge-ai-26/assets/img/projects26/monocular-depth/model2.jpg)
----
 
 ## 6. Model Compression & Efficiency Metrics
+
+---
 *   **Lightweight Architecture:** RMU units allow the decoder to maintain detail without high parameter counts[cite: 1].
 *   **Inference Speed:** Significantly faster than heavy models like MiDaS while maintaining sufficient accuracy for beamforming priors.
 
----
-
 ## 7. Model Deployment & On-Device Performance
+
+---
 *   **Export:** Models converted to **ONNX** natively at 416x416 to prevent dimension mismatch in skip connections.
 *   **Optimization:** Optimized for Apple Silicon (MPS) and target Hailo-8 NPU.
 *   **Performance:** Real-time inference achieved locally on M3 Pro and target Pi 5 environment.
 
----
-
 ## 8. System Prototype (Working)
+
+---
 1.  **Capture:** Frame acquisition via webcam/PiCam.
 2.  **Detect:** YOLOv8 localizes the phone bounding box.
 3.  **Depth Map:** LightDepthNet generates a pixel-wise depth prediction.
@@ -115,9 +123,9 @@ The **LightDepthNet** is a lightweight **Encoder-Decoder** architecture designed
 5.  **Estimate:** Calculate Azimuth ($\theta$) and Distance ($d$).
 6.  **Map:** Direct conversion of coordinates to a specific **Beam Index**.
 
----
-
 ## 9. Conclusions & Limitations
+
+---
 
 ### Conclusions
 *   Successfully implemented a **Vision-Assisted Beam Selection** pipeline.
@@ -129,36 +137,35 @@ The **LightDepthNet** is a lightweight **Encoder-Decoder** architecture designed
 *   **Lighting:** Accuracy degrades in extremely low-light conditions.
 *   **Capacity:** Currently optimized for **single-user scenarios**.
 
----
-
 ## 10. Future Work
+
+---
 *   Expansion to **multi-user** detection and resource allocation.
 *   Full integration with **Physical RF Beamforming / IRS Hardware**.
 *   Inclusion of **Stereo or LiDAR** for improved depth precision in complex environments.
 
----
-
 ## 11. Challenges & Mitigation
+
+---
 *   **Depth Noise:** Mitigated using a **Median Filter** on the sampled ROI.
 *   **Jitter:** Stabilized via an **Exponential Moving Average (EMA)** filter on the distance output.
 *   **Detection Failures:** Addressed via **ROI-based sampling (Center 15%)** to ignore background and hand occlusions.
 *   **Active Learning:** Improving the small dataset (238 images) with video-extracted frames to handle motion blur.
 
----
-
 ## 12. References
+
+---
 [1] Q. Liu and S. Zhou, "LightDepthNet: Lightweight CNN Architecture for Monocular Depth Estimation on Edge Devices," in IEEE Transactions on Circuits and Systems II: Express Briefs, vol. 71, no. 4, pp. 2389-2393, April 2024, doi: 10.1109/TCSII.2023.3337369. keywords: {Decoding;Estimation;Merging;Kernel;Computational modeling;Channel estimation;Computational efficiency;Internet of Things;Depth measurement;IoT;neural network;channel pruning;monocular depth estimation},
 
-[2] Roboflow, "Mobile Phone Detection Dataset," [Online]. Available: https://universe.roboflow.com/sahana-qam5q/mobile-phone-ewfpu.
+[2] Roboflow, "Mobile Phone Detection Dataset," [Online]. Available: <https://universe.roboflow.com/sahana-qam5q/mobile-phone-ewfpu>.
 
-[3] N. Silberman, D. Hoiem, P. Kohli and R. Fergus, "Indoor Segmentation and Support Estimation from RGBD Images," in Proceedings of the European Conference on Computer Vision (ECCV), 2012. https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html
-
----
+[3] N. Silberman, D. Hoiem, P. Kohli and R. Fergus, "Indoor Segmentation and Support Estimation from RGBD Images," in Proceedings of the European Conference on Computer Vision (ECCV), 2012. <https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html>
 
 ## Acknowledgment of AI Tools
-We acknowledge the use of generative AI tools, including ChatGPT (OpenAI) and Gemini (Google), for assistance in debugging, resolving dependency issues, and improving implementation of the RMU unit in the LightDepthNet model. Additionally, Gamma was used to assist in preparing presentation materials. All outputs were reviewed, verified, and adapted by the authors.
 
 ---
+
+We acknowledge the use of generative AI tools, including ChatGPT (OpenAI) and Gemini (Google), for assistance in debugging, resolving dependency issues, and improving implementation of the RMU unit in the LightDepthNet model. Additionally, Gamma was used to assist in preparing presentation materials. All outputs were reviewed, verified, and adapted by the authors.
 
 ### One-Line Summary
 > Using YOLO and LightDepthNet, we estimate user position from visual input and directly select the optimal beam, eliminating traditional beam sweeping.
